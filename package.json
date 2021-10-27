@@ -10,8 +10,10 @@
     "@chakra-ui/react": "^1.6.8",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
+    "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
     "gatsby": "^3.13.1",
+    "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-image": "^1.13.0",
     "gatsby-plugin-manifest": "^3.13.0",
     "gatsby-plugin-offline": "^4.13.0",
@@ -21,6 +23,7 @@
     "gatsby-transformer-sharp": "^3.13.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
+    "react-datepicker": "^4.2.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"
   },

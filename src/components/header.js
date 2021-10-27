@@ -21,11 +21,17 @@ const Header = ({ siteTitle }) => (
     <Spacer />
 
     <HStack spacing={3} divider={<StackDivider />} as="nav">
-      <Link as={GatsbyLink} to="/">
-        Home
+      <Link as={GatsbyLink} to="/" color="white" fontSize="sm">
+        COTIZAR VUELO
       </Link>
-      <Link as={GatsbyLink} to="/page-2">
-        Page 2
+      <Link as={GatsbyLink} to="/experiencia-fly" color="white" fontSize="sm">
+        EXPERIENCIA FLY
+      </Link>
+      <Link as={GatsbyLink} to="/servicio" color="white" fontSize="sm">
+        SERVICIO
+      </Link>
+      <Link as={GatsbyLink} to="/contacto" color="white" fontSize="sm">
+        CONTACTO
       </Link>
     </HStack>
   </Flex>
