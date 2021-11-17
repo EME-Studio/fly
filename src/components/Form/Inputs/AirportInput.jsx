@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-import { airports } from "../../../Constants/airports"
+import { airports } from "../../../constants/airports"
 
 import { Image, Select, Center, Button } from "@chakra-ui/react"
 

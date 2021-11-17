@@ -2,9 +2,9 @@ import React from "react"
 
 import { useState } from "react"
 
-import AirportInput from "./Inputs/AirportInput"
-import DateInput from "./Inputs/DateInput"
-import NumbersInput from "./Inputs/NumbersInput"
+import AirportInput from "./inputs/AirportInput"
+import DateInput from "./inputs/DateInput"
+import NumbersInput from "./inputs/NumbersInput"
 
 import { Flex, Box, Text, FormLabel } from "@chakra-ui/react"
 

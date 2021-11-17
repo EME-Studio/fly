@@ -1,13 +1,13 @@
 import * as React from "react"
 
-import Layout from "../Components/Layout/layout"
-import Seo from "../Components/seo"
+import Layout from "../components/layout/layout"
+import Seo from "../components/seo"
 
 import { useState } from "react"
 
-import { FormProvider } from "../Contexts/FormContext"
-import FlyForm from "../Components/Form/Form"
-import NewForm from "../Components/Form/NewForm"
+import { FormProvider } from "../contexts/FormContext"
+import FlyForm from "../components/Form/Form"
+import NewForm from "../components/Form/NewForm"
 
 import { Heading, Flex, Box, Button, Container } from "@chakra-ui/react"
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"

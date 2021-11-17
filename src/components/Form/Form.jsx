@@ -1,7 +1,7 @@
 import * as React from "react"
 import { useState, useContext } from "react"
 
-import { FormContext } from "../../Contexts/FormContext"
+import { FormContext } from "../../contexts/FormContext"
 
 import FormLine from "./FormLine"
 import {

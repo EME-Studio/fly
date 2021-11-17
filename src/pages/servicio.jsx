@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import Layout from "../Components/Layout/layout"
-import Seo from "../Components/seo"
+import Layout from "../components/layout/layout"
+import Seo from "../components/seo"
 
 // chakra-ui components import
 import { Box, Flex, Heading } from "@chakra-ui/react"
