@@ -6,7 +6,7 @@ import Seo from "../Components/seo"
 import { useState } from "react"
 
 import { FormProvider } from "../Contexts/FormContext"
-import FlyForm from "../Components/Form/form"
+import FlyForm from "../Components/Form/Form"
 import NewForm from "../Components/Form/NewForm"
 
 import { Heading, Flex, Box, Button, Container } from "@chakra-ui/react"
