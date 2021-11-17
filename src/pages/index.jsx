@@ -6,8 +6,8 @@ import Seo from "../components/seo"
 import { useState } from "react"
 
 import { FormProvider } from "../contexts/FormContext"
-import FlyForm from "../components/Form/Form"
-import NewForm from "../components/Form/NewForm"
+import FlyForm from "../components/form/Form"
+import NewForm from "../components/form/NewForm"
 
 import { Heading, Flex, Box, Button, Container } from "@chakra-ui/react"
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
