@@ -27,7 +27,7 @@ const Servicio = () => (
         justify="center"
       >
         <Heading as="h1" size="4xl" align="center" m="10" color="white">
-          Servicio
+          Servicios
         </Heading>
       </Flex>
     </Box>
