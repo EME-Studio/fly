@@ -31,7 +31,7 @@ const theme = {
   colors: {
     light: "#FFFFFF",
     dark: "#17181C",
-    primary: {
+    fly: {
       main: "#063F6A",
       accent: "#FF4C04",
     },

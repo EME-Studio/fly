@@ -2,7 +2,6 @@ const Button = {
   // The styles all button have in common
   baseStyle: {
     fontWeight: "bold",
-    textTransform: "uppercase",
     borderRadius: "base", // <-- border radius is same for all variants and sizes
   },
   // Two sizes: sm and md
@@ -22,20 +21,20 @@ const Button = {
   variants: {
     mainOutline: {
       border: "2px solid",
-      borderColor: "primary.main",
-      color: "primary.main",
+      borderColor: "fly.main",
+      color: "fly.main",
     },
     mainSolid: {
-      bg: "primary.main",
+      bg: "fly.main",
       color: "white",
     },
     accentOutline: {
       border: "2px solid",
-      borderColor: "primary.accent",
-      color: "primary.accent",
+      borderColor: "fly.accent",
+      color: "fly.accent",
     },
     accentSolid: {
-      bg: "primary.accent",
+      bg: "fly.accent",
       color: "white",
     },
   },

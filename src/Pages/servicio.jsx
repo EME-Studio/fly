@@ -1,14 +1,14 @@
 import * as React from "react"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import Layout from "../Components/Layout/layout"
+import Seo from "../Components/seo"
 
 // chakra-ui components import
 import { Box, Flex, Heading } from "@chakra-ui/react"
 
-const Contacto = () => (
+const Servicio = () => (
   <Layout>
-    <Seo title="Contacto" />
+    <Seo title="Servicio" />
 
     <Box
       w="full"
@@ -27,11 +27,11 @@ const Contacto = () => (
         justify="center"
       >
         <Heading as="h1" size="4xl" align="center" m="10" color="white">
-          Contacto
+          Servicio
         </Heading>
       </Flex>
     </Box>
   </Layout>
 )
 
-export default Contacto
+export default Servicio
