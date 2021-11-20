@@ -56,7 +56,14 @@ function NewForm() {
       {/* Test with Chakra-ui form */}
       <FormControl id="test" name="test">
         <FormLabel>Email address</FormLabel>
-        <Input type="email" value={flightData.test} onChange={handleChange} />
+        <Input
+          id="test"
+          name="test"
+          type="text"
+          value={flightData.test}
+          onChange={handleChange}
+          placeholder="Here is a sample placeholder"
+        />
         <FormHelperText>We'll never share your email.</FormHelperText>
       </FormControl>
 
