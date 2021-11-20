@@ -17,14 +17,21 @@ import {
   Container,
 } from "@chakra-ui/react"
 import { Link as GatsbyLink } from "gatsby"
+
 import { HamburgerIcon } from "@chakra-ui/icons"
+import Logo from "../../images/icons/logofly.png"
 
 const Header = ({ siteTitle }) => (
   <Container maxW="container.xl" centerContent>
     <Flex direction="row" as="header" h="10vh" w="100%" p="80px" pos="fixed">
       <Center>
         <Link as={GatsbyLink} to="/">
-          <Image src="/logo-fly.png" alt="Fly Logo"></Image>
+          <Image
+            src={Logo}
+            alt="Fly Logo"
+            boxSize="150px"
+            objectFit="contain"
+          ></Image>
         </Link>
       </Center>
 

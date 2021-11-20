@@ -1,7 +1,15 @@
 import React, { useState } from "react"
+import {
+  Input,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/input"
 
 function NewForm() {
   const [flightData, setFlightData] = useState({
+    test: "",
     origen: "",
     destino: "",
     fecha: "",
@@ -43,6 +51,14 @@ function NewForm() {
       data-netlify-honeypot="bot-field"
     >
       <input type="hidden" name="form-name" value="contact" />
+
+      {/* Test with Chakra-ui form */}
+      <FormControl id="test" name="test">
+        <FormLabel>Email address</FormLabel>
+        <Input type="email" value={flightData.test} onChange={handleChange} />
+        <FormHelperText>We'll never share your email.</FormHelperText>
+      </FormControl>
+
       <label htmlFor="origen">Origen</label>
       <input
         id="origen"

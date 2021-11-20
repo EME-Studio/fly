@@ -12,6 +12,8 @@ import NewForm from "../components/form/NewForm"
 import { Heading, Flex, Box, Button, Container } from "@chakra-ui/react"
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
 
+import Avion from "../images/avion_fly.jpeg"
+
 const IndexPage = () => {
   // Set basic leg form quantity
   const [legs, setLegs] = useState([1, 2])
@@ -29,7 +31,7 @@ const IndexPage = () => {
         <Box
           w="full"
           minH="100vh"
-          bgImage="url('/avion-estacionado.jpeg')"
+          bgImage={Avion}
           bgSize="cover"
           bgPosition="center center"
           bgRepeat="no-repeat"
