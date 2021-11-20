@@ -1,11 +1,12 @@
 import React, { useState } from "react"
+
 import {
   Input,
   FormControl,
   FormLabel,
   FormErrorMessage,
   FormHelperText,
-} from "@chakra-ui/input"
+} from "@chakra-ui/react"
 
 function NewForm() {
   const [flightData, setFlightData] = useState({
