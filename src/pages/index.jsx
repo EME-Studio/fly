@@ -65,33 +65,14 @@ const IndexPage = () => {
                   >
                     IDA Y VUELTA
                   </Tab>
-                  <Tab
-                    _selected={{
-                      borderBottom: "2px",
-                      borderColor: "fly.accent",
-                    }}
-                  >
-                    MULTILEG
-                  </Tab>
                 </TabList>
 
                 <TabPanels>
                   <TabPanel align="right">
-                    <NewForm />
+                    <NewForm soloIda={true} />
                   </TabPanel>
                   <TabPanel align="right">
-                    <FlyForm
-                      flightsArray={[1, 2]}
-                      addFlights={false}
-                      displayFlightName={true}
-                    />
-                  </TabPanel>
-                  <TabPanel align="right">
-                    <FlyForm
-                      flightsArray={[1, 2, 3]}
-                      addFlights={true}
-                      displayFlightName={true}
-                    />
+                    <NewForm soloIda={false} />
                   </TabPanel>
                 </TabPanels>
               </Tabs>
