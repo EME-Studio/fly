@@ -76,7 +76,6 @@ function NewForm({ soloIda }) {
   }
 
   const handleChange = e => {
-    console.log(e)
     setFlightData({
       ...flightData,
       [e.target.name]: e.target.value,
@@ -84,7 +83,6 @@ function NewForm({ soloIda }) {
   }
 
   const handleSumbit = e => {
-    console.log(e)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -120,6 +118,13 @@ function NewForm({ soloIda }) {
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="form-name" value="contact" />
+        <Input
+          type="hidden"
+          name="email"
+          id="email"
+          name="email"
+          value={flightData.email}
+        />
         <Flex
           direction={["column", "column", "column", "row", "row", "row"]}
           mb="4"
