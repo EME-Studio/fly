@@ -84,6 +84,7 @@ function NewForm({ soloIda }) {
   }
 
   const handleSumbit = e => {
+    console.log(e)
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -423,7 +424,15 @@ function NewForm({ soloIda }) {
               ¡Gracias por elegirnos!
               <FormControl mt="5" isRequired>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" bg="gray.300" placeholder="Email" />
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  bg="gray.300"
+                  placeholder="Email"
+                  value={flightData.email}
+                  onChange={handleChange}
+                />
               </FormControl>
             </ModalBody>
 
