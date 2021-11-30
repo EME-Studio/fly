@@ -2,7 +2,7 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import {
   Flex,
-  Spacer,
+  Stack,
   Link,
   Center,
   HStack,
@@ -22,28 +22,31 @@ import { HamburgerIcon } from "@chakra-ui/icons"
 import Logo from "../../images/icons/logofly.png"
 
 const Header = ({ siteTitle }) => (
-  <Container maxW="container.xl" centerContent>
-    <Flex direction="row" as="header" h="10vh" w="100%" p="80px" pos="fixed">
+  <Box
+    as="header"
+    maxW="7xl"
+    mx="auto"
+    left="0"
+    right="0"
+    justify-content="center"
+    align-items="center"
+    px="8"
+    pos={["absolute", "absolute", "absolute", "fixed", "fixed"]}
+  >
+    <Stack direction="row" spacing="4" align="center" justify="space-between">
       <Center>
         <Link as={GatsbyLink} to="/">
           <Image
             src={Logo}
             alt="Fly Logo"
-            boxSize="150px"
+            boxSize={["100px", "150px"]}
             objectFit="contain"
           ></Image>
         </Link>
       </Center>
 
-      <Spacer />
-
       {/* Big screens nav bar */}
-      <HStack
-        spacing={3}
-        divider={<StackDivider />}
-        as="nav"
-        display={["none", "none", "flex", "flex"]}
-      >
+      <HStack spacing={3} as="nav" display={["none", "none", "flex", "flex"]}>
         <Link as={GatsbyLink} to="/" color="white" fontSize="sm">
           COTIZAR VUELO
         </Link>
@@ -59,7 +62,7 @@ const Header = ({ siteTitle }) => (
       </HStack>
 
       {/* Small screens nav bar */}
-      <Box display={["flex", "flex", "none", "none"]}>
+      {/* <Box display={["flex", "flex", "none", "none"]}>
         <Menu>
           <MenuButton
             as={IconButton}
@@ -74,9 +77,9 @@ const Header = ({ siteTitle }) => (
             <MenuItem command="⌘O">Open File...</MenuItem>
           </MenuList>
         </Menu>
-      </Box>
-    </Flex>
-  </Container>
+      </Box> */}
+    </Stack>
+  </Box>
 )
 
 Header.propTypes = {

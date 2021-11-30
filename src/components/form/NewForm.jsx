@@ -39,6 +39,7 @@ import {
   ModalFooter,
   Spacer,
   Heading,
+  Text,
 } from "@chakra-ui/react"
 
 import DatePicker from "react-datepicker"
@@ -97,13 +98,22 @@ function NewForm({ soloIda }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const modalOpenClick = () => {
-    console.log(flightData)
     if (flightData.origen.length > 0 && flightData.destino.length > 0) {
       onOpen()
     } else if (flightData.origen.length === 0) {
       alert("Seleccione un aeropuerto de origen")
     } else if (flightData.destino.length === 0) {
       alert("Seleccione un aeropuerto de destino")
+    }
+  }
+
+  const modalCloseClick = () => {
+    if (flightData.email.length > 0 && flightData.destino.includes("@")) {
+      onClose()
+    } else if (!flightData.destino.includes("@")) {
+      alert("El formato del email no es correcto")
+    } else if (flightData.email.length === 0) {
+      alert("Inserte su correo electrónico")
     }
   }
 
@@ -131,20 +141,26 @@ function NewForm({ soloIda }) {
         >
           <Flex
             w={["100%", "100%", "100%", "50%", "50%", "50%"]}
-            mb={[4, 4, 4, 0, 0, 0]}
-            direction={["column", "column", "column", "row", "row", "row"]}
+            direction={["column", "column", "row", "row", "row", "row"]}
           >
             <Center
               bg="fly.main"
               borderRadius="lg"
-              mr="4"
-              w={["100%", "100%", "100%", "50%", "50%", "50%"]}
+              mr={["0", "0", "4", "4", "4", "4"]}
+              w={["100%", "100%", "50%", "50%", "50%", "50%"]}
               mb={["4", "4", "4"]}
+              h="45px"
             >
               <Center p="2" w="45px">
                 <Image src={AvionDespega} boxSize="100%" mb="0px" />
               </Center>
-              <FormControl isRequired>
+              <FormControl
+                h="100%"
+                sx={{
+                  ".chakra-select__wrapper": { h: "100% !important" },
+                }}
+                isRequired
+              >
                 <Select
                   id="origen"
                   name="origen"
@@ -154,6 +170,7 @@ function NewForm({ soloIda }) {
                   value={flightData.origen}
                   onChange={handleChange}
                   placeholder="Aeropuerto de origen"
+                  h="100%"
                 >
                   {airports.map(airports => (
                     <option>{airports}</option>
@@ -165,14 +182,21 @@ function NewForm({ soloIda }) {
             <Center
               bg="fly.main"
               borderRadius="lg"
-              mr="4"
-              w={["100%", "100%", "100%", "50%", "50%", "50%"]}
+              mr={["0", "0", "0", "0", "4", "4"]}
+              w={["100%", "100%", "50%", "50%", "50%", "50%"]}
               mb={["4", "4", "4"]}
+              h="45px"
             >
               <Center p="2" w="45px">
                 <Image src={AvionAterriza} boxSize="100%" mb="0px" />
               </Center>
-              <FormControl isRequired>
+              <FormControl
+                h="100%"
+                sx={{
+                  ".chakra-select__wrapper": { h: "100% !important" },
+                }}
+                isRequired
+              >
                 <Select
                   id="destino"
                   name="destino"
@@ -182,6 +206,7 @@ function NewForm({ soloIda }) {
                   value={flightData.destino}
                   onChange={handleChange}
                   placeholder="Aeropuerto de destino"
+                  h="100%"
                 >
                   {airports.map(airports => (
                     <option>{airports}</option>
@@ -191,123 +216,130 @@ function NewForm({ soloIda }) {
             </Center>
           </Flex>
 
+          {/* Fechas */}
           <Flex
-            w={["100%", "100%", "100%", "50%", "50%", "50%"]}
-            direction={["column", "column", "column", "row", "row", "row"]}
+            w={["100%", "100%", "100%", "30%", "30%", "30%"]}
+            direction={["column", "column", "row", "row", "row", "row"]}
           >
-            <>
-              <Center
-                bg="fly.main"
-                borderRadius="lg"
-                mr="4"
-                w={["100%", "100%", "100%", "30%", "30%", "30%"]}
-                mb={["4", "4", "4"]}
-              >
-                <Center p="2" w="45px">
-                  <Image src={Calendario} boxSize="100%" mb="0px" />
-                </Center>
-                <Box
-                  h="100%"
-                  w="100%"
-                  sx={{
-                    ".react-datepicker__input-container": { h: "100%" },
-                    ".react-datepicker-wrapper": { h: "100%" },
-                  }}
-                >
-                  <FormControl id="fecha" name="fecha" h="100%" isRequired>
-                    <DatePicker
-                      id="fechaIda"
-                      name="fechaIda"
-                      selected={flightData.fechaIda}
-                      onChange={
-                        (date =>
-                          setFlightData({
-                            ...flightData,
-                            fechaIda: date,
-                          }),
-                        console.log(flightData.fechaIda.getDay))
-                      }
-                      selectsStart
-                      startDate={flightData.fechaIda}
-                      endDate={flightData.fechaVuelta}
-                      minDate={new Date()}
-                      customInput={
-                        <Input
-                          h="100%"
-                          bg="white"
-                          color="gray.800"
-                          fontSize="sm"
-                          id="fecha"
-                          name="fecha"
-                          fontSize="xs"
-                        />
-                      }
-                    />
-                  </FormControl>
-                </Box>
+            <Center
+              bg="fly.main"
+              borderRadius="lg"
+              mr={["0", "0", "4", "4", "4", "4"]}
+              w={["100%", "100%", "100%", "50%", "50%", "50%"]}
+              mb={["4", "4", "4"]}
+              h="45px"
+            >
+              <Center p="2" w="45px">
+                <Image src={Calendario} boxSize="100%" mb="0px" />
               </Center>
+              <Box
+                h="100%"
+                w="100%"
+                sx={{
+                  ".react-datepicker__input-container": { h: "100%" },
+                  ".react-datepicker-wrapper": { h: "100%" },
+                }}
+              >
+                <FormControl h="100%" isRequired>
+                  <DatePicker
+                    id="fechaIda"
+                    name="fechaIda"
+                    selected={flightData.fechaIda}
+                    onChange={date =>
+                      setFlightData({
+                        ...flightData,
+                        fechaIda: date,
+                      })
+                    }
+                    selectsStart
+                    startDate={flightData.fechaIda}
+                    endDate={flightData.fechaVuelta}
+                    minDate={new Date()}
+                    customInput={
+                      <Input
+                        h="100%"
+                        bg="white"
+                        color="gray.800"
+                        fontSize="sm"
+                        id="fecha"
+                        name="fecha"
+                        fontSize="xs"
+                      />
+                    }
+                  />
+                </FormControl>
+              </Box>
+            </Center>
 
-              <Center
-                bg="fly.main"
-                borderRadius="lg"
-                mr="4"
-                w={["100%", "100%", "100%", "30%", "30%", "30%"]}
-                mb={["4", "4", "4"]}
-              >
-                <Center p="2" w="45px">
-                  <Image src={Calendario} boxSize="100%" mb="0px" />
-                </Center>
-                <Box
-                  h="100%"
-                  w="100%"
-                  sx={{
-                    ".react-datepicker__input-container": { h: "100%" },
-                    ".react-datepicker-wrapper": { h: "100%" },
-                  }}
-                >
-                  <FormControl id="fecha" name="fecha" h="100%" isRequired>
-                    <DatePicker
-                      disabled={soloIda ? true : false}
-                      id="fechaVuelta"
-                      name="fechaVuelta"
-                      selected={flightData.fechaVuelta}
-                      onChange={date =>
-                        setFlightData({
-                          ...flightData,
-                          fechaVuelta: date,
-                        })
-                      }
-                      selectsEnd
-                      startDate={flightData.fechaIda}
-                      endDate={flightData.fechaVuelta}
-                      minDate={flightData.fechaIda}
-                      customInput={
-                        <Input
-                          h="100%"
-                          bg="white"
-                          color="gray.800"
-                          fontSize="sm"
-                          id="fecha"
-                          name="fecha"
-                          fontSize="xs"
-                        />
-                      }
-                    />
-                  </FormControl>
-                </Box>
+            <Center
+              bg="fly.main"
+              borderRadius="lg"
+              mr={["0", "0", "0", "0", "4", "4"]}
+              w={["100%", "100%", "100%", "50%", "50%", "50%"]}
+              mb={["4", "4", "4"]}
+              h="45px"
+            >
+              <Center p="2" w="45px">
+                <Image src={Calendario} boxSize="100%" mb="0px" />
               </Center>
-            </>
+              <Box
+                h="100%"
+                w="100%"
+                sx={{
+                  ".react-datepicker__input-container": { h: "100%" },
+                  ".react-datepicker-wrapper": { h: "100%" },
+                }}
+              >
+                <FormControl h="100%" isRequired>
+                  <DatePicker
+                    disabled={soloIda ? true : false}
+                    id="fechaVuelta"
+                    name="fechaVuelta"
+                    selected={flightData.fechaVuelta}
+                    onChange={date =>
+                      setFlightData({
+                        ...flightData,
+                        fechaVuelta: date,
+                      })
+                    }
+                    selectsEnd
+                    startDate={flightData.fechaIda}
+                    endDate={flightData.fechaVuelta}
+                    minDate={flightData.fechaIda}
+                    customInput={
+                      <Input
+                        h="100%"
+                        bg="white"
+                        color="gray.800"
+                        fontSize="sm"
+                        id="fecha"
+                        name="fecha"
+                        fontSize="xs"
+                      />
+                    }
+                  />
+                </FormControl>
+              </Box>
+            </Center>
+          </Flex>
+
+          {/* Pasajeros y maletas */}
+          <Flex
+            w={["100%", "100%", "100%", "20%", "20%", "20%"]}
+            direction="row"
+          >
             <Center
               bg="fly.main"
               borderRadius="lg"
               mr="4"
-              w={["100%", "100%", "100%", "20%", "20%", "20%"]}
+              w="50%"
               mb={["4", "4", "4"]}
+              h="45px"
             >
               <Center p="2" w="45px">
                 <Image src={Pasajero} boxSize="100%" mb="0px" />
               </Center>
-              <FormControl isRequired>
+              <FormControl h="100%" isRequired>
                 <NumberInput
                   min={1}
                   id="pasajeros"
@@ -320,6 +352,10 @@ function NewForm({ soloIda }) {
                     })
                   }
                   minW="60px"
+                  h="100%"
+                  sx={{
+                    input: { h: "100%" },
+                  }}
                 >
                   <NumberInputField bg="white" color="gray.800" fontSize="xs" />
                   <NumberInputStepper>
@@ -332,14 +368,14 @@ function NewForm({ soloIda }) {
             <Center
               bg="fly.main"
               borderRadius="lg"
-              mr="4"
-              w={["100%", "100%", "100%", "20%", "20%", "20%"]}
+              w="50%"
               mb={["4", "4", "4"]}
+              h="45px"
             >
               <Center p="2" w="45px">
                 <Image src={Maleta} boxSize="100%" mb="0px" />
               </Center>
-              <FormControl>
+              <FormControl h="100%">
                 <NumberInput
                   min={0}
                   id="equipaje"
@@ -352,6 +388,10 @@ function NewForm({ soloIda }) {
                     })
                   }
                   minW="60px"
+                  h="100%"
+                  sx={{
+                    input: { h: "100%" },
+                  }}
                 >
                   <NumberInputField bg="white" color="gray.800" fontSize="xs" />
                   <NumberInputStepper>
@@ -367,65 +407,104 @@ function NewForm({ soloIda }) {
           Enviar
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent borderRadius="none" bg="light">
-            <ModalHeader size="4xl">
-              <Heading size="xl" fontWeight="light">
+          <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
+          <ModalContent borderRadius="none" bg="light" pb="8" px="4">
+            <ModalHeader py="10">
+              <Heading size="2xl" fontWeight="100" color="fly.main">
                 Cotizar Vuelo
               </Heading>
             </ModalHeader>
             <ModalCloseButton />
             <Divider />
-            <ModalBody>
-              Dejanos tu e-mail y nos pondremos en contacto a la brevedad.
-              <Flex direction="column">
-                <Flex mt="4" mb="0.5">
-                  {flightData.origen}
-                  <Spacer />
-                  <ArrowForwardIcon />
-                  <Spacer />
-                  {flightData.origen}
-                </Flex>
-                <Flex mt="1" mb="0.5">
-                  <Image src={Calendario} bg="blue" width="20px" mr="2" />
-                  {formatDate(flightData.fechaIda)}
-                </Flex>
-                <Flex mt="1" mb="0.5">
-                  <Image src={Pasajero} bg="blue" width="20px" mr="2" />
-                  {flightData.pasajeros}
-                </Flex>
-                {flightData.equipaje ? (
-                  <Flex mt="1" mb="0.5">
-                    <Image src={Maleta} bg="blue" width="20px" mr="2" />
-                    {flightData.equipaje}
+            <ModalBody mt="4">
+              Dejanos tu e-mail y nos pondremos en contacto contigo por el
+              vuelo.
+              <Box p="4" fontSize="sm" color="gray.500">
+                <Flex direction="column" mt="4">
+                  <Flex mb="3">
+                    <Text mr="2">{flightData.origen}</Text>
+                    <Box>
+                      <ArrowForwardIcon mr="2" />
+                    </Box>
+                    <Text>{flightData.destino}</Text>
                   </Flex>
-                ) : null}
-              </Flex>
-              {flightData.fechaVuelta ? (
-                <Flex direction="column">
-                  <Flex mt="4" mb="xs">
-                    {flightData.origen}
-                    <Spacer />
-                    <ArrowForwardIcon />
-                    <Spacer />
-                    {flightData.origen}
-                  </Flex>
-                  <Flex mt="1" mb="xs">
-                    <Image src={Calendario} bg="blue" width="20px" mr="2" />
+                  <Flex mb="3">
+                    <Image
+                      src={Calendario}
+                      bg="blue"
+                      width="20px"
+                      mb="0"
+                      mr="2"
+                    />
                     {formatDate(flightData.fechaIda)}
                   </Flex>
-                  <Flex mt="1" mb="xs">
-                    <Image src={Pasajero} bg="blue" width="20px" mr="2" />
+                  <Flex mb="3">
+                    <Image
+                      src={Pasajero}
+                      bg="blue"
+                      width="20px"
+                      mb="0"
+                      mr="2"
+                    />
                     {flightData.pasajeros}
                   </Flex>
                   {flightData.equipaje ? (
-                    <Flex mt="1" mb="xs">
-                      <Image src={Maleta} bg="blue" width="20px" mr="2" />
+                    <Flex mb="3">
+                      <Image
+                        src={Maleta}
+                        bg="blue"
+                        width="20px"
+                        mb="0"
+                        mr="2"
+                      />
                       {flightData.equipaje}
                     </Flex>
                   ) : null}
                 </Flex>
-              ) : null}
+                {flightData.fechaVuelta ? (
+                  <Flex direction="column" mt="4">
+                    <Flex mb="3">
+                      <Text mr="2">{flightData.destino}</Text>
+                      <Box>
+                        <ArrowForwardIcon mr="2" />
+                      </Box>
+                      <Text>{flightData.origen}</Text>
+                    </Flex>
+                    <Flex mb="3">
+                      <Image
+                        src={Calendario}
+                        bg="blue"
+                        width="20px"
+                        mb="0"
+                        mr="2"
+                      />
+                      {formatDate(flightData.fechaVuelta)}
+                    </Flex>
+                    <Flex mb="3">
+                      <Image
+                        src={Pasajero}
+                        bg="blue"
+                        width="20px"
+                        mb="0"
+                        mr="2"
+                      />
+                      {flightData.pasajeros}
+                    </Flex>
+                    {flightData.equipaje ? (
+                      <Flex mb="3">
+                        <Image
+                          src={Maleta}
+                          bg="blue"
+                          width="20px"
+                          mb="0"
+                          mr="2"
+                        />
+                        {flightData.equipaje}
+                      </Flex>
+                    ) : null}
+                  </Flex>
+                ) : null}
+              </Box>
               ¡Gracias por elegirnos!
               <FormControl mt="5" isRequired>
                 <FormLabel>Email</FormLabel>
@@ -442,7 +521,12 @@ function NewForm({ soloIda }) {
             </ModalBody>
 
             <ModalFooter>
-              <Button form="contact" type="submit" onClick={onClose}>
+              <Button
+                form="contact"
+                type="submit"
+                onClick={modalCloseClick}
+                variant="accentSolid"
+              >
                 Enviar
               </Button>
             </ModalFooter>
