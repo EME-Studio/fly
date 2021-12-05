@@ -34,16 +34,28 @@ const IndexPage = () => {
           bgSize="cover"
           bgPosition="center center"
           bgRepeat="no-repeat"
-          bgAttachment="fixed"
+          bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
         >
           <Flex
             minH="100vh"
             bgColor="rgba(0, 0, 0, 0.5)"
             direction="column"
             align="center"
+            justifyContent="center"
           >
-            <Container maxW="container.xl" mt="30vh" centerContent>
-              <Heading as="h1" size="3xl" align="center" m="10" color="white">
+            <Container
+              maxW="container.xl"
+              mt={["10vh", "10vh", "10vh", "10vh", "10vh"]}
+              centerContent
+            >
+              <Heading
+                as="h1"
+                size="3xl"
+                display={["none", "none", "flex", "flex", "flex"]}
+                align="center"
+                m="10"
+                color="white"
+              >
                 Tu libertad, nuestro servicio
               </Heading>
               <Tabs variant="unstyled" color="white">
