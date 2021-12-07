@@ -1,13 +1,16 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 
 import AvionAterriza from "../../images/icons/avionaterriza.png"
 import AvionDespega from "../../images/icons/aviondespega.png"
 import Calendario from "../../images/icons/calendario.png"
 import Maleta from "../../images/icons/maleta.png"
 import Pasajero from "../../images/icons/pasajero.png"
+import PasajeroGris from "../../images/icons/personagris.png"
+import CalendarioGris from "../../images/icons/calendariogris.png"
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 
 import { formatDate } from "../../helpers/dateHandler"
+import { isMobile } from "react-device-detect"
 
 import {
   Input,
@@ -116,6 +119,21 @@ function NewForm({ soloIda }) {
       alert("Inserte su correo electrónico")
     }
   }
+
+  // Hide Keyboard when date-picker is opened
+  const pickerRef1 = useRef(null)
+  useEffect(() => {
+    if (isMobile && pickerRef1.current !== null) {
+      pickerRef1.current.input.readOnly = true
+    }
+  }, [isMobile, pickerRef1])
+
+  const pickerRef2 = useRef(null)
+  useEffect(() => {
+    if (isMobile && pickerRef2.current !== null) {
+      pickerRef2.current.input.readOnly = true
+    }
+  }, [isMobile, pickerRef2])
 
   return (
     <Box>
@@ -255,7 +273,8 @@ function NewForm({ soloIda }) {
                     startDate={flightData.fechaIda}
                     endDate={flightData.fechaVuelta}
                     minDate={new Date()}
-                    onFocus={e => (e.target.readOnly = true)}
+                    // onFocus={e => (e.target.readOnly = true)}
+                    ref={pickerRef1}
                     customInput={
                       <Input
                         h="100%"
@@ -307,6 +326,8 @@ function NewForm({ soloIda }) {
                     startDate={flightData.fechaIda}
                     endDate={flightData.fechaVuelta}
                     minDate={flightData.fechaIda}
+                    // onFocus={e => (e.target.readOnly = true)}
+                    ref={pickerRef2}
                     customInput={
                       <Input
                         h="100%"
@@ -431,7 +452,7 @@ function NewForm({ soloIda }) {
                   </Flex>
                   <Flex mb="3">
                     <Image
-                      src={Calendario}
+                      src={CalendarioGris}
                       bg="blue"
                       width="20px"
                       mb="0"
@@ -441,7 +462,7 @@ function NewForm({ soloIda }) {
                   </Flex>
                   <Flex mb="3">
                     <Image
-                      src={Pasajero}
+                      src={PasajeroGris}
                       bg="blue"
                       width="20px"
                       mb="0"

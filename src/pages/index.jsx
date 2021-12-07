@@ -45,7 +45,7 @@ const IndexPage = () => {
           >
             <Container
               maxW="container.xl"
-              mt={["10vh", "10vh", "10vh", "10vh", "10vh"]}
+              mt={["80px", "10vh", "10vh", "10vh", "10vh"]}
               centerContent
             >
               <Heading
