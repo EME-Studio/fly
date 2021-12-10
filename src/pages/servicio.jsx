@@ -11,7 +11,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css"
 
 // Internal components
-import Slide from "../components/slide"
+import Slide from "../components/Slide"
 
 // Data
 import { servicesData } from "../constants/servicesData"
