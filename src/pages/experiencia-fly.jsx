@@ -1,36 +1,57 @@
 import * as React from "react"
 
+// Internal components
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 
-// chakra-ui components import
-import { Box, Flex, Heading } from "@chakra-ui/react"
+// Chakra-ui components
+import { Box, Flex, Heading, Container, Grid, Text } from "@chakra-ui/react"
+
+// Images and icons
+import ExperienciaImg from "../images/experiencia.jpeg"
 
 const ExperienciaFly = () => (
-  <Layout>
+  <Layout headerRojo={true}>
     <Seo title="Experiencia Fly" />
 
-    <Box
-      w="full"
-      minH="100vh"
-      bgImage="url('/plane.jpeg')"
+    <Flex
+      w="100%"
+      h="100%"
+      bgImage={ExperienciaImg}
       bgSize="cover"
       bgPosition="center center"
       bgRepeat="no-repeat"
+      alignItems="center"
     >
-      <Flex
-        w="full"
-        minH="100vh"
-        bgColor="rgba(0, 0, 0, 0.6)"
-        direction="column"
-        align="center"
-        justify="center"
-      >
-        <Heading as="h1" size="4xl" align="center" m="10" color="white">
-          Experiencia Fly
-        </Heading>
-      </Flex>
-    </Box>
+      <Container maxW="container.xl">
+        <Grid
+          templateColumns={["1", "1", "1", "repeat(2, 1fr)", "repeat(2, 1fr)"]}
+          gap={100}
+        >
+          <Flex
+            alignItems="flex-start"
+            justifyContent="flex-start"
+            direction="column"
+          >
+            <Heading color="white" textAlign="left" mb="8">
+              <Text textColor="fly.main" display="inline" fontWeight="bold">
+                EXPERIENCIA
+              </Text>{" "}
+              FLY
+            </Heading>
+            <Text color="white" maxW="sm">
+              Tomamos el conocimiento reunido en más de 30 años de trayectoria y
+              el espíritu innovador que nos caracteriza, para crear servicios
+              con los más altos estándares de seguridad, confort y atención, que
+              te permitirán disfrutar de una experiencia excepcional en cada
+              trayecto. Únete a la familia FLY y contágiate de nuestra pasión
+              por volar con cada milla recorrida.
+            </Text>
+          </Flex>
+          <Box />
+        </Grid>
+      </Container>
+    </Flex>
   </Layout>
 )
 

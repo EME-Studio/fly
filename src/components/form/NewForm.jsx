@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react"
 
+// Images and icons
 import AvionAterriza from "../../images/icons/avionaterriza.png"
 import AvionDespega from "../../images/icons/aviondespega.png"
 import Calendario from "../../images/icons/calendario.png"
@@ -9,9 +10,13 @@ import PasajeroGris from "../../images/icons/personagris.png"
 import CalendarioGris from "../../images/icons/calendariogris.png"
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 
+// External libraries and helpers
 import { formatDate } from "../../helpers/dateHandler"
 import { isMobile } from "react-device-detect"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
+// Chakra-ui components
 import {
   Input,
   FormControl,
@@ -21,11 +26,7 @@ import {
   Box,
   Flex,
   Button,
-  InputGroup,
-  InputLeftElement,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
@@ -40,23 +41,21 @@ import {
   Divider,
   ModalBody,
   ModalFooter,
-  Spacer,
   Heading,
   Text,
 } from "@chakra-ui/react"
 
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
-
+// Internal data
 import { airports } from "../../constants/airports"
 
 function NewForm({ soloIda }) {
+  // Form data handling
   const [flightData, setFlightData] = useState({
     origen: "",
     destino: "",
     fechaIda: new Date(),
     fechaVuelta: "",
-    pasajeros: 1,
+    pasajeros: "",
     equipaje: "",
     email: "",
   })
@@ -67,16 +66,10 @@ function NewForm({ soloIda }) {
       destino: "",
       fechaIda: new Date(),
       fechaVuelta: "",
-      pasajeros: 1,
+      pasajeros: "",
       equipaje: "",
       email: "",
     })
-  }
-
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
   }
 
   const handleChange = e => {
@@ -84,6 +77,13 @@ function NewForm({ soloIda }) {
       ...flightData,
       [e.target.name]: e.target.value,
     })
+  }
+
+  // Connection with Netlify endpoint
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
   }
 
   const handleSumbit = e => {
@@ -98,14 +98,15 @@ function NewForm({ soloIda }) {
     e.preventDefault()
   }
 
+  // Modal handling
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const modalOpenClick = () => {
     if (flightData.origen.length > 0 && flightData.destino.length > 0) {
       onOpen()
-    } else if (flightData.origen.length === 0) {
+    } else if (flightData.origen === "") {
       alert("Seleccione un aeropuerto de origen")
-    } else if (flightData.destino.length === 0) {
+    } else if (flightData.destino === "") {
       alert("Seleccione un aeropuerto de destino")
     }
   }
@@ -460,26 +461,10 @@ function NewForm({ soloIda }) {
                     />
                     {formatDate(flightData.fechaIda)}
                   </Flex>
-                  <Flex mb="3">
-                    <Image
-                      src={PasajeroGris}
-                      bg="blue"
-                      width="20px"
-                      mb="0"
-                      mr="2"
-                    />
-                    {flightData.pasajeros}
-                  </Flex>
-                  {flightData.equipaje ? (
+                  {flightData.pasajeros > 0 ? (
                     <Flex mb="3">
-                      <Image
-                        src={Maleta}
-                        bg="blue"
-                        width="20px"
-                        mb="0"
-                        mr="2"
-                      />
-                      {flightData.equipaje}
+                      <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
+                      {flightData.pasajeros}
                     </Flex>
                   ) : null}
                 </Flex>
@@ -494,7 +479,7 @@ function NewForm({ soloIda }) {
                     </Flex>
                     <Flex mb="3">
                       <Image
-                        src={Calendario}
+                        src={CalendarioGris}
                         bg="blue"
                         width="20px"
                         mb="0"
@@ -502,26 +487,10 @@ function NewForm({ soloIda }) {
                       />
                       {formatDate(flightData.fechaVuelta)}
                     </Flex>
-                    <Flex mb="3">
-                      <Image
-                        src={Pasajero}
-                        bg="blue"
-                        width="20px"
-                        mb="0"
-                        mr="2"
-                      />
-                      {flightData.pasajeros}
-                    </Flex>
-                    {flightData.equipaje ? (
+                    {flightData.pasajeros > 0 ? (
                       <Flex mb="3">
-                        <Image
-                          src={Maleta}
-                          bg="blue"
-                          width="20px"
-                          mb="0"
-                          mr="2"
-                        />
-                        {flightData.equipaje}
+                        <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
+                        {flightData.pasajeros}
                       </Flex>
                     ) : null}
                   </Flex>

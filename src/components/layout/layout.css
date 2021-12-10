@@ -163,7 +163,7 @@ textarea {
   margin: 0;
 }
 input {
-  color: black !important;
+  color: black;
 }
 optgroup {
   font-weight: 700;
@@ -596,4 +596,7 @@ pre tt:after {
   html {
     font-size: 100%;
   }
+}
+.chakra-container {
+  padding: 35px 25px 35px 25px;
 }

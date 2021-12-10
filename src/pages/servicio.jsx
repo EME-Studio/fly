@@ -3,34 +3,47 @@ import * as React from "react"
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 
-// chakra-ui components import
-import { Box, Flex, Heading } from "@chakra-ui/react"
+// Chakra-ui components
+import { Container, Flex } from "@chakra-ui/react"
+
+// Other external components
+import { Splide, SplideSlide } from "@splidejs/react-splide"
+import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css"
+
+// Internal components
+import Slide from "../components/slide"
+
+// Data
+import { servicesData } from "../constants/servicesData"
 
 const Servicio = () => (
-  <Layout>
+  <Layout headerRojo={true}>
     <Seo title="Servicio" />
 
-    <Box
-      w="full"
-      minH="100vh"
-      bgImage="url('/plane.jpeg')"
-      bgSize="cover"
-      bgPosition="center center"
-      bgRepeat="no-repeat"
-    >
-      <Flex
-        w="full"
-        minH="100vh"
-        bgColor="rgba(0, 0, 0, 0.6)"
-        direction="column"
-        align="center"
-        justify="center"
+    <Flex minH="100%" justifyContent="center" alignItems="center">
+      <Container
+        maxW="container.xl"
+        sx={{
+          ".splide__arrow svg": { fill: "fly.main" },
+          ".splide__arrow svg:hover": { fill: "fly.main" },
+          ".splide__pagination__page.is-active": { background: "fly.main" },
+          ".splide__pagination": { position: "absolute", bottom: "0px" },
+          ".splide__track": { paddingY: "20px" },
+        }}
       >
-        <Heading as="h1" size="4xl" align="center" m="10" color="white">
-          Servicios
-        </Heading>
-      </Flex>
-    </Box>
+        <Splide>
+          {servicesData.map((service, index) => (
+            <SplideSlide key={index}>
+              <Slide
+                image={service.image}
+                title={service.title}
+                content={service.content}
+              />
+            </SplideSlide>
+          ))}
+        </Splide>
+      </Container>
+    </Flex>
   </Layout>
 )
 
