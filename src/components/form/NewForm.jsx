@@ -263,6 +263,7 @@ function NewForm({ soloIda }) {
                   <DatePicker
                     id="fechaIda"
                     name="fechaIda"
+                    dateFormat="dd/MM/yyyy"
                     selected={flightData.fechaIda}
                     onChange={date =>
                       setFlightData({
@@ -316,6 +317,7 @@ function NewForm({ soloIda }) {
                     disabled={soloIda ? true : false}
                     id="fechaVuelta"
                     name="fechaVuelta"
+                    dateFormat="dd/MM/yyyy"
                     selected={flightData.fechaVuelta}
                     onChange={date =>
                       setFlightData({
