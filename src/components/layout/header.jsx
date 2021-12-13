@@ -171,7 +171,7 @@ const Header = ({ siteTitle, conColor }) => {
                   as={GatsbyLink}
                   to="/"
                   color="white"
-                  fontSize="4xl"
+                  fontSize="xl"
                   mb="10px"
                 >
                   COTIZAR VUELO
@@ -180,7 +180,7 @@ const Header = ({ siteTitle, conColor }) => {
                   as={GatsbyLink}
                   to="/servicio"
                   color="white"
-                  fontSize="4xl"
+                  fontSize="xl"
                   mb="10px"
                 >
                   SERVICIOS
@@ -189,7 +189,7 @@ const Header = ({ siteTitle, conColor }) => {
                   as={GatsbyLink}
                   to="/contacto"
                   color="white"
-                  fontSize="4xl"
+                  fontSize="xl"
                   mb="10px"
                 >
                   CONTACTO
@@ -198,7 +198,7 @@ const Header = ({ siteTitle, conColor }) => {
                   as={GatsbyLink}
                   to="/experiencia-fly"
                   color="white"
-                  fontSize="4xl"
+                  fontSize="xl"
                 >
                   EXPERIENCIA FLY
                 </Link>
