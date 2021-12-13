@@ -29,7 +29,7 @@ const IndexPage = () => {
 
         <Box
           w="full"
-          minH="100vh"
+          h="100%"
           bgImage={Avion}
           bgSize="cover"
           bgPosition="center center"
@@ -37,7 +37,8 @@ const IndexPage = () => {
           bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
         >
           <Flex
-            minH="100vh"
+            h="100%"
+            w="100%"
             bgColor="rgba(0, 0, 0, 0.5)"
             direction="column"
             align="center"
