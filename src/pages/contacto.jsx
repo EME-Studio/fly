@@ -18,10 +18,14 @@ import {
   FormLabel,
   Input,
   FormHelperText,
+  Image,
 } from "@chakra-ui/react"
 
 // Images and Icons
-import { PhoneIcon } from "@chakra-ui/icons"
+import { PhoneIcon, EmailIcon } from "@chakra-ui/icons"
+import InstagramIcon from "../images/icons/instagram.png"
+import FacebookIcon from "../images/icons/facebook.png"
+import LinkedinIcon from "../images/icons/linkedin.png"
 
 const Contacto = () => (
   <Layout headerRojo={true}>
@@ -54,7 +58,7 @@ const Contacto = () => (
                 <Text fontSize="sm">+598 99 590 210</Text>
               </Flex>
               <Flex>
-                <PhoneIcon mr="2" />
+                <EmailIcon mr="2" />
                 <Text fontSize="sm">fly@fly.com.uy</Text>
               </Flex>
             </Flex>
@@ -62,9 +66,19 @@ const Contacto = () => (
               Síguenos en nuestras redes y descubre mas de nuestros servicios!
             </Text>
             <Flex>
-              <PhoneIcon mr="4" />
-              <PhoneIcon mr="4" />
-              <PhoneIcon mr="4" />
+              <Image
+                src={FacebookIcon}
+                boxSize="25px"
+                objectFit="contain"
+                mr="2"
+              />
+              <Image
+                src={InstagramIcon}
+                boxSize="25px"
+                objectFit="contain"
+                mr="2"
+              />
+              <Image src={LinkedinIcon} boxSize="25px" objectFit="contain" />
             </Flex>
           </Box>
           <Box>
