@@ -445,6 +445,18 @@ function NewForm({ soloIda }) {
             <ModalBody mt="4">
               Dejanos tu e-mail y nos pondremos en contacto contigo por el
               vuelo.
+              <FormControl mt="5" isRequired>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  bg="gray.300"
+                  placeholder="Email"
+                  value={flightData.email}
+                  onChange={handleChange}
+                />
+              </FormControl>
               <Box p="4" fontSize="sm" color="gray.500">
                 <Flex direction="column" mt="4">
                   <Flex mb="3">
@@ -500,18 +512,6 @@ function NewForm({ soloIda }) {
                 ) : null}
               </Box>
               ¡Gracias por elegirnos!
-              <FormControl mt="5" isRequired>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  bg="gray.300"
-                  placeholder="Email"
-                  value={flightData.email}
-                  onChange={handleChange}
-                />
-              </FormControl>
             </ModalBody>
 
             <ModalFooter>
