@@ -48,5 +48,6 @@ module.exports = {
         display: "swap",
       },
     },
+    `gatsby-plugin-transition-link`,
   ],
 }

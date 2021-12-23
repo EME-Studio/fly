@@ -19,6 +19,7 @@ import {
   Input,
   FormHelperText,
   Image,
+  Link,
 } from "@chakra-ui/react"
 
 // Images and Icons
@@ -49,7 +50,7 @@ const Contacto = () => (
             </Heading>
             <Text fontSize="sm" mb="5">
               Aeropuerto Internacional Ángel Adami, 6P6Q+MGV, 12500 Montevideo,
-              Departamento de
+              Departamento de Montevideo.
             </Text>
             <Divider mb="5" />
             <Flex mb="3">
@@ -66,18 +67,22 @@ const Contacto = () => (
               Síguenos en nuestras redes y descubre mas de nuestros servicios!
             </Text>
             <Flex>
-              <Image
-                src={FacebookIcon}
-                boxSize="25px"
-                objectFit="contain"
-                mr="2"
-              />
-              <Image
-                src={InstagramIcon}
-                boxSize="25px"
-                objectFit="contain"
-                mr="2"
-              />
+              <Link href="https://www.facebook.com/flyuy" isExternal>
+                <Image
+                  src={FacebookIcon}
+                  boxSize="25px"
+                  objectFit="contain"
+                  mr="2"
+                />
+              </Link>
+              <Link href="https://www.instagram.com/fly.com.uy/" isExternal>
+                <Image
+                  src={InstagramIcon}
+                  boxSize="25px"
+                  objectFit="contain"
+                  mr="2"
+                />
+              </Link>
               <Image src={LinkedinIcon} boxSize="25px" objectFit="contain" />
             </Flex>
           </Box>

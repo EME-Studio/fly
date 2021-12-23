@@ -25,14 +25,16 @@ import {
   ModalBody,
   ModalFooter,
   Button,
+  Text,
 } from "@chakra-ui/react"
 import { Link as GatsbyLink } from "gatsby"
 
-import { HamburgerIcon } from "@chakra-ui/icons"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-// Import images
+// Import images and icons
 import LogoBlanco from "../../images/icons/logofly.png"
 import LogoRojo from "../../images/icons/logofly-rojo.png"
+import { HamburgerIcon } from "@chakra-ui/icons"
 
 const Header = ({ siteTitle, conColor }) => {
   const {
@@ -86,14 +88,18 @@ const Header = ({ siteTitle, conColor }) => {
             as="nav"
             display={["none", "none", "none", "flex", "flex"]}
           >
-            <Link
+            <AniLink
+              cover
+              direction="right"
               as={GatsbyLink}
               to="/"
-              color={conColor ? "fly.main" : "white"}
-              fontSize="sm"
+              duration={1}
+              bg="#063F6A"
             >
-              COTIZAR VUELO
-            </Link>
+              <Text color={conColor ? "fly.main" : "white"} fontSize="sm">
+                COTIZAR VUELO
+              </Text>
+            </AniLink>
             <IconButton
               icon={<HamburgerIcon color={conColor ? "fly.main" : "white"} />}
               onClick={onDesktopModalOpen}
@@ -116,32 +122,42 @@ const Header = ({ siteTitle, conColor }) => {
                 alignItems="center"
                 flexDirection="column"
               >
-                <Link
+                <AniLink
+                  cover
+                  direction="right"
                   as={GatsbyLink}
                   to="/servicio"
-                  color="white"
-                  fontSize="4xl"
-                  mb="10px"
+                  duration={1}
+                  bg="#063F6A"
                 >
-                  SERVICIOS
-                </Link>
-                <Link
+                  <Text color="white" fontSize="4xl" mb="10px">
+                    SERVICIOS
+                  </Text>
+                </AniLink>
+                <AniLink
+                  cover
+                  direction="right"
                   as={GatsbyLink}
                   to="/contacto"
-                  color="white"
-                  fontSize="4xl"
-                  mb="10px"
+                  duration={1}
+                  bg="#063F6A"
                 >
-                  CONTACTO
-                </Link>
-                <Link
+                  <Text color="white" fontSize="4xl" mb="10px">
+                    CONTACTO
+                  </Text>
+                </AniLink>
+                <AniLink
+                  cover
+                  direction="right"
                   as={GatsbyLink}
                   to="/experiencia-fly"
-                  color="white"
-                  fontSize="4xl"
+                  duration={1}
+                  bg="#063F6A"
                 >
-                  EXPERIENCIA FLY
-                </Link>
+                  <Text color="white" fontSize="4xl">
+                    EXPERIENCIA FLY
+                  </Text>
+                </AniLink>
               </ModalBody>
             </ModalContent>
           </Modal>
