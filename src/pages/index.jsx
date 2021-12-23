@@ -24,7 +24,7 @@ const IndexPage = () => {
 
   return (
     <FormProvider>
-      <Layout headerRojo={false}>
+      <Layout displayHeader={true} headerRojo={false}>
         <Seo title="Home" />
 
         <Box

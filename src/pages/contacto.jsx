@@ -28,7 +28,7 @@ import FacebookIcon from "../images/icons/facebook.png"
 import LinkedinIcon from "../images/icons/linkedin.png"
 
 const Contacto = () => (
-  <Layout headerRojo={true}>
+  <Layout displayHeader={true} headerRojo={true}>
     <Seo title="Contacto" />
 
     <Flex

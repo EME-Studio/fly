@@ -11,7 +11,7 @@ import { Box, Flex, Heading, Container, Grid, Text } from "@chakra-ui/react"
 import ExperienciaImg from "../images/experiencia.jpeg"
 
 const ExperienciaFly = () => (
-  <Layout headerRojo={true}>
+  <Layout displayHeader={true} headerRojo={true}>
     <Seo title="Experiencia Fly" />
 
     <Flex

@@ -47,6 +47,7 @@ import {
 
 // Internal data
 import { airports } from "../../constants/airports"
+import { navigate } from "gatsby"
 
 function NewForm({ soloIda }) {
   // Form data handling
@@ -92,7 +93,7 @@ function NewForm({ soloIda }) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "contact", ...flightData }),
     })
-      .then(() => alert("Success!"))
+      .then(() => navigate("/gracias"))
       .catch(error => alert(error))
 
     e.preventDefault()
@@ -111,15 +112,15 @@ function NewForm({ soloIda }) {
     }
   }
 
-  const modalCloseClick = () => {
-    if (flightData.email.length > 0 && flightData.email.includes("@")) {
-      onClose()
-    } else if (!flightData.email.includes("@")) {
-      alert("El formato del email no es correcto")
-    } else if (flightData.email.length === 0) {
-      alert("Inserte su correo electrónico")
-    }
-  }
+  // const modalCloseClick = () => {
+  //   if (flightData.email.length > 0 && flightData.email.includes("@")) {
+  //     onClose()
+  //   } else if (!flightData.email.includes("@")) {
+  //     alert("El formato del email no es correcto")
+  //   } else if (flightData.email.length === 0) {
+  //     alert("Inserte su correo electrónico")
+  //   }
+  // }
 
   // Hide Keyboard when date-picker is opened
   const pickerRef1 = useRef(null)
@@ -517,7 +518,7 @@ function NewForm({ soloIda }) {
               <Button
                 form="contact"
                 type="submit"
-                onClick={modalCloseClick}
+                onClick={onClose}
                 variant="accentSolid"
               >
                 Enviar

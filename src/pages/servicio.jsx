@@ -17,7 +17,7 @@ import Slide from "../components/Slide"
 import { servicesData } from "../constants/servicesData"
 
 const Servicio = () => (
-  <Layout headerRojo={true}>
+  <Layout displayHeader={true} headerRojo={true}>
     <Seo title="Servicio" />
 
     <Flex minH="100%" justifyContent="center" alignItems="center">

@@ -14,7 +14,7 @@ import Header from "./header"
 import "./layout.css"
 import { Box } from "@chakra-ui/layout"
 
-const Layout = ({ children, headerRojo }) => {
+const Layout = ({ children, headerRojo, displayHeader }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -34,10 +34,12 @@ const Layout = ({ children, headerRojo }) => {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
         />
       </Helmet>
-      <Header
-        conColor={headerRojo ? true : false}
-        siteTitle={data.site.siteMetadata?.title || `Title`}
-      />
+      {displayHeader ? (
+        <Header
+          conColor={headerRojo ? true : false}
+          siteTitle={data.site.siteMetadata?.title || `Title`}
+        />
+      ) : null}
       <Box as="main" h="100%">
         {children}
       </Box>
