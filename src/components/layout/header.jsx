@@ -61,7 +61,7 @@ const Header = ({ siteTitle, conColor }) => {
       // right="0"
       bgColor={conColor ? "white" : null}
     >
-      <Container maxW="container.xl" py="0">
+      <Container maxW="container.xl" py="0 !important">
         <Stack
           direction="row"
           spacing="4"

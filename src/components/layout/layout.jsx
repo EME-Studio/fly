@@ -34,12 +34,14 @@ const Layout = ({ children, headerRojo, displayHeader }) => {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
         />
       </Helmet>
+
       {displayHeader ? (
         <Header
           conColor={headerRojo ? true : false}
           siteTitle={data.site.siteMetadata?.title || `Title`}
         />
       ) : null}
+
       <Box as="main" h="100%">
         {children}
       </Box>

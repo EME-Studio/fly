@@ -80,10 +80,10 @@ const IndexPage = () => {
                 </TabList>
 
                 <TabPanels>
-                  <TabPanel align="right">
+                  <TabPanel align="right" px="0">
                     <NewForm soloIda={true} />
                   </TabPanel>
-                  <TabPanel align="right">
+                  <TabPanel align="right" px="0">
                     <NewForm soloIda={false} />
                   </TabPanel>
                 </TabPanels>

@@ -598,5 +598,5 @@ pre tt:after {
   }
 }
 .chakra-container {
-  padding: 35px 25px 35px 25px;
+  padding: 35px 40px 35px 40px !important;
 }

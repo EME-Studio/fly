@@ -1,10 +1,10 @@
 import * as React from "react"
 
 // Chakra-ui components
-import { Box, Text, Flex, Heading, Grid, Container } from "@chakra-ui/react"
+import { Box, Text, Flex, Heading, Grid } from "@chakra-ui/react"
 
 const Slide = props => (
-  <Container maxW="container.xl" centerContent>
+  <Box>
     <Grid
       templateColumns={["1", "1", "1", "1", "repeat(2, 1fr)"]}
       gap={["0", "0", "0", "14", "20"]}
@@ -40,7 +40,7 @@ const Slide = props => (
         </Text>
       </Box>
     </Grid>
-  </Container>
+  </Box>
 )
 
 export default Slide
