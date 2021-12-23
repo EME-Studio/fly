@@ -29,6 +29,9 @@ const Servicio = () => (
           ".splide__pagination__page.is-active": { background: "fly.main" },
           ".splide__pagination": { position: "absolute", bottom: "0px" },
           ".splide__track": { paddingY: "20px" },
+          "@media only screen and (max-width: 48em)": {
+            ".splide__arrow": { display: "none" },
+          },
         }}
       >
         <Splide>
