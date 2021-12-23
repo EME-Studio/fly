@@ -4,7 +4,7 @@ import * as React from "react"
 import { Box, Text, Flex, Heading, Grid } from "@chakra-ui/react"
 
 const Slide = props => (
-  <Box>
+  <Flex alignItems="center" flexDirection="column">
     <Grid
       templateColumns={["1", "1", "1", "1", "repeat(2, 1fr)"]}
       gap={["0", "0", "0", "14", "20"]}
@@ -40,7 +40,7 @@ const Slide = props => (
         </Text>
       </Box>
     </Grid>
-  </Box>
+  </Flex>
 )
 
 export default Slide
