@@ -112,9 +112,9 @@ function NewForm({ soloIda }) {
   }
 
   const modalCloseClick = () => {
-    if (flightData.email.length > 0 && flightData.destino.includes("@")) {
+    if (flightData.email.length > 0 && flightData.email.includes("@")) {
       onClose()
-    } else if (!flightData.destino.includes("@")) {
+    } else if (!flightData.email.includes("@")) {
       alert("El formato del email no es correcto")
     } else if (flightData.email.length === 0) {
       alert("Inserte su correo electrónico")
