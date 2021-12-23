@@ -10,7 +10,6 @@ import { Link as GatsbyLink } from "gatsby"
 // Images and icons
 import Gracias from "../images/gracias.jpg"
 import Logo from "../images/icons/logofly.png"
-import { Link } from "gatsby"
 
 function gracias() {
   return (

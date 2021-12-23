@@ -39,7 +39,7 @@ const IndexPage = () => {
           <Flex
             h="100%"
             w="100%"
-            bgColor="rgba(0, 0, 0, 0.5)"
+            bg="linear-gradient(180deg, rgba(6,63,106,0.9) 0%, rgba(6,63,106,0.4) 100%)"
             direction="column"
             align="center"
             justifyContent="center"
