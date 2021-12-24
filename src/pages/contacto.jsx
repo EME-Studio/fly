@@ -49,7 +49,7 @@ const Contacto = () => (
             </Heading>
             <Text fontSize="sm" mb="5">
               Aeropuerto Internacional Ángel Adami, 6P6Q+MGV, 12500 Montevideo,
-              Departamento de
+              Departamento de Montevideo.
             </Text>
             <Divider mb="5" />
             <Flex mb="3">

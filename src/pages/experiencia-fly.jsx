@@ -26,7 +26,7 @@ const ExperienciaFly = () => (
       <Flex
         h="100%"
         w="100%"
-        bgColor="rgba(6, 63, 106, 0.4)"
+        bg="linear-gradient(90deg, rgba(6,63,106,0.7) 0%, rgba(6,63,106,0) 100%)"
         direction="column"
         align="center"
         justifyContent="center"
