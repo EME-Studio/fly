@@ -7,12 +7,12 @@ const Slide = props => (
   <Flex alignItems="center" flexDirection="column">
     <Grid
       templateColumns={["1", "1", "1", "1", "repeat(2, 1fr)"]}
-      gap={["0", "0", "0", "14", "20"]}
+      gap={["0", "0", "0", "0", "20"]}
     >
       <Box align="center">
         <Box
           w={["100%", "100%", "100%", "100%", "400px"]}
-          h={["300px", "300px", "300px", "300px", "400px"]}
+          h={["180px", "250px", "300px", "300px", "400px"]}
           borderRadius="25px"
           backgroundImage={props.image}
           backgroundSize="cover"
@@ -27,10 +27,12 @@ const Slide = props => (
           />
         </Box>
       </Box>
-      <Box
+      <Flex
+        flexDirection="column"
         h="100%"
-        p="60px 0"
+        p={["20px 0", "30px 0", "30px 0", "30px 0", "0"]}
         textAlign={["center", "center", "center", "center", "left"]}
+        justifyContent="center"
       >
         <Heading as="h2" size="2xl" mb="6" fontWeight="thin">
           {props.title}
@@ -38,7 +40,7 @@ const Slide = props => (
         <Text fontSize="md" maxW="400px" color="gray.500">
           {props.content}
         </Text>
-      </Box>
+      </Flex>
     </Grid>
   </Flex>
 )

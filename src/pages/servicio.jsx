@@ -28,7 +28,7 @@ const Servicio = () => (
           ".splide__arrow svg:hover": { fill: "fly.main" },
           ".splide__pagination__page.is-active": { background: "fly.main" },
           ".splide__pagination": { position: "static", marginTop: "15px" },
-          ".splide__track": { paddingY: "20px" },
+          // ".splide__track": { paddingY: "20px" },
           "@media only screen and (max-width: 48em)": {
             ".splide__arrow": { display: "none" },
           },
