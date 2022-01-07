@@ -136,11 +136,11 @@ const Header = ({ siteTitle, conColor }) => {
                 </Link>
                 <Link
                   as={GatsbyLink}
-                  to="/experiencia-fly"
+                  to="/quienes-somos"
                   color="white"
                   fontSize="4xl"
                 >
-                  EXPERIENCIA FLY
+                  QUIENES SOMOS
                 </Link>
               </ModalBody>
             </ModalContent>
@@ -196,11 +196,11 @@ const Header = ({ siteTitle, conColor }) => {
                 </Link>
                 <Link
                   as={GatsbyLink}
-                  to="/experiencia-fly"
+                  to="/quienes-somos"
                   color="white"
                   fontSize="xl"
                 >
-                  EXPERIENCIA FLY
+                  QUIENES SOMOS
                 </Link>
               </ModalBody>
             </ModalContent>

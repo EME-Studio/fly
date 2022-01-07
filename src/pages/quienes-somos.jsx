@@ -49,17 +49,24 @@ const ExperienciaFly = () => (
             >
               <Heading color="white" textAlign="left" mb="8">
                 <Text textColor="fly.main" display="inline" fontWeight="bold">
-                  EXPERIENCIA
-                </Text>{" "}
-                FLY
+                  ¿
+                </Text>
+                QUIENES SOMOS
+                <Text textColor="fly.main" display="inline" fontWeight="bold">
+                  ?
+                </Text>
               </Heading>
               <Text color="white" maxW="sm" textAlign="justify">
-                Tomamos el conocimiento reunido en más de 30 años de trayectoria
-                y el espíritu innovador que nos caracteriza, para crear
-                servicios con los más altos estándares de seguridad, confort y
-                atención, que te permitirán disfrutar de una experiencia
-                excepcional en cada trayecto. Únete a la familia FLY y
-                contágiate de nuestra pasión por volar con cada milla recorrida.
+                FLY Uruguay cuenta con alianzas, acuerdos y contratos con
+                diferentes proveedores aéreos de la región que nos eligieron
+                para ofrecer sus servicios de taxi aéreo, traslados sanitarios,
+                servicios de búsqueda y patrullaje vuelos panorámicos,
+                fotografía, publicidad aérea, declaración y habilitación de
+                pistas y aeródromos, helipuertos, certificación de empresas,
+                contratos de arrendamiento, compra y venta de aeronaves, vuelos
+                ferry, importación, despacho, matriculación, operación,
+                mantenimiento, hangaraje, administración y gestión integral de
+                aeronaves.
               </Text>
             </Flex>
             <Box />
