@@ -53,7 +53,7 @@ const ExperienciaFly = () => (
                 </Text>{" "}
                 FLY
               </Heading>
-              <Text color="white" maxW="sm">
+              <Text color="white" maxW="sm" textAlign="justify">
                 Tomamos el conocimiento reunido en más de 30 años de trayectoria
                 y el espíritu innovador que nos caracteriza, para crear
                 servicios con los más altos estándares de seguridad, confort y
