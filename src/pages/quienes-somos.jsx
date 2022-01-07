@@ -56,7 +56,7 @@ const ExperienciaFly = () => (
                   ?
                 </Text>
               </Heading>
-              <Text color="white" maxW="sm" textAlign="justify">
+              <Text color="white" textAlign="justify" fontSize="sm">
                 FLY Uruguay cuenta con alianzas, acuerdos y contratos con
                 diferentes proveedores aéreos de la región que nos eligieron
                 para ofrecer sus servicios de taxi aéreo, traslados sanitarios,
