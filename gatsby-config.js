@@ -48,5 +48,13 @@ module.exports = {
         display: "swap",
       },
     },
+    {
+      resolve: `gatsby-source-strapi`,
+      options: {
+        apiURL: `https://admin.fly.com.uy/api`,
+        queryLimit: 1000, // Defaults to 100
+        collectionTypes: [`empty-legs`],
+      },
+    },
   ],
 }
