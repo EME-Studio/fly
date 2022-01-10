@@ -4,16 +4,15 @@ export default function useEmptyLegs() {
   const result = useStaticQuery(graphql`
     query {
       allStrapiEmptyLegs {
-        edges {
-          node {
-            data {
-              attributes {
-                TipoDeAvion
-                FechaDeSalida
-                FechaDeLlegada
-                AeropuertoDeOrigen
-                AeropuertoDeDestino
-              }
+        nodes {
+          data {
+            id
+            attributes {
+              AeropuertoDeDestino
+              AeropuertoDeOrigen
+              FechaDeLlegada
+              FechaDeSalida
+              TipoDeAvion
             }
           }
         }
