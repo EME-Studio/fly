@@ -5,7 +5,7 @@ import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 import EmptyLegCard from "../components/EmptyLegCard"
 
-import { Box, Container } from "@chakra-ui/react"
+import { Box, Container, Flex } from "@chakra-ui/react"
 
 import Avion from "../images/avion_fly.jpeg"
 
@@ -26,9 +26,18 @@ function EmptyLegs() {
         bgPosition="center center"
         bgRepeat="no-repeat"
         bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
-      />
+      >
+        <Flex
+          h="100%"
+          w="100%"
+          bg="linear-gradient(180deg, rgba(6,63,106,0.9) 0%, rgba(6,63,106,0.4) 100%)"
+          direction="column"
+          align="center"
+          justifyContent="center"
+        />
+      </Box>
       <Box bgColor="gray.100">
-        <Container maxW="container.lg" py="50px !important">
+        <Box py="50px !important">
           {emptyLegs.map(emptyLeg => (
             <EmptyLegCard
               key={emptyLeg.id}
@@ -37,7 +46,7 @@ function EmptyLegs() {
               fecha={emptyLeg.attributes.FechaDeSalida}
             />
           ))}
-        </Container>
+        </Box>
       </Box>
     </Layout>
   )
