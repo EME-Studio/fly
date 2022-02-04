@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 
 import {
   Container,
@@ -9,8 +9,11 @@ import {
   Spacer,
   Image,
   Button,
+  useDisclosure,
 } from "@chakra-ui/react"
 import RadioButtons from "./RadioButtons"
+
+import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import CalendarioGris from "../images/icons/calendariogris.png"
@@ -18,6 +21,10 @@ import TestImage from "../images/avion_fly.jpeg"
 
 function EmptyLegCard(props) {
   const [verMas, setVerMas] = useState(false)
+
+  const { reservaState, modalState } = useContext(EmptyLegsContext)
+  const [emptyLegReserva, setEmptyLegReserva] = reservaState
+  const { isOpen, onOpen, onClose } = modalState
 
   return (
     <Container
@@ -33,6 +40,7 @@ function EmptyLegCard(props) {
       border="1px"
       borderColor="gray.300"
     >
+      <Text>{emptyLegReserva.origen}</Text>
       <Flex direction="row" transition="1s" h={verMas ? "250" : "200"}>
         <Image
           src={TestImage}
@@ -63,7 +71,7 @@ function EmptyLegCard(props) {
                 variant={verMas ? "accentSolid" : "accentOutline"}
                 transition="1s"
                 size="sm"
-                // onClick={() => setVerMas(!verMas)}
+                onClick={onOpen}
               >
                 Reservar
               </Button>
