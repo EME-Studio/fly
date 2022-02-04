@@ -1,20 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 import useEmptyLegs from "../hooks/useEmptyLegs"
 
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 import EmptyLegCard from "../components/EmptyLegCard"
-import ReservationModal from "../components/ReservationModal"
+import ReservationModalParent from "../components/ReservationModalParent"
 import { EmptyLegsProvider } from "../contexts/EmptyLegsContext"
+import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
 import { Box, Container, Flex } from "@chakra-ui/react"
 
 import Avion from "../images/avion_fly.jpeg"
 
 function EmptyLegs() {
+  // Call strapi data
   const response = useEmptyLegs()
   const emptyLegs = response.allStrapiEmptyLegs.nodes[0].data
-  console.log(emptyLegs)
 
   return (
     <Layout displayHeader={true} headerRojo={false}>
@@ -51,7 +52,7 @@ function EmptyLegs() {
             ))}
           </Box>
         </Box>
-        <ReservationModal />
+        <ReservationModalParent />
       </EmptyLegsProvider>
     </Layout>
   )

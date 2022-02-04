@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
+
+import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
@@ -36,10 +38,16 @@ function RadioCard(props) {
 function RadioButtons() {
   const options = ["$ 800 USD Empty Leg", "$ 300 USD Empty Sit"]
 
+  const { reservaState } = useContext(EmptyLegsContext)
+  const [emptyLegReserva, setEmptyLegReserva] = reservaState
+
+  const updateReserva = reserveType => {
+    setEmptyLegReserva({ ...emptyLegReserva, tipoDeReserva: reserveType })
+  }
+
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "flight",
-    defaultValue: "$ 800 USD Empty Leg",
-    onChange: console.log,
+    onChange: updateReserva,
   })
 
   const group = getRootProps()

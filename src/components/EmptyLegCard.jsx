@@ -26,6 +26,21 @@ function EmptyLegCard(props) {
   const [emptyLegReserva, setEmptyLegReserva] = reservaState
   const { isOpen, onOpen, onClose } = modalState
 
+  function updateReserva() {
+    setEmptyLegReserva({
+      ...emptyLegReserva,
+      origen: props.origen,
+      destino: props.destino,
+      fecha: props.fecha,
+    })
+    console.log(emptyLegReserva)
+  }
+
+  function handleClick() {
+    updateReserva()
+    onOpen()
+  }
+
   return (
     <Container
       onMouseEnter={() => setVerMas(!verMas)}
@@ -40,7 +55,6 @@ function EmptyLegCard(props) {
       border="1px"
       borderColor="gray.300"
     >
-      <Text>{emptyLegReserva.origen}</Text>
       <Flex direction="row" transition="1s" h={verMas ? "250" : "200"}>
         <Image
           src={TestImage}
@@ -71,7 +85,7 @@ function EmptyLegCard(props) {
                 variant={verMas ? "accentSolid" : "accentOutline"}
                 transition="1s"
                 size="sm"
-                onClick={onOpen}
+                onClick={handleClick}
               >
                 Reservar
               </Button>
