@@ -48,6 +48,9 @@ function EmptyLegs() {
                 origen={emptyLeg.attributes.AeropuertoDeOrigen}
                 destino={emptyLeg.attributes.AeropuertoDeDestino}
                 fecha={emptyLeg.attributes.FechaDeSalida}
+                emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
+                emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
+                emptySeatPrecio={emptyLeg.attributes.PrecioEmptySeat}
               />
             ))}
           </Box>

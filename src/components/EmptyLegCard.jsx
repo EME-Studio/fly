@@ -43,8 +43,8 @@ function EmptyLegCard(props) {
 
   return (
     <Container
-      onMouseEnter={() => setVerMas(!verMas)}
-      onMouseLeave={() => setVerMas(!verMas)}
+      onMouseEnter={() => setVerMas(true)}
+      onMouseLeave={() => setVerMas(false)}
       maxW={verMas ? "container.xl" : "container.lg"}
       transition="1s"
       p="10"
@@ -77,7 +77,11 @@ function EmptyLegCard(props) {
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
                 <Text>{props.fecha}</Text>
               </Flex>
-              <RadioButtons />
+              <RadioButtons
+                emptyLegPrecio={props.emptyLegPrecio}
+                emptySeatCantidad={props.emptySeatCantidad}
+                emptySeatPrecio={props.emptySeatPrecio}
+              />
             </Flex>
             <Spacer />
             <Flex h="100%" flexDirection="row" alignItems="flex-end">

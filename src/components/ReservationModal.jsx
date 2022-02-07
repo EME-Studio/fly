@@ -39,7 +39,6 @@ function ReservationModal(props) {
         <ModalHeader py="10">
           <Heading size="2xl" fontWeight="100" color="fly.main">
             {props.title}
-            {props.tipoDeReserva}
           </Heading>
         </ModalHeader>
         <ModalCloseButton />
@@ -77,6 +76,7 @@ function ReservationModal(props) {
                 />
                 {formatDate(props.fechaIda)}
               </Flex>
+              <Flex mb="3">{props.tipoDeReserva}</Flex>
               {props.pasajeros > 0 ? (
                 <Flex mb="3">
                   <Image src={PasajeroGris} width="20px" mb="0" mr="2" />

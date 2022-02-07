@@ -35,8 +35,12 @@ function RadioCard(props) {
 }
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
-function RadioButtons() {
-  const options = ["$ 800 USD Empty Leg", "$ 300 USD Empty Sit"]
+function RadioButtons(props) {
+  // Radio buttons options
+  const options = [
+    `Empty Leg $${props.emptyLegPrecio} USD`,
+    `Empty Seat $${props.emptySeatPrecio} USD`,
+  ]
 
   const { reservaState } = useContext(EmptyLegsContext)
   const [emptyLegReserva, setEmptyLegReserva] = reservaState

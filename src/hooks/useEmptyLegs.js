@@ -10,9 +10,12 @@ export default function useEmptyLegs() {
             attributes {
               AeropuertoDeDestino
               AeropuertoDeOrigen
-              FechaDeLlegada
               FechaDeSalida
               TipoDeAvion
+              CantidadEmptySeats
+              PrecioEmptySeat
+              PrecioEmptyLeg
+              Capacidad
             }
           }
         }
