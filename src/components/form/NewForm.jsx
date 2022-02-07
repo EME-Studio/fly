@@ -15,6 +15,7 @@ import { formatDate } from "../../helpers/dateHandler"
 import { isMobile } from "react-device-detect"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import { navigate } from "gatsby"
 
 // Chakra-ui components
 import {
@@ -47,10 +48,9 @@ import {
 
 // Internal data
 import { airports } from "../../constants/airports"
-import { navigate } from "gatsby"
 
 function NewForm({ soloIda }) {
-  // Form data handling
+  // FORM DATA HANDLING
   const [flightData, setFlightData] = useState({
     origen: "",
     destino: "",
@@ -61,18 +61,6 @@ function NewForm({ soloIda }) {
     email: "",
   })
 
-  const emptyFightData = () => {
-    setFlightData({
-      origen: "",
-      destino: "",
-      fechaIda: new Date(),
-      fechaVuelta: "",
-      pasajeros: "",
-      equipaje: "",
-      email: "",
-    })
-  }
-
   const handleChange = e => {
     setFlightData({
       ...flightData,
@@ -80,7 +68,7 @@ function NewForm({ soloIda }) {
     })
   }
 
-  // Connection with Netlify endpoint
+  // CONNECTION WITH NETLIFY ENDPOINT
   const encode = data => {
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -99,7 +87,7 @@ function NewForm({ soloIda }) {
     e.preventDefault()
   }
 
-  // Modal handling
+  // MODAL HANDLING
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const modalOpenClick = () => {
@@ -112,17 +100,7 @@ function NewForm({ soloIda }) {
     }
   }
 
-  // const modalCloseClick = () => {
-  //   if (flightData.email.length > 0 && flightData.email.includes("@")) {
-  //     onClose()
-  //   } else if (!flightData.email.includes("@")) {
-  //     alert("El formato del email no es correcto")
-  //   } else if (flightData.email.length === 0) {
-  //     alert("Inserte su correo electrónico")
-  //   }
-  // }
-
-  // Hide Keyboard when date-picker is opened
+  // IPHONE KEYBOARD FIX
   const pickerRef1 = useRef(null)
   useEffect(() => {
     if (isMobile && pickerRef1.current !== null) {
@@ -137,6 +115,7 @@ function NewForm({ soloIda }) {
     }
   }, [isMobile, pickerRef2])
 
+  // COMPONENT
   return (
     <Box>
       <form

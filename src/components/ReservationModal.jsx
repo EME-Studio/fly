@@ -1,9 +1,13 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 
+// Internal context
 import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
+// External libraries and helpers
 import { formatDate } from "../helpers/dateHandler"
+import { navigate } from "gatsby"
 
+// Chakra-ui components
 import {
   Modal,
   ModalOverlay,
@@ -24,14 +28,59 @@ import {
   Heading,
 } from "@chakra-ui/react"
 
+// Internal data
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import PasajeroGris from "../images/icons/personagris.png"
 import CalendarioGris from "../images/icons/calendariogris.png"
 
 function ReservationModal(props) {
+  // MODAL STATE HANDLING
   const { modalState } = useContext(EmptyLegsContext)
-  const { isOpen, onOpen, onClose } = modalState
+  const { isOpen, onClose } = modalState
 
+  // RESERVATION STATE DATA HANDLING
+  const { reservaState } = useContext(EmptyLegsContext)
+  const [emptyLegReserva, setEmptyLegReserva] = reservaState
+
+  // FORM DATA HANDLING
+  const [flightData, setFlightData] = useState({
+    origen: emptyLegReserva.origen,
+    destino: emptyLegReserva.destino,
+    fechaIda: emptyLegReserva.fecha,
+    tipoDeViaje: emptyLegReserva.tipoDeReserva,
+    precio: "",
+    pasajeros: "",
+    equipaje: "",
+    email: "",
+  })
+
+  const handleChange = e => {
+    setFlightData({
+      ...flightData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  // CONNECTION WITH NETLIFY ENDPOINT
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const handleSumbit = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "Solicitud Vuelo", ...flightData }),
+    })
+      .then(() => navigate("/gracias"))
+      .catch(error => alert(error))
+
+    e.preventDefault()
+  }
+
+  // COMPONENT
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
@@ -44,8 +93,17 @@ function ReservationModal(props) {
         <ModalCloseButton />
         <Divider />
         <ModalBody mt="4">
-          Dejanos tu e-mail y nos pondremos en contacto contigo por el vuelo.
-          <FormControl mt="5" isRequired>
+          <form
+            onSubmit={handleSumbit}
+            name="Solicitud Vuelo"
+            id="Solicitud Vuelo"
+            method="post"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            <input type="hidden" name="form-name" value="Solicitud Vuelo" />
+            Dejanos tu e-mail y nos pondremos en contacto contigo por el vuelo.
+            {/* <FormControl mt="5" isRequired> */}
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
@@ -53,10 +111,11 @@ function ReservationModal(props) {
               name="email"
               bg="gray.300"
               placeholder="Email"
-              value={props.email}
-              // onChange={handleChange}
+              value={flightData.email}
+              onChange={handleChange}
             />
-          </FormControl>
+            {/* </FormControl> */}
+          </form>
           <Box p="4" fontSize="sm" color="gray.500">
             <Flex direction="column" mt="4">
               <Flex mb="3">
@@ -117,7 +176,7 @@ function ReservationModal(props) {
 
         <ModalFooter>
           <Button
-            form="contact"
+            form="Solicitud Vuelo"
             type="submit"
             onClick={onClose}
             variant="accentSolid"
