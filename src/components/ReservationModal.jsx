@@ -7,6 +7,10 @@ import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 import { formatDate } from "../helpers/dateHandler"
 import { navigate } from "gatsby"
 
+// Mobile phone input imports
+import PhoneInput from "react-phone-input-2"
+import "react-phone-input-2/lib/style.css"
+
 // Chakra-ui components
 import {
   Modal,
@@ -104,8 +108,13 @@ function ReservationModal(props) {
             <input type="hidden" name="form-name" value="Solicitud Vuelo" />
             Dejanos tu e-mail y nos pondremos en contacto contigo por el vuelo.
             {/* <FormControl mt="5" isRequired> */}
-            <FormLabel>Email</FormLabel>
-            <Input
+            <FormLabel>Celular</FormLabel>
+            <PhoneInput
+              country={"uy"}
+              value={flightData.email}
+              onChange={handleChange}
+            />
+            {/* <Input
               type="email"
               id="email"
               name="email"
@@ -113,7 +122,7 @@ function ReservationModal(props) {
               placeholder="Email"
               value={flightData.email}
               onChange={handleChange}
-            />
+            /> */}
             {/* </FormControl> */}
           </form>
           <Box p="4" fontSize="sm" color="gray.500">

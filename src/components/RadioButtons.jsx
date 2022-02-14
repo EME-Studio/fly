@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react"
-import { Box, HStack, useRadio, useRadioGroup } from "@chakra-ui/react"
+import { Box, VStack, useRadio, useRadioGroup } from "@chakra-ui/react"
 
 import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
@@ -18,6 +18,7 @@ function RadioCard(props) {
         cursor="pointer"
         bgColor="gray.300"
         boxShadow="2xl"
+        fontSize="sm"
         _checked={{
           bg: "fly.main",
           color: "white",
@@ -57,7 +58,7 @@ function RadioButtons(props) {
   const group = getRootProps()
 
   return (
-    <HStack {...group}>
+    <VStack {...group} align="left">
       {options.map(value => {
         const radio = getRadioProps({ value })
         return (
@@ -66,7 +67,7 @@ function RadioButtons(props) {
           </RadioCard>
         )
       })}
-    </HStack>
+    </VStack>
   )
 }
 

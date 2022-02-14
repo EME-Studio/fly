@@ -55,17 +55,28 @@ function EmptyLegCard(props) {
       border="1px"
       borderColor="gray.300"
     >
-      <Flex direction="row" transition="1s" h={verMas ? "250" : "200"}>
+      <Flex
+        direction={["column", "column", "column", "row", "row"]}
+        transition="1s"
+      >
         <Image
           src={TestImage}
+          maxH="250px"
           aspectRatio="2/3"
-          objectFit="contain"
+          objectFit="cover"
           h="100%"
           mr="10"
           my="0"
           borderRadius="50"
+          mb={[6, 6, 6, 0, 0]}
+          w={["100%", "100%", "100%", "inherit", "inherit"]}
         />
-        <Flex direction="column" width="100%" h="100%" justifyContent="center">
+        <Flex
+          direction="column"
+          width="100%"
+          minH="100%"
+          justifyContent="center"
+        >
           <Flex direction="row" mb="4">
             <Text fontWeight="900">{props.origen}</Text>
             <ArrowForwardIcon mx="4" />
@@ -84,7 +95,7 @@ function EmptyLegCard(props) {
               />
             </Flex>
             <Spacer />
-            <Flex h="100%" flexDirection="row" alignItems="flex-end">
+            <Flex minH="100%" flexDirection="row" alignItems="flex-end">
               <Button
                 variant={verMas ? "accentSolid" : "accentOutline"}
                 transition="1s"
