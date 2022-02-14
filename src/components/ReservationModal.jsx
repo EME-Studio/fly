@@ -184,7 +184,7 @@ function ReservationModal(props) {
 
         <ModalFooter>
           <Button
-            form="Solicitud Vuelo"
+            form="empty-leg"
             type="submit"
             onClick={onClose}
             variant="accentSolid"
