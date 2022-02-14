@@ -95,6 +95,39 @@ function ReservationModal(props) {
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
+        <input type="hidden" name="form-name" value="empty-leg" />
+        <input type="hidden" name="bot-field" />
+        <Input
+          type="hidden"
+          name="origen"
+          id="origen"
+          value={flightData.origen}
+        />
+        <Input
+          type="hidden"
+          name="destino"
+          id="destino"
+          value={flightData.destino}
+        />
+        <Input
+          type="hidden"
+          name="fechaIda"
+          id="fechaIda"
+          value={flightData.fechaIda}
+        />
+        <Input
+          type="hidden"
+          name="tipoDeViaje"
+          id="tipoDeViaje"
+          value={flightData.tipoDeViaje}
+        />
+        <Input
+          type="hidden"
+          name="precio"
+          id="precio"
+          value={flightData.precio}
+        />
+        <Input type="hidden" name="phone" id="phone" value={flightData.phone} />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
           <ModalContent borderRadius="none" bg="light" pb="8" px="4">
@@ -106,44 +139,6 @@ function ReservationModal(props) {
             <ModalCloseButton />
             <Divider />
             <ModalBody mt="4">
-              <input type="hidden" name="form-name" value="empty-leg" />
-              <input type="hidden" name="bot-field" />
-              <Input
-                type="hidden"
-                name="origen"
-                id="origen"
-                value={flightData.origen}
-              />
-              <Input
-                type="hidden"
-                name="destino"
-                id="destino"
-                value={flightData.destino}
-              />
-              <Input
-                type="hidden"
-                name="fechaIda"
-                id="fechaIda"
-                value={flightData.fechaIda}
-              />
-              <Input
-                type="hidden"
-                name="tipoDeViaje"
-                id="tipoDeViaje"
-                value={flightData.tipoDeViaje}
-              />
-              <Input
-                type="hidden"
-                name="precio"
-                id="precio"
-                value={flightData.precio}
-              />
-              <Input
-                type="hidden"
-                name="phone"
-                id="phone"
-                value={flightData.phone}
-              />
               Dejanos tu celular y nos pondremos en contacto contigo por el
               vuelo.
               <FormControl mt="5" isRequired>
