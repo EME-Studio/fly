@@ -49,6 +49,10 @@ import {
 // Internal data
 import { airports } from "../../constants/airports"
 
+// Mobile phone input imports
+import PhoneInput from "react-phone-input-2"
+import "react-phone-input-2/lib/style.css"
+
 function NewForm({ soloIda }) {
   // FORM DATA HANDLING
   const [flightData, setFlightData] = useState({
@@ -58,7 +62,7 @@ function NewForm({ soloIda }) {
     fechaVuelta: "",
     pasajeros: "",
     equipaje: "",
-    email: "",
+    phone: "",
   })
 
   const handleChange = e => {
@@ -127,13 +131,13 @@ function NewForm({ soloIda }) {
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="form-name" value="contact" />
-        <Input
+        {/* <Input
           type="hidden"
-          name="email"
-          id="email"
-          name="email"
-          value={flightData.email}
-        />
+          name="celular"
+          id="celular"
+          name="celular"
+          value={flightData.celular}
+        /> */}
         <Flex
           direction={["column", "column", "column", "row", "row", "row"]}
           mb="4"
@@ -422,18 +426,22 @@ function NewForm({ soloIda }) {
             <ModalCloseButton />
             <Divider />
             <ModalBody mt="4">
-              Dejanos tu e-mail y nos pondremos en contacto contigo por el
+              Dejanos tu celular y nos pondremos en contacto contigo por el
               vuelo.
               <FormControl mt="5" isRequired>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                  bg="gray.300"
-                  placeholder="Email"
-                  value={flightData.email}
-                  onChange={handleChange}
+                <FormLabel>Celular</FormLabel>
+                <PhoneInput
+                  inputProps={{
+                    id: "phone",
+                    name: "phone",
+                    required: true,
+                    autoFocus: true,
+                  }}
+                  country={"uy"}
+                  value={flightData.phone}
+                  onChange={phone =>
+                    setFlightData({ ...flightData, phone: phone })
+                  }
                 />
               </FormControl>
               <Box p="4" fontSize="sm" color="gray.500">

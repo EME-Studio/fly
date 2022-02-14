@@ -55,7 +55,7 @@ function ReservationModal(props) {
     precio: "",
     pasajeros: "",
     equipaje: "",
-    email: "",
+    phone: "",
   })
 
   const handleChange = e => {
@@ -106,24 +106,24 @@ function ReservationModal(props) {
             data-netlify-honeypot="bot-field"
           >
             <input type="hidden" name="form-name" value="Solicitud Vuelo" />
-            Dejanos tu e-mail y nos pondremos en contacto contigo por el vuelo.
+            Dejanos tu celular y nos pondremos en contacto contigo por el vuelo.
             {/* <FormControl mt="5" isRequired> */}
-            <FormLabel>Celular</FormLabel>
-            <PhoneInput
-              country={"uy"}
-              value={flightData.email}
-              onChange={handleChange}
-            />
-            {/* <Input
-              type="email"
-              id="email"
-              name="email"
-              bg="gray.300"
-              placeholder="Email"
-              value={flightData.email}
-              onChange={handleChange}
-            /> */}
-            {/* </FormControl> */}
+            <FormControl mt="5" isRequired>
+              <FormLabel>Celular</FormLabel>
+              <PhoneInput
+                inputProps={{
+                  id: "phone",
+                  name: "phone",
+                  required: true,
+                  autoFocus: true,
+                }}
+                country={"uy"}
+                value={flightData.phone}
+                onChange={phone =>
+                  setFlightData({ ...flightData, phone: phone })
+                }
+              />
+            </FormControl>
           </form>
           <Box p="4" fontSize="sm" color="gray.500">
             <Flex direction="column" mt="4">

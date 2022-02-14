@@ -10,6 +10,9 @@ import {
   Image,
   Button,
   useDisclosure,
+  TagRightIcon,
+  TagLabel,
+  Tag,
 } from "@chakra-ui/react"
 import RadioButtons from "./RadioButtons"
 
@@ -17,14 +20,23 @@ import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import CalendarioGris from "../images/icons/calendariogris.png"
-import TestImage from "../images/avion_fly.jpeg"
+import AvionBimotor from "../images/iconsAviones/AvionBimotor.png"
+import AvionMonomotor from "../images/iconsAviones/AvionMonomotor.png"
+import HelicopteroGrande from "../images/iconsAviones/HelicopteroGrande.png"
+import HelicopteroPequeno from "../images/iconsAviones/HelicopteroPequeño.png"
+import JetPrivadoGrande from "../images/iconsAviones/JetPrivadoGrande.png"
+import JetPrivadoMediano from "../images/iconsAviones/JetPrivadoMediano.png"
+import JetPrivadoPequeno from "../images/iconsAviones/JetPrivadoPequeño.png"
+import TurboheliceBimotor from "../images/iconsAviones/TurboheliceBimotor.png"
+import TurboheliceMonomotor from "../images/iconsAviones/TurboheliceMonomotor.png"
+import AvionDespega from "../images/icons/aviondespega.png"
 
 function EmptyLegCard(props) {
   const [verMas, setVerMas] = useState(false)
 
   const { reservaState, modalState } = useContext(EmptyLegsContext)
   const [emptyLegReserva, setEmptyLegReserva] = reservaState
-  const { isOpen, onOpen, onClose } = modalState
+  const { onOpen } = modalState
 
   function updateReserva() {
     setEmptyLegReserva({
@@ -39,6 +51,50 @@ function EmptyLegCard(props) {
   function handleClick() {
     updateReserva()
     onOpen()
+  }
+
+  // SELECT PICTURE
+  function selectPicture() {
+    switch (props.tipoDeAvion) {
+      case "AvionBimotor":
+        return AvionBimotor
+        break
+
+      case "AvionMonomotor":
+        return AvionMonomotor
+        break
+
+      case "HelicopteroGrande":
+        return HelicopteroGrande
+        break
+
+      case "HelicopteroPequeno":
+        return HelicopteroPequeno
+        break
+
+      case "JetPrivadoGrande":
+        return JetPrivadoGrande
+        break
+
+      case "JetPrivadoMediano":
+        return JetPrivadoMediano
+        break
+
+      case "JetPrivadoPequeno":
+        return JetPrivadoPequeno
+        break
+
+      case "TurboheliceBimotor":
+        return TurboheliceBimotor
+        break
+
+      case "TurboheliceMonomotor":
+        return TurboheliceMonomotor
+        break
+
+      default:
+        break
+    }
   }
 
   return (
@@ -59,18 +115,27 @@ function EmptyLegCard(props) {
         direction={["column", "column", "column", "row", "row"]}
         transition="1s"
       >
-        <Image
-          src={TestImage}
-          maxH="250px"
-          aspectRatio="2/3"
-          objectFit="cover"
-          h="100%"
-          mr="10"
-          my="0"
+        <Flex
+          flexDirection="column"
+          bgColor="fly.main"
           borderRadius="50"
+          p={14}
+          mr={10}
+          w={["100%", "100%", "100%", "600px", "600px"]}
           mb={[6, 6, 6, 0, 0]}
-          w={["100%", "100%", "100%", "inherit", "inherit"]}
-        />
+          justifyContent="center"
+        >
+          <Tag
+            size="sm"
+            variant="subtle"
+            colorScheme="whiteAlpha"
+            mb={6}
+            w="fit-content"
+          >
+            <TagLabel>{props.tipoDeAvion}</TagLabel>
+          </Tag>
+          <Image src={selectPicture()} h="100%" />
+        </Flex>
         <Flex
           direction="column"
           width="100%"
