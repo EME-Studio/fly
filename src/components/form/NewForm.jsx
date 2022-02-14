@@ -131,13 +131,13 @@ function NewForm({ soloIda }) {
         data-netlify-honeypot="bot-field"
       >
         <input type="hidden" name="form-name" value="contact" />
-        {/* <Input
+        <Input
           type="hidden"
-          name="celular"
-          id="celular"
-          name="celular"
-          value={flightData.celular}
-        /> */}
+          name="phone"
+          id="phone"
+          name="phone"
+          value={flightData.phone}
+        />
         <Flex
           direction={["column", "column", "column", "row", "row", "row"]}
           mb="4"
