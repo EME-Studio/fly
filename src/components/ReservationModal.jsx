@@ -99,15 +99,14 @@ function ReservationModal(props) {
         <ModalBody mt="4">
           <form
             onSubmit={handleSumbit}
-            name="Solicitud Vuelo"
-            id="Solicitud Vuelo"
+            name="empty-leg"
+            id="empty-leg"
             method="post"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
           >
-            <input type="hidden" name="form-name" value="Solicitud Vuelo" />
+            <input type="hidden" name="form-name" value="empty-leg" />
             Dejanos tu celular y nos pondremos en contacto contigo por el vuelo.
-            {/* <FormControl mt="5" isRequired> */}
             <FormControl mt="5" isRequired>
               <FormLabel>Celular</FormLabel>
               <PhoneInput
