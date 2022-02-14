@@ -87,24 +87,24 @@ function ReservationModal(props) {
   // COMPONENT
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
-      <ModalContent borderRadius="none" bg="light" pb="8" px="4">
-        <ModalHeader py="10">
-          <Heading size="2xl" fontWeight="100" color="fly.main">
-            {props.title}
-          </Heading>
-        </ModalHeader>
-        <ModalCloseButton />
-        <Divider />
-        <ModalBody mt="4">
-          <form
-            onSubmit={handleSumbit}
-            name="empty-leg"
-            id="empty-leg"
-            method="post"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-          >
+      <form
+        onSubmit={handleSumbit}
+        name="empty-leg"
+        id="empty-leg"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
+        <ModalContent borderRadius="none" bg="light" pb="8" px="4">
+          <ModalHeader py="10">
+            <Heading size="2xl" fontWeight="100" color="fly.main">
+              {props.title}
+            </Heading>
+          </ModalHeader>
+          <ModalCloseButton />
+          <Divider />
+          <ModalBody mt="4">
             <input type="hidden" name="form-name" value="empty-leg" />
             <input type="hidden" name="bot-field" />
             Dejanos tu celular y nos pondremos en contacto contigo por el vuelo.
@@ -124,42 +124,15 @@ function ReservationModal(props) {
                 }
               />
             </FormControl>
-          </form>
-          <Box p="4" fontSize="sm" color="gray.500">
-            <Flex direction="column" mt="4">
-              <Flex mb="3">
-                <Text mr="2">{props.origen}</Text>
-                <Box>
-                  <ArrowForwardIcon mr="2" />
-                </Box>
-                <Text>{props.destino}</Text>
-              </Flex>
-              <Flex mb="3">
-                <Image
-                  src={CalendarioGris}
-                  bg="blue"
-                  width="20px"
-                  mb="0"
-                  mr="2"
-                />
-                {formatDate(props.fechaIda)}
-              </Flex>
-              <Flex mb="3">{props.tipoDeReserva}</Flex>
-              {props.pasajeros > 0 ? (
-                <Flex mb="3">
-                  <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
-                  {props.pasajeros}
-                </Flex>
-              ) : null}
-            </Flex>
-            {props.fechaVuelta ? (
+            <Input></Input>
+            <Box p="4" fontSize="sm" color="gray.500">
               <Flex direction="column" mt="4">
                 <Flex mb="3">
-                  <Text mr="2">{props.destino}</Text>
+                  <Text mr="2">{props.origen}</Text>
                   <Box>
                     <ArrowForwardIcon mr="2" />
                   </Box>
-                  <Text>{props.origen}</Text>
+                  <Text>{props.destino}</Text>
                 </Flex>
                 <Flex mb="3">
                   <Image
@@ -169,8 +142,9 @@ function ReservationModal(props) {
                     mb="0"
                     mr="2"
                   />
-                  {formatDate(props.fechaVuelta)}
+                  {formatDate(props.fechaIda)}
                 </Flex>
+                <Flex mb="3">{props.tipoDeReserva}</Flex>
                 {props.pasajeros > 0 ? (
                   <Flex mb="3">
                     <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
@@ -178,22 +152,49 @@ function ReservationModal(props) {
                   </Flex>
                 ) : null}
               </Flex>
-            ) : null}
-          </Box>
-          ¡Gracias por elegirnos!
-        </ModalBody>
+              {props.fechaVuelta ? (
+                <Flex direction="column" mt="4">
+                  <Flex mb="3">
+                    <Text mr="2">{props.destino}</Text>
+                    <Box>
+                      <ArrowForwardIcon mr="2" />
+                    </Box>
+                    <Text>{props.origen}</Text>
+                  </Flex>
+                  <Flex mb="3">
+                    <Image
+                      src={CalendarioGris}
+                      bg="blue"
+                      width="20px"
+                      mb="0"
+                      mr="2"
+                    />
+                    {formatDate(props.fechaVuelta)}
+                  </Flex>
+                  {props.pasajeros > 0 ? (
+                    <Flex mb="3">
+                      <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
+                      {props.pasajeros}
+                    </Flex>
+                  ) : null}
+                </Flex>
+              ) : null}
+            </Box>
+            ¡Gracias por elegirnos!
+          </ModalBody>
 
-        <ModalFooter>
-          <Button
-            form="empty-leg"
-            type="submit"
-            onClick={onClose}
-            variant="accentSolid"
-          >
-            Enviar
-          </Button>
-        </ModalFooter>
-      </ModalContent>
+          <ModalFooter>
+            <Button
+              form="empty-leg"
+              type="submit"
+              onClick={onClose}
+              variant="accentSolid"
+            >
+              Enviar
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </form>
     </Modal>
   )
 }

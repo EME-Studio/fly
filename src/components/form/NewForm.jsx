@@ -132,13 +132,7 @@ function NewForm({ soloIda }) {
       >
         <input type="hidden" name="form-name" value="contact" />
         <input type="hidden" name="bot-field" />
-        <Input
-          type="hidden"
-          name="phone"
-          id="phone"
-          name="phone"
-          value={flightData.phone}
-        />
+        <Input type="hidden" name="phone" id="phone" value={flightData.phone} />
         <Flex
           direction={["column", "column", "column", "row", "row", "row"]}
           mb="4"
