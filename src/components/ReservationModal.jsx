@@ -76,7 +76,7 @@ function ReservationModal(props) {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "Solicitud Vuelo", ...flightData }),
+      body: encode({ "form-name": "empty-leg", ...flightData }),
     })
       .then(() => navigate("/gracias"))
       .catch(error => alert(error))
