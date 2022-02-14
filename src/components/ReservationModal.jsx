@@ -106,6 +106,7 @@ function ReservationModal(props) {
             data-netlify-honeypot="bot-field"
           >
             <input type="hidden" name="form-name" value="empty-leg" />
+            <input type="hidden" name="bot-field" />
             Dejanos tu celular y nos pondremos en contacto contigo por el vuelo.
             <FormControl mt="5" isRequired>
               <FormLabel>Celular</FormLabel>
