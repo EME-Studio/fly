@@ -19,6 +19,7 @@ import {
   Input,
   FormHelperText,
   Image,
+  Link,
 } from "@chakra-ui/react"
 
 // Images and Icons
@@ -55,30 +56,40 @@ const Contacto = () => (
             <Flex mb="3">
               <Flex mr="8">
                 <PhoneIcon mr="2" />
-                <Text fontSize="sm">+598 99 590 210</Text>
+                <Link href="tel:+59899590210" isExternal>
+                  <Text fontSize="sm">+598 99 590 210</Text>
+                </Link>
               </Flex>
               <Flex>
                 <EmailIcon mr="2" />
-                <Text fontSize="sm">fly@fly.com.uy</Text>
+                <Link href="mailto:fly@fly.com.uy" isExternal>
+                  <Text fontSize="sm">fly@fly.com.uy</Text>
+                </Link>
               </Flex>
             </Flex>
             <Text mb="3" fontSize="sm">
               Síguenos en nuestras redes y descubre mas de nuestros servicios!
             </Text>
             <Flex>
-              <Image
-                src={FacebookIcon}
-                boxSize="25px"
-                objectFit="contain"
-                mr="2"
-              />
-              <Image
-                src={InstagramIcon}
-                boxSize="25px"
-                objectFit="contain"
-                mr="2"
-              />
-              <Image src={LinkedinIcon} boxSize="25px" objectFit="contain" />
+              <Link href="https://es-la.facebook.com/flyuy/" isExternal>
+                <Image
+                  src={FacebookIcon}
+                  boxSize="25px"
+                  objectFit="contain"
+                  mr="2"
+                />
+              </Link>
+              <Link href="https://www.instagram.com/fly.com.uy/" isExternal>
+                <Image
+                  src={InstagramIcon}
+                  boxSize="25px"
+                  objectFit="contain"
+                  mr="2"
+                />
+              </Link>
+              {/* <Link>
+                <Image src={LinkedinIcon} boxSize="25px" objectFit="contain" />
+              </Link> */}
             </Flex>
           </Box>
           <Box>

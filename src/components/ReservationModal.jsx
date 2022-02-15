@@ -58,6 +58,16 @@ function ReservationModal(props) {
     phone: "",
   })
 
+  const refreshState = () => {
+    setFlightData({
+      ...flightData,
+      origen: emptyLegReserva.origen,
+      destino: emptyLegReserva.destino,
+      fechaIda: emptyLegReserva.fecha,
+      tipoDeViaje: emptyLegReserva.tipoDeReserva,
+    })
+  }
+
   const handleChange = e => {
     setFlightData({
       ...flightData,
