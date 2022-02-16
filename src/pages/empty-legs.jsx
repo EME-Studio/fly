@@ -17,6 +17,16 @@ function EmptyLegs() {
   const response = useEmptyLegs()
   const emptyLegs = response.allStrapiEmptyLegs.nodes[0].data
 
+  // Sort empty legs array by date
+  emptyLegs.sort(function (a, b) {
+    return (
+      new Date(a.attributes.FechaDeSalida) -
+      new Date(b.attributes.FechaDeSalida)
+    )
+  })
+
+  console.log(emptyLegs)
+
   return (
     <Layout displayHeader={true} headerRojo={false}>
       <Seo title="Empty Legs" />
@@ -42,18 +52,22 @@ function EmptyLegs() {
         </Box>
         <Box bgColor="gray.100">
           <Box py="50px !important">
-            {emptyLegs.map(emptyLeg => (
-              <EmptyLegCard
-                key={emptyLeg.id}
-                origen={emptyLeg.attributes.AeropuertoDeOrigen}
-                destino={emptyLeg.attributes.AeropuertoDeDestino}
-                fecha={emptyLeg.attributes.FechaDeSalida}
-                tipoDeAvion={emptyLeg.attributes.TipoDeAvion}
-                emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
-                emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
-                emptySeatPrecio={emptyLeg.attributes.PrecioEmptySeat}
-              />
-            ))}
+            {/* Return a empty leg flight if the date is bigger than current date */}
+            {emptyLegs.map(emptyLeg => {
+              return new Date(emptyLeg.attributes.FechaDeSalida) >
+                new Date() ? (
+                <EmptyLegCard
+                  key={emptyLeg.id}
+                  origen={emptyLeg.attributes.AeropuertoDeOrigen}
+                  destino={emptyLeg.attributes.AeropuertoDeDestino}
+                  fecha={emptyLeg.attributes.FechaDeSalida}
+                  tipoDeAvion={emptyLeg.attributes.TipoDeAvion}
+                  emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
+                  emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
+                  emptySeatPrecio={emptyLeg.attributes.PrecioEmptySeat}
+                />
+              ) : null
+            })}
           </Box>
         </Box>
         <ReservationModalParent />
