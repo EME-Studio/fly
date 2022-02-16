@@ -4,12 +4,12 @@ import * as React from "react"
 import { Box, Text, Flex, Heading, Grid } from "@chakra-ui/react"
 
 const Slide = props => (
-  <Flex alignItems="center" flexDirection="column">
+  <Flex alignItems="center" flexDirection="column" h="100%">
     <Grid
       templateColumns={["1", "1", "1", "1", "repeat(2, 1fr)"]}
       gap={["0", "0", "0", "0", "20"]}
     >
-      <Box align="center">
+      <Flex align="center">
         <Box
           w={["100%", "100%", "100%", "100%", "400px"]}
           h={["180px", "250px", "300px", "300px", "400px"]}
@@ -26,7 +26,7 @@ const Slide = props => (
             borderRadius="24px"
           />
         </Box>
-      </Box>
+      </Flex>
       <Flex
         flexDirection="column"
         h="100%"
