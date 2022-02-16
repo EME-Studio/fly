@@ -25,6 +25,14 @@ function EmptyLegs() {
     )
   })
 
+  // Make date more readable
+  function dateFormat(date) {
+    let newDate = new Date(date)
+    return `${newDate.getDate()}/${
+      newDate.getMonth() + 1
+    }/${newDate.getFullYear()}`
+  }
+
   console.log(emptyLegs)
 
   return (
@@ -60,7 +68,7 @@ function EmptyLegs() {
                   key={emptyLeg.id}
                   origen={emptyLeg.attributes.AeropuertoDeOrigen}
                   destino={emptyLeg.attributes.AeropuertoDeDestino}
-                  fecha={emptyLeg.attributes.FechaDeSalida}
+                  fecha={dateFormat(emptyLeg.attributes.FechaDeSalida)}
                   tipoDeAvion={emptyLeg.attributes.TipoDeAvion}
                   emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
                   emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
