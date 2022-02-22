@@ -116,7 +116,7 @@ const Header = ({ siteTitle, conColor }) => {
                 alignItems="center"
                 flexDirection="column"
               >
-                <Link
+                {/* <Link
                   as={GatsbyLink}
                   to="/servicio"
                   color="white"
@@ -124,7 +124,7 @@ const Header = ({ siteTitle, conColor }) => {
                   mb="10px"
                 >
                   SERVICIOS
-                </Link>
+                </Link> */}
                 <Link
                   as={GatsbyLink}
                   to="/contacto"
@@ -176,7 +176,7 @@ const Header = ({ siteTitle, conColor }) => {
                 >
                   COTIZAR VUELO
                 </Link>
-                <Link
+                {/* <Link
                   as={GatsbyLink}
                   to="/servicio"
                   color="white"
@@ -184,7 +184,7 @@ const Header = ({ siteTitle, conColor }) => {
                   mb="10px"
                 >
                   SERVICIOS
-                </Link>
+                </Link> */}
                 <Link
                   as={GatsbyLink}
                   to="/contacto"
