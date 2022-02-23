@@ -38,8 +38,6 @@ function EmptyLegCard(props) {
     destino: props.destino,
     fecha: props.fecha,
     tipoDeReserva: "",
-    precio: "",
-    // celular: ""
   })
 
   function updateTipoDeReserva(tipo) {
@@ -179,11 +177,12 @@ function EmptyLegCard(props) {
         isOpen={isOpen}
         onClose={onClose}
         title="Empty Leg"
-        origen={emptyLegReserva.origen}
-        destino={emptyLegReserva.destino}
-        fechaIda={emptyLegReserva.fecha}
-        pasajeros={emptyLegReserva.tipoDeReserva}
-        tipoDeViaje={emptyLegReserva.tipoDeViaje}
+        data={emptyLegReserva}
+        // origen={emptyLegReserva.origen}
+        // destino={emptyLegReserva.destino}
+        // fechaIda={emptyLegReserva.fecha}
+        // pasajeros={emptyLegReserva.tipoDeReserva}
+        // tipoDeViaje={emptyLegReserva.tipoDeViaje}
       />
     </Container>
   )

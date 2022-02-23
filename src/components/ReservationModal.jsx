@@ -41,15 +41,7 @@ function ReservationModal(props) {
   const onClose = props.onClose
 
   // FORM DATA HANDLING
-  const [flightData, setFlightData] = useState({
-    origen: props.origen,
-    destino: props.destino,
-    fechaIda: props.fechaIda,
-    // tipoDeViaje: props.tipoDeViaje,
-    pasajeros: props.pasajeros,
-    equipaje: "",
-    phone: "",
-  })
+  const [phoneData, setPhoneData] = useState("")
 
   // CONNECTION WITH NETLIFY ENDPOINT
   const encode = data => {
@@ -62,7 +54,11 @@ function ReservationModal(props) {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "empty-leg", ...flightData }),
+      body: encode({
+        "form-name": "empty-leg",
+        ...props.data,
+        phone: phoneData,
+      }),
     })
       .then(() => navigate("/gracias"))
       .catch(error => alert(error))
@@ -87,33 +83,28 @@ function ReservationModal(props) {
           type="hidden"
           name="origen"
           id="origen"
-          value={flightData.origen}
+          value={props.data.origen}
         />
         <Input
           type="hidden"
           name="destino"
           id="destino"
-          value={flightData.destino}
+          value={props.data.destino}
         />
         <Input
           type="hidden"
           name="fechaIda"
           id="fechaIda"
-          value={flightData.fechaIda}
+          value={props.data.fecha}
         />
-        {/* <Input
+        <Input
           type="hidden"
           name="tipoDeViaje"
           id="tipoDeViaje"
-          value={flightData.tipoDeViaje}
-        /> */}
-        <Input
-          type="hidden"
-          name="precio"
-          id="precio"
-          value={flightData.precio}
+          value={props.data.tipoDeReserva}
         />
-        <Input type="hidden" name="phone" id="phone" value={flightData.phone} />
+
+        <Input type="hidden" name="phone" id="phone" value={phoneData} />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
           <ModalContent borderRadius="none" bg="light" pb="8" px="4">
@@ -137,20 +128,18 @@ function ReservationModal(props) {
                     autoFocus: true,
                   }}
                   country={"uy"}
-                  value={flightData.phone}
-                  onChange={phone =>
-                    setFlightData({ ...flightData, phone: phone })
-                  }
+                  value={phoneData}
+                  onChange={phone => setPhoneData(phone)}
                 />
               </FormControl>
               <Box p="4" fontSize="sm" color="gray.500">
                 <Flex direction="column" mt="4">
                   <Flex mb="3">
-                    <Text mr="2">{props.origen}</Text>
+                    <Text mr="2">{props.data.origen}</Text>
                     <Box>
                       <ArrowForwardIcon mr="2" />
                     </Box>
-                    <Text>{props.destino}</Text>
+                    <Text>{props.data.destino}</Text>
                   </Flex>
                   <Flex mb="3">
                     <Image
@@ -160,24 +149,24 @@ function ReservationModal(props) {
                       mb="0"
                       mr="2"
                     />
-                    {props.fechaIda}
+                    {props.data.fecha}
                   </Flex>
-                  {/* <Flex mb="3">{props.tipoDeViaje}</Flex> */}
+                  <Flex mb="3">{props.data.tipoDeReserva}</Flex>
                   {props.pasajeros > 0 ? (
                     <Flex mb="3">
                       <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
-                      {props.pasajeros}
+                      {props.data.pasajeros}
                     </Flex>
                   ) : null}
                 </Flex>
                 {props.fechaVuelta ? (
                   <Flex direction="column" mt="4">
                     <Flex mb="3">
-                      <Text mr="2">{props.destino}</Text>
+                      <Text mr="2">{props.data.destino}</Text>
                       <Box>
                         <ArrowForwardIcon mr="2" />
                       </Box>
-                      <Text>{props.origen}</Text>
+                      <Text>{props.data.origen}</Text>
                     </Flex>
                     <Flex mb="3">
                       <Image
@@ -187,12 +176,12 @@ function ReservationModal(props) {
                         mb="0"
                         mr="2"
                       />
-                      {formatDate(props.fechaVuelta)}
+                      {formatDate(props.data.fechaVuelta)}
                     </Flex>
-                    {props.pasajeros > 0 ? (
+                    {props.data.pasajeros > 0 ? (
                       <Flex mb="3">
                         <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
-                        {props.pasajeros}
+                        {props.data.pasajeros}
                       </Flex>
                     ) : null}
                   </Flex>
