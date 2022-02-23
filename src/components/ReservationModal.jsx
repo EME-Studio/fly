@@ -1,7 +1,4 @@
-import React, { useContext, useState } from "react"
-
-// Internal context
-import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
+import React, { useContext, useState, useEffect } from "react"
 
 // External libraries and helpers
 import { formatDate } from "../helpers/dateHandler"
@@ -30,6 +27,7 @@ import {
   Image,
   Divider,
   Heading,
+  useDisclosure,
 } from "@chakra-ui/react"
 
 // Internal data
@@ -39,41 +37,19 @@ import CalendarioGris from "../images/icons/calendariogris.png"
 
 function ReservationModal(props) {
   // MODAL STATE HANDLING
-  const { modalState } = useContext(EmptyLegsContext)
-  const { isOpen, onClose } = modalState
-
-  // RESERVATION STATE DATA HANDLING
-  const { reservaState } = useContext(EmptyLegsContext)
-  const [emptyLegReserva, setEmptyLegReserva] = reservaState
+  const isOpen = props.isOpen
+  const onClose = props.onClose
 
   // FORM DATA HANDLING
   const [flightData, setFlightData] = useState({
-    origen: emptyLegReserva.origen,
-    destino: emptyLegReserva.destino,
-    fechaIda: emptyLegReserva.fecha,
-    tipoDeViaje: emptyLegReserva.tipoDeReserva,
-    precio: "",
-    pasajeros: "",
+    origen: props.origen,
+    destino: props.destino,
+    fechaIda: props.fechaIda,
+    // tipoDeViaje: props.tipoDeViaje,
+    pasajeros: props.pasajeros,
     equipaje: "",
     phone: "",
   })
-
-  const refreshState = () => {
-    setFlightData({
-      ...flightData,
-      origen: emptyLegReserva.origen,
-      destino: emptyLegReserva.destino,
-      fechaIda: emptyLegReserva.fecha,
-      tipoDeViaje: emptyLegReserva.tipoDeReserva,
-    })
-  }
-
-  const handleChange = e => {
-    setFlightData({
-      ...flightData,
-      [e.target.name]: e.target.value,
-    })
-  }
 
   // CONNECTION WITH NETLIFY ENDPOINT
   const encode = data => {
@@ -125,12 +101,12 @@ function ReservationModal(props) {
           id="fechaIda"
           value={flightData.fechaIda}
         />
-        <Input
+        {/* <Input
           type="hidden"
           name="tipoDeViaje"
           id="tipoDeViaje"
           value={flightData.tipoDeViaje}
-        />
+        /> */}
         <Input
           type="hidden"
           name="precio"
@@ -184,9 +160,9 @@ function ReservationModal(props) {
                       mb="0"
                       mr="2"
                     />
-                    {formatDate(props.fechaIda)}
+                    {props.fechaIda}
                   </Flex>
-                  <Flex mb="3">{props.tipoDeReserva}</Flex>
+                  {/* <Flex mb="3">{props.tipoDeViaje}</Flex> */}
                   {props.pasajeros > 0 ? (
                     <Flex mb="3">
                       <Image src={PasajeroGris} width="20px" mb="0" mr="2" />

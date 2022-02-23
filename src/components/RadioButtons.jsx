@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { Box, VStack, useRadio, useRadioGroup } from "@chakra-ui/react"
 
-import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
-
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
   const { getInputProps, getCheckboxProps } = useRadio(props)
@@ -36,23 +34,20 @@ function RadioCard(props) {
 }
 
 // Step 2: Use the `useRadioGroup` hook to control a group of custom radios.
-function RadioButtons(props) {
+function RadioButtons({
+  emptyLegPrecio,
+  emptySeatPrecio,
+  updateTipoDeReserva,
+}) {
   // Radio buttons options
   const options = [
-    `Empty Leg $${props.emptyLegPrecio} USD`,
-    `Empty Seat $${props.emptySeatPrecio} USD`,
+    `Empty Leg $${emptyLegPrecio} USD`,
+    `Empty Seat $${emptySeatPrecio} USD`,
   ]
-
-  const { reservaState } = useContext(EmptyLegsContext)
-  const [emptyLegReserva, setEmptyLegReserva] = reservaState
-
-  const updateReserva = reserveType => {
-    setEmptyLegReserva({ ...emptyLegReserva, tipoDeReserva: reserveType })
-  }
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: "flight",
-    onChange: updateReserva,
+    onChange: updateTipoDeReserva,
   })
 
   const group = getRootProps()

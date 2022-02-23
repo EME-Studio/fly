@@ -4,9 +4,6 @@ import useEmptyLegs from "../hooks/useEmptyLegs"
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 import EmptyLegCard from "../components/EmptyLegCard"
-import ReservationModalParent from "../components/ReservationModalParent"
-import { EmptyLegsProvider } from "../contexts/EmptyLegsContext"
-import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
 
 import { Box, Container, Flex } from "@chakra-ui/react"
 
@@ -33,53 +30,47 @@ function EmptyLegs() {
     }/${newDate.getFullYear()}`
   }
 
-  console.log(emptyLegs)
-
   return (
     <Layout displayHeader={true} headerRojo={false}>
       <Seo title="Empty Legs" />
 
-      <EmptyLegsProvider>
-        <Box
-          w="full"
-          h="50%"
-          bgImage={Avion}
-          bgSize="cover"
-          bgPosition="center center"
-          bgRepeat="no-repeat"
-          bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
-        >
-          <Flex
-            h="100%"
-            w="100%"
-            bg="linear-gradient(180deg, rgba(6,63,106,0.9) 0%, rgba(6,63,106,0.4) 100%)"
-            direction="column"
-            align="center"
-            justifyContent="center"
-          />
+      <Box
+        w="full"
+        h="50%"
+        bgImage={Avion}
+        bgSize="cover"
+        bgPosition="center center"
+        bgRepeat="no-repeat"
+        bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
+      >
+        <Flex
+          h="100%"
+          w="100%"
+          bg="linear-gradient(180deg, rgba(6,63,106,0.9) 0%, rgba(6,63,106,0.4) 100%)"
+          direction="column"
+          align="center"
+          justifyContent="center"
+        />
+      </Box>
+      <Box bgColor="gray.100">
+        <Box py="50px !important">
+          {/* Return a empty leg flight if the date is bigger than current date */}
+          {emptyLegs.map(emptyLeg => {
+            return new Date(emptyLeg.attributes.FechaDeSalida) > new Date() ? (
+              <EmptyLegCard
+                key={emptyLeg.id}
+                origen={emptyLeg.attributes.AeropuertoDeOrigen}
+                destino={emptyLeg.attributes.AeropuertoDeDestino}
+                fecha={dateFormat(emptyLeg.attributes.FechaDeSalida)}
+                tipoDeAvion={emptyLeg.attributes.TipoDeAvion}
+                emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
+                emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
+                emptySeatPrecio={emptyLeg.attributes.PrecioEmptySeat}
+              />
+            ) : null
+          })}
         </Box>
-        <Box bgColor="gray.100">
-          <Box py="50px !important">
-            {/* Return a empty leg flight if the date is bigger than current date */}
-            {emptyLegs.map(emptyLeg => {
-              return new Date(emptyLeg.attributes.FechaDeSalida) >
-                new Date() ? (
-                <EmptyLegCard
-                  key={emptyLeg.id}
-                  origen={emptyLeg.attributes.AeropuertoDeOrigen}
-                  destino={emptyLeg.attributes.AeropuertoDeDestino}
-                  fecha={dateFormat(emptyLeg.attributes.FechaDeSalida)}
-                  tipoDeAvion={emptyLeg.attributes.TipoDeAvion}
-                  emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
-                  emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
-                  emptySeatPrecio={emptyLeg.attributes.PrecioEmptySeat}
-                />
-              ) : null
-            })}
-          </Box>
-        </Box>
-        <ReservationModalParent />
-      </EmptyLegsProvider>
+      </Box>
     </Layout>
   )
 }

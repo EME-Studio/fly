@@ -15,8 +15,7 @@ import {
   Tag,
 } from "@chakra-ui/react"
 import RadioButtons from "./RadioButtons"
-
-import { EmptyLegsContext } from "../contexts/EmptyLegsContext"
+import ReservationModal from "./ReservationModal"
 
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import CalendarioGris from "../images/icons/calendariogris.png"
@@ -34,26 +33,28 @@ import AvionDespega from "../images/icons/aviondespega.png"
 function EmptyLegCard(props) {
   const [verMas, setVerMas] = useState(false)
 
-  const { reservaState, modalState } = useContext(EmptyLegsContext)
-  const [emptyLegReserva, setEmptyLegReserva] = reservaState
-  const { onOpen } = modalState
+  const [emptyLegReserva, setEmptyLegReserva] = useState({
+    origen: props.origen,
+    destino: props.destino,
+    fecha: props.fecha,
+    tipoDeReserva: "",
+    precio: "",
+    // celular: ""
+  })
 
-  function updateReserva() {
+  function updateTipoDeReserva(tipo) {
     setEmptyLegReserva({
       ...emptyLegReserva,
-      origen: props.origen,
-      destino: props.destino,
-      fecha: props.fecha,
+      tipoDeReserva: tipo,
     })
+  }
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  function handleClick() {
+    onOpen()
     console.log(emptyLegReserva)
   }
 
-  function handleClick() {
-    updateReserva()
-    onOpen()
-  }
-
-  // SELECT PICTURE
   function selectPicture() {
     switch (props.tipoDeAvion) {
       case "AvionBimotor":
@@ -157,6 +158,7 @@ function EmptyLegCard(props) {
                 emptyLegPrecio={props.emptyLegPrecio}
                 emptySeatCantidad={props.emptySeatCantidad}
                 emptySeatPrecio={props.emptySeatPrecio}
+                updateTipoDeReserva={updateTipoDeReserva}
               />
             </Flex>
             <Spacer />
@@ -173,6 +175,16 @@ function EmptyLegCard(props) {
           </Flex>
         </Flex>
       </Flex>
+      <ReservationModal
+        isOpen={isOpen}
+        onClose={onClose}
+        title="Empty Leg"
+        origen={emptyLegReserva.origen}
+        destino={emptyLegReserva.destino}
+        fechaIda={emptyLegReserva.fecha}
+        pasajeros={emptyLegReserva.tipoDeReserva}
+        tipoDeViaje={emptyLegReserva.tipoDeViaje}
+      />
     </Container>
   )
 }
