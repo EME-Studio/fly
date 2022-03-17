@@ -45,7 +45,7 @@ function ReservationModal(props) {
     Origen: props.data.origen,
     Destino: props.data.destino,
     Fecha: props.data.fecha,
-    TipoDeViaje: props.data.tipoDeReserva,
+    Tipo: props.data.tipoDeReserva,
     Seats: props.data.seats,
     Phone: "",
   })
@@ -105,18 +105,16 @@ function ReservationModal(props) {
         />
         <Input
           type="hidden"
-          name="TipoDeViaje"
+          name="Tipo"
           id="tipoDeViaje"
-          value={reservationData.TipoDeViaje}
+          value={reservationData.Tipo}
         />
-        {reservationData.TipoDeViaje.includes("Empty Seat") ? (
-          <Input
-            type="hidden"
-            name="Seats"
-            id="seats"
-            value={reservationData.Seats}
-          />
-        ) : null}
+        <Input
+          type="hidden"
+          name="Seats"
+          id="seats"
+          value={reservationData.Seats}
+        />
         <Input
           type="hidden"
           name="Phone"
