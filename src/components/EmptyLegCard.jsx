@@ -233,11 +233,6 @@ function EmptyLegCard(props) {
         onClose={onClose}
         title="Empty Leg"
         data={emptyLegReserva}
-        // origen={emptyLegReserva.origen}
-        // destino={emptyLegReserva.destino}
-        // fechaIda={emptyLegReserva.fecha}
-        // pasajeros={emptyLegReserva.tipoDeReserva}
-        // tipoDeViaje={emptyLegReserva.tipoDeViaje}
       />
     </Container>
   )

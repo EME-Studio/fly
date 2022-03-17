@@ -41,7 +41,14 @@ function ReservationModal(props) {
   const onClose = props.onClose
 
   // FORM DATA HANDLING
-  const [phoneData, setPhoneData] = useState("")
+  const [reservationData, setReservationData] = useState({
+    Origen: props.data.origen,
+    Destino: props.data.destino,
+    Fecha: props.data.fecha,
+    TipoDeViaje: props.data.tipoDeReserva,
+    Seats: props.data.seats,
+    Phone: "",
+  })
 
   // CONNECTION WITH NETLIFY ENDPOINT
   const encode = data => {
@@ -56,8 +63,7 @@ function ReservationModal(props) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": "empty-leg",
-        ...props.data,
-        phone: phoneData,
+        ...reservationData,
       }),
     })
       .then(() => navigate("/gracias"))
@@ -83,36 +89,41 @@ function ReservationModal(props) {
           type="hidden"
           name="origen"
           id="origen"
-          value={props.data.origen}
+          value={reservationData.Origen}
         />
         <Input
           type="hidden"
           name="destino"
           id="destino"
-          value={props.data.destino}
+          value={reservationData.Destino}
         />
         <Input
           type="hidden"
           name="fechaIda"
           id="fechaIda"
-          value={props.data.fecha}
+          value={reservationData.Fecha}
         />
         <Input
           type="hidden"
           name="tipoDeViaje"
           id="tipoDeViaje"
-          value={props.data.tipoDeReserva}
+          value={reservationData.TipoDeViaje}
         />
-        {props.data.tipoDeReserva.includes("Empty Seat") ? (
+        {reservationData.TipoDeViaje.includes("Empty Seat") ? (
           <Input
             type="hidden"
             name="seats"
             id="seats"
-            value={props.data.seats}
+            value={reservationData.Seats}
           />
         ) : null}
+        <Input
+          type="hidden"
+          name="phone"
+          id="phone"
+          value={reservationData.Phone}
+        />
 
-        <Input type="hidden" name="phone" id="phone" value={phoneData} />
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
           <ModalContent borderRadius="none" bg="light" pb="8" px="4">
@@ -136,8 +147,10 @@ function ReservationModal(props) {
                     autoFocus: true,
                   }}
                   country={"uy"}
-                  value={phoneData}
-                  onChange={phone => setPhoneData(phone)}
+                  value={reservationData.Phone}
+                  onChange={phone => {
+                    setReservationData({ ...reservationData, Phone: phone })
+                  }}
                 />
               </FormControl>
               <Box p="4" fontSize="sm" color="gray.500">
