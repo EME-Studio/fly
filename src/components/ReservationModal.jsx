@@ -51,14 +51,9 @@ function ReservationModal(props) {
   })
 
   // CONNECTION WITH NETLIFY ENDPOINT
-  const encode = reservationData => {
-    return Object.keys(reservationData)
-      .map(
-        key =>
-          encodeURIComponent(key) +
-          "=" +
-          encodeURIComponent(data[reservationData])
-      )
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&")
   }
 
@@ -67,8 +62,8 @@ function ReservationModal(props) {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
-        "form-name": "empty-leg",
-        ...reservationData,
+        "form-name": e.target.getAttribute("name"),
+        ...name,
       }),
     })
       .then(() => navigate("/gracias"))
@@ -92,39 +87,39 @@ function ReservationModal(props) {
         <input type="hidden" name="bot-field" />
         <Input
           type="hidden"
-          name="origen"
+          name="Origen"
           id="origen"
           value={reservationData.Origen}
         />
         <Input
           type="hidden"
-          name="destino"
+          name="Destino"
           id="destino"
           value={reservationData.Destino}
         />
         <Input
           type="hidden"
-          name="fechaIda"
-          id="fechaIda"
+          name="Fecha"
+          id="fecha"
           value={reservationData.Fecha}
         />
         <Input
           type="hidden"
-          name="tipoDeViaje"
+          name="TipoDeViaje"
           id="tipoDeViaje"
           value={reservationData.TipoDeViaje}
         />
         {reservationData.TipoDeViaje.includes("Empty Seat") ? (
           <Input
             type="hidden"
-            name="seats"
+            name="Seats"
             id="seats"
             value={reservationData.Seats}
           />
         ) : null}
         <Input
           type="hidden"
-          name="phone"
+          name="Phone"
           id="phone"
           value={reservationData.Phone}
         />
