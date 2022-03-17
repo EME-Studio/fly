@@ -51,9 +51,14 @@ function ReservationModal(props) {
   })
 
   // CONNECTION WITH NETLIFY ENDPOINT
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  const encode = reservationData => {
+    return Object.keys(reservationData)
+      .map(
+        key =>
+          encodeURIComponent(key) +
+          "=" +
+          encodeURIComponent(data[reservationData])
+      )
       .join("&")
   }
 
