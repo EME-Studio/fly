@@ -17,6 +17,8 @@ import {
 import RadioButtons from "./RadioButtons"
 import ReservationModal from "./ReservationModal"
 
+import { handleManana, handleSpaces } from "../helpers/stringHandler"
+
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import CalendarioGris from "../images/icons/calendariogris.png"
 import AvionBimotor from "../images/iconsAviones/AvionBimotor.png"
@@ -154,7 +156,7 @@ function EmptyLegCard(props) {
               </Flex>
               <Flex direction="row" mb="10">
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
-                <Text>Props.horario</Text>
+                <Text>En la {handleManana(props.horario)}</Text>
               </Flex>
 
               <Box
@@ -197,7 +199,7 @@ function EmptyLegCard(props) {
                       fontWeight: "700",
                     }}
                   >
-                    Categoría: {props.tipoDeAvion}
+                    Categoría: {handleSpaces(props.tipoDeAvion)}
                   </Text>
                   <Text
                     align="right"
@@ -207,7 +209,7 @@ function EmptyLegCard(props) {
                       fontWeight: "600",
                     }}
                   >
-                    Capacidad: {} pasajeros
+                    Capacidad: {props.capacidad} pasajeros
                   </Text>
                 </Box>
               </Box>

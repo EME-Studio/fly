@@ -15,6 +15,7 @@ export default function useEmptyLegs() {
               CantidadEmptySeats
               PrecioEmptySeat
               PrecioEmptyLeg
+              HorarioDeSalida
               Capacidad
             }
           }

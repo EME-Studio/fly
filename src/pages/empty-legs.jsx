@@ -66,6 +66,8 @@ function EmptyLegs() {
                 emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
                 emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
                 emptySeatPrecio={emptyLeg.attributes.PrecioEmptySeat}
+                horario={emptyLeg.attributes.HorarioDeSalida}
+                capacidad={emptyLeg.attributes.Capacidad}
               />
             ) : null
           })}
