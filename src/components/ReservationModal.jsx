@@ -63,7 +63,7 @@ function ReservationModal(props) {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
         "form-name": e.target.getAttribute("name"),
-        ...name,
+        ...reservationData,
       }),
     })
       .then(() => navigate("/gracias"))
