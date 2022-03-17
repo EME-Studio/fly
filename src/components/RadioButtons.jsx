@@ -1,5 +1,17 @@
 import React, { useContext, useEffect } from "react"
-import { Box, VStack, useRadio, useRadioGroup } from "@chakra-ui/react"
+import {
+  Box,
+  VStack,
+  useRadio,
+  useRadioGroup,
+  Flex,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
+  FormControl,
+} from "@chakra-ui/react"
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
@@ -38,6 +50,8 @@ function RadioButtons({
   emptyLegPrecio,
   emptySeatPrecio,
   updateTipoDeReserva,
+  updateSeats,
+  emptyLegReserva,
 }) {
   // Radio buttons options
   const options = [
@@ -53,13 +67,46 @@ function RadioButtons({
   const group = getRootProps()
 
   return (
-    <VStack {...group} align="left">
+    <VStack {...group} align="left" spacing="14px">
       {options.map(value => {
         const radio = getRadioProps({ value })
         return (
-          <RadioCard key={value} {...radio}>
-            {value}
-          </RadioCard>
+          <Flex direction="row">
+            <Box minW="230px" w="100%">
+              <RadioCard key={value} {...radio}>
+                {value}
+              </RadioCard>
+            </Box>
+            {value.includes("Empty Seat") ? (
+              <FormControl isRequired>
+                <NumberInput
+                  isDisabled={
+                    emptyLegReserva.tipoDeReserva.includes("Empty Seat")
+                      ? false
+                      : true
+                  }
+                  min={1}
+                  id="pasajeros"
+                  name="pasajeros"
+                  value={emptyLegReserva.seats}
+                  onChange={valueString => updateSeats(valueString)}
+                  w="80px"
+                  h="100%"
+                  ml="14px"
+                  sx={{
+                    input: { h: "100%" },
+                    "chakra-numberinput": { h: "100%" },
+                  }}
+                >
+                  <NumberInputField bg="white" color="gray.800" fontSize="xs" />
+                  <NumberInputStepper>
+                    <NumberIncrementStepper bg="white" color="gray.400" />
+                    <NumberDecrementStepper bg="white" color="gray.400" />
+                  </NumberInputStepper>
+                </NumberInput>
+              </FormControl>
+            ) : null}
+          </Flex>
         )
       })}
     </VStack>
