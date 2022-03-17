@@ -5,7 +5,7 @@ import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 import EmptyLegCard from "../components/EmptyLegCard"
 
-import { Box, Container, Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 import Avion from "../images/avion_fly.jpeg"
 

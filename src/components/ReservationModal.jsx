@@ -103,6 +103,14 @@ function ReservationModal(props) {
           id="tipoDeViaje"
           value={props.data.tipoDeReserva}
         />
+        {props.data.tipoDeReserva.includes("Empty Seat") ? (
+          <Input
+            type="hidden"
+            name="seats"
+            id="seats"
+            value={props.data.seats}
+          />
+        ) : null}
 
         <Input type="hidden" name="phone" id="phone" value={phoneData} />
         <Modal isOpen={isOpen} onClose={onClose}>

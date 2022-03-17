@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Fly`,
     description: `Tu libertad, nuestro servicio.`,
-    author: `@mateoroldos`,
+    author: `@emestudio`,
     siteUrl: `https://fly.com.uy/`,
   },
   plugins: [
