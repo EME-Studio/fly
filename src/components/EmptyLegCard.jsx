@@ -144,7 +144,7 @@ function EmptyLegCard(props) {
             <ArrowForwardIcon mx="4" />
             <Text fontWeight="900">{props.destino}</Text>
           </Flex>
-          <Flex direction="row">
+          <Flex direction={["column", "column", "row", "row", "row"]}>
             <Flex direction="column" mr={10}>
               <Flex direction="row" mb="4">
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
@@ -157,10 +157,30 @@ function EmptyLegCard(props) {
 
               <Box
                 transition="1s"
-                visibility={verMas ? "visible" : "hidden"}
-                opacity={verMas ? "1" : "0"}
+                visibility={[
+                  "visible",
+                  "visible",
+                  "visible",
+                  verMas ? "visible" : "hidden",
+                  verMas ? "visible" : "hidden",
+                ]}
+                opacity={[
+                  "1",
+                  "1",
+                  "1",
+                  verMas ? "1" : "0",
+                  verMas ? "1" : "0",
+                ]}
               >
-                <Box display={verMas ? "block" : "none"}>
+                <Box
+                  display={[
+                    "block",
+                    "block",
+                    "block",
+                    verMas ? "block" : "none",
+                    verMas ? "block" : "none",
+                  ]}
+                >
                   <RadioButtons
                     emptyLegPrecio={props.emptyLegPrecio}
                     emptySeatCantidad={props.emptySeatCantidad}
@@ -180,15 +200,41 @@ function EmptyLegCard(props) {
 
             <Spacer />
 
-            <Flex minH="100%" flexDirection="column" justifyContent="end">
+            <Flex
+              minH="100%"
+              flexDirection="column"
+              justifyContent="end"
+              mt={["10px", "10px", "0", "0", "0"]}
+            >
               <Box
+                mb={["10px", "10px", "0", "0", "0"]}
                 transition="1s"
-                visibility={verMas ? "visible" : "hidden"}
-                opacity={verMas ? "1" : "0"}
+                visibility={[
+                  "visible",
+                  "visible",
+                  "visible",
+                  verMas ? "visible" : "hidden",
+                  verMas ? "visible" : "hidden",
+                ]}
+                opacity={[
+                  "1",
+                  "1",
+                  "1",
+                  verMas ? "1" : "0",
+                  verMas ? "1" : "0",
+                ]}
               >
-                <Box display={verMas ? "block" : "none"}>
+                <Box
+                  display={[
+                    "block",
+                    "block",
+                    "block",
+                    verMas ? "block" : "none",
+                    verMas ? "block" : "none",
+                  ]}
+                >
                   <Text
-                    align="right"
+                    align={["left", "left", "right", "right", "right"]}
                     fontSize="xs"
                     color="gray.500"
                     mb="10px"
@@ -196,10 +242,11 @@ function EmptyLegCard(props) {
                       fontWeight: "700",
                     }}
                   >
+                    {" "}
                     Categoría: {handleSpaces(props.tipoDeAvion)}
                   </Text>
                   <Text
-                    align="right"
+                    align={["left", "left", "right", "right", "right"]}
                     fontSize="xs"
                     color="gray.500"
                     sx={{
@@ -210,9 +257,7 @@ function EmptyLegCard(props) {
                   </Text>
                 </Box>
               </Box>
-
               <Spacer />
-
               <Button
                 variant={verMas ? "accentSolid" : "accentOutline"}
                 transition="1s"

@@ -73,7 +73,7 @@ function RadioButtons({
         const radio = getRadioProps({ value })
         return (
           <Flex direction="row">
-            <Box minW="230px" w="100%">
+            <Box minW="140px" w="100%">
               <RadioCard key={value} {...radio}>
                 {value}
               </RadioCard>
