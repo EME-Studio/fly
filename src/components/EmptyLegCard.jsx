@@ -150,9 +150,100 @@ function EmptyLegCard(props) {
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
                 <Text>{props.fecha}</Text>
               </Flex>
-              <Flex direction="row" mb="10">
-                <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
-                <Text>En la {handleManana(props.horario)}</Text>
+              <Flex
+                direction="row"
+                mb="4"
+                transition="1s"
+                visibility={[
+                  "hidden",
+                  "hidden",
+                  "hidden",
+                  verMas ? "hidden" : "visible",
+                  verMas ? "hidden" : "visible",
+                ]}
+                opacity={[
+                  "0",
+                  "0",
+                  "0",
+                  verMas ? "0" : "1",
+                  verMas ? "0" : "1",
+                ]}
+                display={[
+                  "flex",
+                  "flex",
+                  "flex",
+                  verMas ? "none" : "flex",
+                  verMas ? "none" : "flex",
+                ]}
+              >
+                <Image
+                  display={[
+                    "block",
+                    "block",
+                    "block",
+                    verMas ? "none" : "block",
+                    verMas ? "none" : "block",
+                  ]}
+                  src={CalendarioGris}
+                  width="20px"
+                  mb="0"
+                  mr="2"
+                />
+                <Text
+                  display={[
+                    "block",
+                    "block",
+                    "block",
+                    verMas ? "none" : "block",
+                    verMas ? "none" : "block",
+                  ]}
+                >
+                  {props.emptySeatPrecio} USD
+                </Text>
+              </Flex>
+              <Flex
+                direction="row"
+                mb="4"
+                transition="1s"
+                visibility={[
+                  "visible",
+                  "visible",
+                  "visible",
+                  verMas ? "visible" : "hidden",
+                  verMas ? "visible" : "hidden",
+                ]}
+                opacity={[
+                  "1",
+                  "1",
+                  "1",
+                  verMas ? "1" : "0",
+                  verMas ? "1" : "0",
+                ]}
+              >
+                <Image
+                  display={[
+                    "block",
+                    "block",
+                    "block",
+                    verMas ? "block" : "none",
+                    verMas ? "block" : "none",
+                  ]}
+                  src={CalendarioGris}
+                  width="20px"
+                  mb="0"
+                  mr="2"
+                />
+                <Text
+                  display={[
+                    "block",
+                    "block",
+                    "block",
+                    verMas ? "block" : "none",
+                    verMas ? "block" : "none",
+                  ]}
+                >
+                  Por la {handleManana(props.horario)}
+                </Text>
               </Flex>
 
               <Box
