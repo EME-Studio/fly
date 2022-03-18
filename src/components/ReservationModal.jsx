@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 
 // External libraries and helpers
-import { formatDate } from "../helpers/dateHandler"
 import { navigate } from "gatsby"
 
 // CONTEXT
