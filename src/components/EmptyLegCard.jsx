@@ -34,6 +34,8 @@ import TurboheliceBimotor from "../images/iconsAviones/TurboheliceBimotor.png"
 import TurboheliceMonomotor from "../images/iconsAviones/TurboheliceMonomotor.png"
 import AvionDespega from "../images/icons/aviondespega.png"
 
+import { formatDateDay } from "../helpers/dateHandler"
+
 import {
   useEmptyLegContext,
   useUpdateEmptyLegContext,
@@ -51,6 +53,7 @@ function EmptyLegCard(props) {
 
   function handleClick() {
     onOpen()
+    formatDateDay(props.fecha)
     updateContext({
       Origen: props.origen,
       Destino: props.destino,
@@ -150,7 +153,7 @@ function EmptyLegCard(props) {
             <Flex direction="column" mr={10}>
               <Flex direction="row" mb="4">
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
-                <Text>{props.fecha}</Text>
+                <Text>{formatDateDay(props.fecha)}</Text>
               </Flex>
               <Flex
                 direction="row"
