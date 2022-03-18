@@ -72,14 +72,14 @@ function RadioButtons({
       {options.map(value => {
         const radio = getRadioProps({ value })
         return (
-          <Flex direction="row">
+          <Flex direction="row" w="100%">
             <Box minW="140px" w="100%">
               <RadioCard key={value} {...radio}>
                 {value}
               </RadioCard>
             </Box>
             {value.includes("Empty Seat") ? (
-              <FormControl isRequired>
+              <FormControl isRequired maxW="100px">
                 <NumberInput
                   isDisabled={tipo.includes("Empty Seat") ? false : true}
                   min={1}

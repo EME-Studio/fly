@@ -169,18 +169,18 @@ function EmptyLegCard(props) {
                   verMas ? "0" : "1",
                 ]}
                 display={[
-                  "flex",
-                  "flex",
-                  "flex",
+                  "none",
+                  "none",
+                  "none",
                   verMas ? "none" : "flex",
                   verMas ? "none" : "flex",
                 ]}
               >
                 <Image
                   display={[
-                    "block",
-                    "block",
-                    "block",
+                    "none",
+                    "none",
+                    "none",
                     verMas ? "none" : "block",
                     verMas ? "none" : "block",
                   ]}
@@ -191,9 +191,9 @@ function EmptyLegCard(props) {
                 />
                 <Text
                   display={[
-                    "block",
-                    "block",
-                    "block",
+                    "none",
+                    "none",
+                    "none",
                     verMas ? "none" : "block",
                     verMas ? "none" : "block",
                   ]}
