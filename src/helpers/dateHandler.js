@@ -10,22 +10,25 @@ export const formatDate = date => {
   return [year, month, day].join("-")
 }
 
-export const formatDateDay = date => {
-  const dates = [
-    "Lunes",
-    "Martes",
-    "Miércoles",
-    "Jueves",
-    "Viernes",
-    "Sabado",
-    "Domingo",
-  ]
+const dates = [
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sabado",
+  "Domingo",
+]
 
+export const formatDateDay = date => {
   let dateString = date
   let dateParts = dateString.split("/")
 
   let formattedDate = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0])
 
-  console.log(formattedDate)
   return `${dates[formattedDate.getDay() - 1]}  ${dateParts[0]}/${dateParts[1]}`
+}
+
+export const formatDateDayFromObject = date => {
+  return `${dates[date.getDay() - 1]}  ${date.getDate()}/${date.getMonth() + 1}`
 }

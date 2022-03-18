@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 // External libraries and helpers
 import { navigate } from "gatsby"
+import { formatDate } from "../helpers/dateHandler"
 
 // CONTEXT
 import {
@@ -182,7 +183,7 @@ function ReservationModal(props) {
                     </Flex>
                   ) : null}
                 </Flex>
-                {/* {props.fechaVuelta ? (
+                {props.fechaVuelta ? (
                   <Flex direction="column" mt="4">
                     <Flex mb="3">
                       <Text mr="2">{props.data.destino}</Text>
@@ -208,7 +209,7 @@ function ReservationModal(props) {
                       </Flex>
                     ) : null}
                   </Flex>
-                ) : null} */}
+                ) : null}
               </Box>
               ¡Gracias por elegirnos!
             </ModalBody>

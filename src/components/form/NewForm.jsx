@@ -11,7 +11,7 @@ import CalendarioGris from "../../images/icons/calendariogris.png"
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 
 // External libraries and helpers
-import { formatDate } from "../../helpers/dateHandler"
+import { formatDate, formatDateDayFromObject } from "../../helpers/dateHandler"
 import { isMobile } from "react-device-detect"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
@@ -264,7 +264,6 @@ function NewForm({ soloIda }) {
                         fontSize="sm"
                         id="fecha"
                         name="fecha"
-                        fontSize="xs"
                       />
                     }
                   />
@@ -318,7 +317,6 @@ function NewForm({ soloIda }) {
                         fontSize="sm"
                         id="fecha"
                         name="fecha"
-                        fontSize="xs"
                       />
                     }
                   />
@@ -441,14 +439,14 @@ function NewForm({ soloIda }) {
               </FormControl>
               <Box p="4" fontSize="sm" color="gray.500">
                 <Flex direction="column" mt="4">
-                  <Flex mb="3">
+                  <Flex mb="1">
                     <Text mr="2">{flightData.origen}</Text>
                     <Box>
                       <ArrowForwardIcon mr="2" />
                     </Box>
                     <Text>{flightData.destino}</Text>
                   </Flex>
-                  <Flex mb="3">
+                  <Flex mb="2">
                     <Image
                       src={CalendarioGris}
                       bg="blue"
@@ -456,7 +454,7 @@ function NewForm({ soloIda }) {
                       mb="0"
                       mr="2"
                     />
-                    {formatDate(flightData.fechaIda)}
+                    {formatDateDayFromObject(flightData.fechaIda)}
                   </Flex>
                   {flightData.pasajeros > 0 ? (
                     <Flex mb="3">
@@ -467,14 +465,14 @@ function NewForm({ soloIda }) {
                 </Flex>
                 {flightData.fechaVuelta ? (
                   <Flex direction="column" mt="4">
-                    <Flex mb="3">
+                    <Flex mb="1">
                       <Text mr="2">{flightData.destino}</Text>
                       <Box>
                         <ArrowForwardIcon mr="2" />
                       </Box>
                       <Text>{flightData.origen}</Text>
                     </Flex>
-                    <Flex mb="3">
+                    <Flex mb="2">
                       <Image
                         src={CalendarioGris}
                         bg="blue"
@@ -482,7 +480,7 @@ function NewForm({ soloIda }) {
                         mb="0"
                         mr="2"
                       />
-                      {formatDate(flightData.fechaVuelta)}
+                      {formatDateDayFromObject(flightData.fechaVuelta)}
                     </Flex>
                     {flightData.pasajeros > 0 ? (
                       <Flex mb="3">
