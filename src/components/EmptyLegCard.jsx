@@ -21,6 +21,8 @@ import { handleManana, handleSpaces } from "../helpers/stringHandler"
 
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import CalendarioGris from "../images/icons/calendariogris.png"
+import Precio from "../images/icons/precio.png"
+import Flecha from "../images/icons/flecha.png"
 import AvionBimotor from "../images/iconsAviones/AvionBimotor.png"
 import AvionMonomotor from "../images/iconsAviones/AvionMonomotor.png"
 import HelicopteroGrande from "../images/iconsAviones/HelicopteroGrande.png"
@@ -139,9 +141,9 @@ function EmptyLegCard(props) {
           minH="100%"
           justifyContent="center"
         >
-          <Flex direction="row" mb="8">
+          <Flex direction="row" mb="8" alignItems="center">
             <Text fontWeight="900">{props.origen}</Text>
-            <ArrowForwardIcon mx="4" />
+            <Image src={Flecha} width="20px" h="15px" mb="0" mx="3" />
             <Text fontWeight="900">{props.destino}</Text>
           </Flex>
           <Flex direction={["column", "column", "row", "row", "row"]}>
@@ -184,7 +186,7 @@ function EmptyLegCard(props) {
                     verMas ? "none" : "block",
                     verMas ? "none" : "block",
                   ]}
-                  src={CalendarioGris}
+                  src={Precio}
                   width="20px"
                   mb="0"
                   mr="2"
