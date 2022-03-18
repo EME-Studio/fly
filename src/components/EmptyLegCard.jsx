@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 
 import {
   Container,
@@ -32,35 +32,31 @@ import TurboheliceBimotor from "../images/iconsAviones/TurboheliceBimotor.png"
 import TurboheliceMonomotor from "../images/iconsAviones/TurboheliceMonomotor.png"
 import AvionDespega from "../images/icons/aviondespega.png"
 
+import {
+  useEmptyLegContext,
+  useUpdateEmptyLegContext,
+  useModalContext,
+} from "../contexts/EmptyLegContext"
+
 function EmptyLegCard(props) {
+  const { onOpen } = useModalContext()
+  const updateContext = useUpdateEmptyLegContext()
+
+  const [tipo, setTipo] = useState("")
+  const [seats, setSeats] = useState("")
+
   const [verMas, setVerMas] = useState(false)
 
-  const [emptyLegReserva, setEmptyLegReserva] = useState({
-    origen: props.origen,
-    destino: props.destino,
-    fecha: props.fecha,
-    tipoDeReserva: "",
-    seats: 1,
-  })
-
-  function updateTipoDeReserva(tipo) {
-    setEmptyLegReserva({
-      ...emptyLegReserva,
-      tipoDeReserva: tipo,
-    })
-  }
-
-  function updateSeats(number) {
-    setEmptyLegReserva({
-      ...emptyLegReserva,
-      seats: number,
-    })
-  }
-
-  const { isOpen, onOpen, onClose } = useDisclosure()
   function handleClick() {
     onOpen()
-    console.log(emptyLegReserva)
+    updateContext({
+      Origen: props.origen,
+      Destino: props.destino,
+      Fecha: props.fecha,
+      Tipo: tipo,
+      Seats: seats,
+      Phone: "",
+    })
   }
 
   function selectPicture() {
@@ -169,9 +165,10 @@ function EmptyLegCard(props) {
                     emptyLegPrecio={props.emptyLegPrecio}
                     emptySeatCantidad={props.emptySeatCantidad}
                     emptySeatPrecio={props.emptySeatPrecio}
-                    updateTipoDeReserva={updateTipoDeReserva}
-                    updateSeats={updateSeats}
-                    emptyLegReserva={emptyLegReserva}
+                    updateTipoDeReserva={setTipo}
+                    updateSeats={setSeats}
+                    tipo={tipo}
+                    seats={seats}
                   />
                   <Text fontSize="10px" color="gray.500" mt="12px">
                     Indique si quiere el Avion entero o un Empty Sit y cuantos
@@ -220,7 +217,7 @@ function EmptyLegCard(props) {
                 variant={verMas ? "accentSolid" : "accentOutline"}
                 transition="1s"
                 size="sm"
-                onClick={handleClick}
+                onClick={() => handleClick()}
               >
                 Reservar
               </Button>
@@ -228,12 +225,6 @@ function EmptyLegCard(props) {
           </Flex>
         </Flex>
       </Flex>
-      <ReservationModal
-        isOpen={isOpen}
-        onClose={onClose}
-        title="Empty Leg"
-        data={emptyLegReserva}
-      />
     </Container>
   )
 }

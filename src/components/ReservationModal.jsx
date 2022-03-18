@@ -1,8 +1,15 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useState } from "react"
 
 // External libraries and helpers
 import { formatDate } from "../helpers/dateHandler"
 import { navigate } from "gatsby"
+
+// CONTEXT
+import {
+  useModalContext,
+  useEmptyLegContext,
+  useUpdateEmptyLegContext,
+} from "../contexts/EmptyLegContext"
 
 // Mobile phone input imports
 import PhoneInput from "react-phone-input-2"
@@ -37,18 +44,18 @@ import CalendarioGris from "../images/icons/calendariogris.png"
 
 function ReservationModal(props) {
   // MODAL STATE HANDLING
-  const isOpen = props.isOpen
-  const onClose = props.onClose
+  const { isOpen, onClose } = useModalContext()
 
   // FORM DATA HANDLING
-  const [reservationData, setReservationData] = useState({
-    Origen: props.data.origen,
-    Destino: props.data.destino,
-    Fecha: props.data.fecha,
-    Tipo: props.data.tipoDeReserva,
-    Seats: props.data.seats,
-    Phone: "",
-  })
+  const reservationData = useEmptyLegContext()
+  const updateContext = useUpdateEmptyLegContext()
+
+  const setPhone = input => {
+    updateContext({
+      ...reservationData,
+      Phone: input,
+    })
+  }
 
   // CONNECTION WITH NETLIFY ENDPOINT
   const encode = data => {
@@ -146,19 +153,17 @@ function ReservationModal(props) {
                   }}
                   country={"uy"}
                   value={reservationData.Phone}
-                  onChange={phone => {
-                    setReservationData({ ...reservationData, Phone: phone })
-                  }}
+                  onChange={phone => setPhone(phone)}
                 />
               </FormControl>
               <Box p="4" fontSize="sm" color="gray.500">
                 <Flex direction="column" mt="4">
                   <Flex mb="3">
-                    <Text mr="2">{props.data.origen}</Text>
+                    <Text mr="2">{reservationData.Origen}</Text>
                     <Box>
                       <ArrowForwardIcon mr="2" />
                     </Box>
-                    <Text>{props.data.destino}</Text>
+                    <Text>{reservationData.Destino}</Text>
                   </Flex>
                   <Flex mb="3">
                     <Image
@@ -168,9 +173,9 @@ function ReservationModal(props) {
                       mb="0"
                       mr="2"
                     />
-                    {props.data.fecha}
+                    {reservationData.Fecha}
                   </Flex>
-                  <Flex mb="3">{props.data.tipoDeReserva}</Flex>
+                  <Flex mb="3">{reservationData.Tipo}</Flex>
                   {props.pasajeros > 0 ? (
                     <Flex mb="3">
                       <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
@@ -178,7 +183,7 @@ function ReservationModal(props) {
                     </Flex>
                   ) : null}
                 </Flex>
-                {props.fechaVuelta ? (
+                {/* {props.fechaVuelta ? (
                   <Flex direction="column" mt="4">
                     <Flex mb="3">
                       <Text mr="2">{props.data.destino}</Text>
@@ -204,7 +209,7 @@ function ReservationModal(props) {
                       </Flex>
                     ) : null}
                   </Flex>
-                ) : null}
+                ) : null} */}
               </Box>
               ¡Gracias por elegirnos!
             </ModalBody>

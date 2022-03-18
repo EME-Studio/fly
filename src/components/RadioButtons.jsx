@@ -51,7 +51,8 @@ function RadioButtons({
   emptySeatPrecio,
   updateTipoDeReserva,
   updateSeats,
-  emptyLegReserva,
+  tipo,
+  seats,
 }) {
   // Radio buttons options
   const options = [
@@ -80,15 +81,11 @@ function RadioButtons({
             {value.includes("Empty Seat") ? (
               <FormControl isRequired>
                 <NumberInput
-                  isDisabled={
-                    emptyLegReserva.tipoDeReserva.includes("Empty Seat")
-                      ? false
-                      : true
-                  }
+                  isDisabled={tipo.includes("Empty Seat") ? false : true}
                   min={1}
                   id="pasajeros"
                   name="pasajeros"
-                  value={emptyLegReserva.seats}
+                  value={seats}
                   onChange={valueString => updateSeats(valueString)}
                   w="80px"
                   h="100%"
