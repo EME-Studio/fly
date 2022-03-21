@@ -287,7 +287,7 @@ function EmptyLegCard(props) {
                     seats={seats}
                   />
                   <Text fontSize="10px" color="gray.500" mt="12px">
-                    Indique si quiere el Avion entero o un Empty Sit y cuantos
+                    Indique si quiere el Avión entero o un Empty Sit y cuantos
                     serían.
                   </Text>
                 </Box>
