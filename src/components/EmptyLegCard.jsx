@@ -150,7 +150,7 @@ function EmptyLegCard(props) {
             <Text fontWeight="900">{props.destino}</Text>
           </Flex>
           <Flex direction={["column", "column", "row", "row", "row"]}>
-            <Flex direction="column" mr={10}>
+            <Flex direction="column" mr={[0, 0, 10, 10, 10]}>
               <Flex direction="row" mb="4">
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
                 <Text>{formatDateDay(props.fecha)}</Text>

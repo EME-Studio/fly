@@ -68,7 +68,7 @@ function RadioButtons({
   const group = getRootProps()
 
   return (
-    <VStack {...group} align="left" spacing="14px">
+    <VStack {...group} align="left" spacing="14px" width="100%">
       {options.map(value => {
         const radio = getRadioProps({ value })
         return (
