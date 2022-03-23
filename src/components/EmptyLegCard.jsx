@@ -120,6 +120,7 @@ function EmptyLegCard(props) {
       bgColor="white"
       border="1px"
       borderColor="gray.300"
+      display="relative"
     >
       <Flex
         direction={["column", "column", "column", "row", "row"]}
@@ -134,8 +135,9 @@ function EmptyLegCard(props) {
           w={["100%", "100%", "100%", "600px", "600px"]}
           mb={[6, 6, 6, 0, 0]}
           justifyContent="center"
+          h="250px"
         >
-          <Image src={selectPicture()} h="100%" />
+          <Image src={selectPicture()} />
         </Flex>
 
         <Flex
