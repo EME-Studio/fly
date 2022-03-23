@@ -183,7 +183,7 @@ function ReservationModal(props) {
                     </Flex>
                   ) : null}
                 </Flex>
-                {reservationData.Seats ? (
+                {reservationData.Tipo.includes("Seat") ? (
                   <Flex mb="3">
                     <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
                     {reservationData.Seats}
