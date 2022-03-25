@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 
+import { Formik, Field, Form, ErrorMessage } from "formik"
+
 // External libraries and helpers
 import { navigate } from "gatsby"
 import { formatDate } from "../helpers/dateHandler"
@@ -65,6 +67,11 @@ function ReservationModal(props) {
   }
 
   const handleSumbit = e => {
+    if (true == true) {
+      alert("a")
+      return
+    }
+
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -82,157 +89,119 @@ function ReservationModal(props) {
   // COMPONENT
   return (
     <Box>
-      <form
-        onSubmit={handleSumbit}
-        name="empty-leg"
-        id="empty-leg"
-        method="post"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-      >
-        <input type="hidden" name="form-name" value="empty-leg" />
-        <input type="hidden" name="bot-field" />
-        <Input
-          type="hidden"
-          name="Origen"
-          id="origen"
-          value={reservationData.Origen}
-        />
-        <Input
-          type="hidden"
-          name="Destino"
-          id="destino"
-          value={reservationData.Destino}
-        />
-        <Input
-          type="hidden"
-          name="Fecha"
-          id="fecha"
-          value={reservationData.Fecha}
-        />
-        <Input
-          type="hidden"
-          name="Tipo"
-          id="tipoDeViaje"
-          value={reservationData.Tipo}
-        />
-        <Input
-          type="hidden"
-          name="Seats"
-          id="seats"
-          value={reservationData.Seats}
-        />
-        <Input
-          type="hidden"
-          name="Phone"
-          id="phone"
-          value={reservationData.Phone}
-        />
-
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
-          <ModalContent borderRadius="none" bg="light" pb="8" px="4">
-            <ModalHeader py="10">
-              <Heading size="2xl" fontWeight="100" color="fly.main">
-                {props.title}
-              </Heading>
-            </ModalHeader>
-            <ModalCloseButton />
-            <Divider />
-            <ModalBody mt="4">
-              Dejanos tu celular y nos pondremos en contacto contigo por el
-              vuelo.
-              <FormControl mt="5" isRequired>
-                <FormLabel>Celular</FormLabel>
-                <PhoneInput
-                  inputProps={{
-                    id: "phone",
-                    name: "phone",
-                    required: true,
-                    autoFocus: true,
-                  }}
-                  country={"uy"}
-                  value={reservationData.Phone}
-                  onChange={phone => setPhone(phone)}
-                />
-              </FormControl>
-              <Box p="4" fontSize="sm" color="gray.500">
-                <Flex direction="column" mt="4">
-                  <Flex mb="3">
-                    <Text mr="2">{reservationData.Origen}</Text>
-                    <Box>
-                      <ArrowForwardIcon mr="2" />
-                    </Box>
-                    <Text>{reservationData.Destino}</Text>
-                  </Flex>
-                  <Flex mb="3">
-                    <Image
-                      src={CalendarioGris}
-                      bg="blue"
-                      width="20px"
-                      mb="0"
-                      mr="2"
-                    />
-                    {reservationData.Fecha}
-                  </Flex>
-                  <Flex mb="3">{reservationData.Tipo}</Flex>
-                  {props.pasajeros > 0 ? (
-                    <Flex mb="3">
-                      <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
-                      {props.data.pasajeros}
-                    </Flex>
-                  ) : null}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay bg="rgba(6, 63, 106, 0.4)" />
+        <ModalContent borderRadius="none" bg="light" pb="8" px="4">
+          <ModalHeader py="10">
+            <Heading size="2xl" fontWeight="100" color="fly.main">
+              {props.title}
+            </Heading>
+          </ModalHeader>
+          <ModalCloseButton />
+          <Divider />
+          <ModalBody mt="4">
+            Dejanos tu celular y nos pondremos en contacto contigo por el vuelo.
+            <Box p="4" fontSize="sm" color="gray.500">
+              <Flex direction="column" mt="4">
+                <Flex mb="3">
+                  <Text mr="2">{reservationData.Origen}</Text>
+                  <Box>
+                    <ArrowForwardIcon mr="2" />
+                  </Box>
+                  <Text>{reservationData.Destino}</Text>
                 </Flex>
-                {reservationData.Tipo.includes("Seat") ? (
+                <Flex mb="3">
+                  <Image
+                    src={CalendarioGris}
+                    bg="blue"
+                    width="20px"
+                    mb="0"
+                    mr="2"
+                  />
+                  {reservationData.Fecha}
+                </Flex>
+                <Flex mb="3">{reservationData.Tipo}</Flex>
+                {props.pasajeros > 0 ? (
                   <Flex mb="3">
                     <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
-                    {reservationData.Seats}
+                    {props.data.pasajeros}
                   </Flex>
                 ) : null}
-                {/* {props.fechaVuelta ? (
-                  <Flex direction="column" mt="4">
-                    <Flex mb="3">
-                      <Text mr="2">{props.data.destino}</Text>
-                      <Box>
-                        <ArrowForwardIcon mr="2" />
-                      </Box>
-                      <Text>{props.data.origen}</Text>
-                    </Flex>
-                    <Flex mb="3">
-                      <Image
-                        src={CalendarioGris}
-                        bg="blue"
-                        width="20px"
-                        mb="0"
-                        mr="2"
-                      />
-                      {formatDate(props.data.fechaVuelta)}
-                    </Flex>
-                    {props.data.pasajeros > 0 ? (
-                      <Flex mb="3">
-                        <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
-                        {props.data.pasajeros}
-                      </Flex>
-                    ) : null}
-                  </Flex>
-                ) : null} */}
-              </Box>
-              ¡Gracias por elegirnos!
-            </ModalBody>
+              </Flex>
+              {reservationData.Tipo.includes("Seat") ? (
+                <Flex mb="3">
+                  <Image src={PasajeroGris} width="20px" mb="0" mr="2" />
+                  {reservationData.Seats}
+                </Flex>
+              ) : null}
+            </Box>
+            ¡Gracias por elegirnos!
+          </ModalBody>
+          <ModalFooter>
+            <Formik
+              initialValues={{
+                Origen: reservationData.Origen,
+                Destino: reservationData.Destino,
+                Fecha: reservationData.Fecha,
+                Nombre: reservationData.Nombre,
+                Apellido: reservationData.Apellido,
+                Email: reservationData.Email,
+                Phone: reservationData.Phone,
+              }}
+              onSubmit={data => {
+                console.log(data)
+              }}
+            >
+              {props => (
+                <Form
+                  name="empty-leg"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                >
+                  <Field type="hidden" name="form-name" value="empty-leg" />
+                  <Field type="hidden" name="bot-field" />
 
-            <ModalFooter>
-              <Button
-                form="empty-leg"
-                type="submit"
-                onClick={onClose}
-                variant="accentSolid"
-              >
-                Enviar
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </form>
+                  <Field type="hidden" name="Origen" id="Origen" />
+                  <Field type="hidden" name="Destino" id="Destino" />
+                  <Field type="hidden" name="Fecha" id="Fecha" />
+                  <Field type="hidden" name="Tipo" id="Tipo" />
+                  <Field type="hidden" name="Seats" id="Seats" />
+                  {/* <Field type="hidden" name="" id="Phone" /> */}
+
+                  <FormLabel>Celular</FormLabel>
+
+                  <Field name="Phone">
+                    {({ field, form }) => (
+                      <FormControl
+                        isInvalid={form.errors.Phone && form.touched.Phone}
+                      >
+                        <PhoneInput
+                          inputProps={{
+                            ...field,
+                            id: "Phone",
+                            // autoFocus: true,
+                          }}
+                          country={"uy"}
+                          // onChange={phone => setPhone(phone)}
+                        />
+                      </FormControl>
+                    )}
+                  </Field>
+
+                  <Button
+                    type="submit"
+                    onClick={onClose}
+                    variant="accentSolid"
+                    isLoading={props.isSubmitting}
+                  >
+                    Enviar
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   )
 }
