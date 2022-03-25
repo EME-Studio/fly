@@ -37,6 +37,7 @@ import {
   Divider,
   Heading,
   useDisclosure,
+  FormErrorMessage,
 } from "@chakra-ui/react"
 
 // Internal data
@@ -84,6 +85,16 @@ function ReservationModal(props) {
       .catch(error => alert(error))
 
     e.preventDefault()
+  }
+
+  function validatePhone(value) {
+    let error
+    if (!value) {
+      error = "Es necesario introducir un número de teléfono"
+    } else if (value.toLowerCase() !== "naruto") {
+      error = "Jeez! You're not a fan 😱"
+    }
+    return error
   }
 
   // COMPONENT
@@ -166,24 +177,22 @@ function ReservationModal(props) {
                   <Field type="hidden" name="Fecha" id="Fecha" />
                   <Field type="hidden" name="Tipo" id="Tipo" />
                   <Field type="hidden" name="Seats" id="Seats" />
-                  {/* <Field type="hidden" name="" id="Phone" /> */}
 
-                  <FormLabel>Celular</FormLabel>
-
-                  <Field name="Phone">
+                  <Field name="Phone" validate={validatePhone}>
                     {({ field, form }) => (
                       <FormControl
                         isInvalid={form.errors.Phone && form.touched.Phone}
                       >
+                        <FormLabel htmlFor="Phone">Celular</FormLabel>
                         <PhoneInput
                           inputProps={{
                             ...field,
                             id: "Phone",
-                            // autoFocus: true,
+                            autoFocus: true,
                           }}
                           country={"uy"}
-                          // onChange={phone => setPhone(phone)}
                         />
+                        <FormErrorMessage>{form.errors.Phone}</FormErrorMessage>
                       </FormControl>
                     )}
                   </Field>
