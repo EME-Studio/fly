@@ -22,6 +22,7 @@ import { handleManana, handleSpaces } from "../helpers/stringHandler"
 import CalendarioGris from "../images/icons/calendariogris.png"
 import CalendarioNegro from "../images/icons/calendarionegro.png"
 import RelojNegro from "../images/icons/relojnegro.png"
+import RelojGris from "../images/icons/relojgris.png"
 import Precio from "../images/icons/precio.png"
 import Flecha from "../images/icons/flecha.png"
 import AvionBimotor from "../images/iconsAviones/AvionBimotor.png"
@@ -159,7 +160,7 @@ function EmptyLegCard(props) {
             <Flex direction="column" mr={[0, 0, 10, 10, 10]}>
               <Flex direction="row" mb="4">
                 <Image
-                  src={verMas ? CalendarioNegro : CalendarioGris}
+                  src={[verMas ? CalendarioNegro : CalendarioGris]}
                   width="20px"
                   mb="0"
                   mr="2"
@@ -245,7 +246,7 @@ function EmptyLegCard(props) {
                     verMas ? "block" : "none",
                     verMas ? "block" : "none",
                   ]}
-                  src={RelojNegro}
+                  src={verMas ? RelojNegro : RelojGris}
                   width="20px"
                   height="20px"
                   mb="0"
