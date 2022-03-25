@@ -133,7 +133,7 @@ function EmptyLegCard(props) {
           bgColor="fly.main"
           borderRadius="50"
           p={14}
-          mr={10}
+          mr={[0, 0, 0, 10, 10]}
           w={["100%", "100%", "100%", "600px", "600px"]}
           mb={[6, 6, 6, 0, 0]}
           justifyContent="center"
