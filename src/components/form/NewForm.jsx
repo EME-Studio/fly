@@ -254,7 +254,6 @@ function NewForm({ soloIda }) {
                     startDate={flightData.fechaIda}
                     endDate={flightData.fechaVuelta}
                     minDate={new Date()}
-                    // onFocus={e => (e.target.readOnly = true)}
                     ref={pickerRef1}
                     customInput={
                       <Input
@@ -307,7 +306,6 @@ function NewForm({ soloIda }) {
                     startDate={flightData.fechaIda}
                     endDate={flightData.fechaVuelta}
                     minDate={flightData.fechaIda}
-                    // onFocus={e => (e.target.readOnly = true)}
                     ref={pickerRef2}
                     customInput={
                       <Input

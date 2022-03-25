@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import {
   Box,
   VStack,
@@ -11,7 +11,9 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   FormControl,
+  Input,
 } from "@chakra-ui/react"
+import { isMobile } from "react-device-detect"
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
@@ -67,6 +69,18 @@ function RadioButtons({
 
   const group = getRootProps()
 
+  // IPHONE KEYBOARD FIX
+  const pickerRef1 = useRef(null)
+  useEffect(() => {
+    if (
+      isMobile &&
+      pickerRef1.current == undefined &&
+      pickerRef1.current !== null
+    ) {
+      pickerRef1.current.input.readOnly = true
+    }
+  }, [isMobile, pickerRef1])
+
   return (
     <VStack {...group} align="left" spacing="14px" width="100%">
       {options.map(value => {
@@ -81,6 +95,7 @@ function RadioButtons({
             {value.includes("Empty Seat") ? (
               <FormControl isRequired maxW="100px">
                 <NumberInput
+                  ref={pickerRef1}
                   isDisabled={tipo.includes("Empty Seat") ? false : true}
                   min={1}
                   id="pasajeros"
