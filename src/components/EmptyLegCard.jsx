@@ -19,6 +19,7 @@ import ReservationModal from "./ReservationModal"
 
 import { handleManana, handleSpaces } from "../helpers/stringHandler"
 
+import CalendarioGris from "../images/icons/calendariogris.png"
 import CalendarioNegro from "../images/icons/calendarionegro.png"
 import RelojNegro from "../images/icons/relojnegro.png"
 import Precio from "../images/icons/precio.png"
@@ -157,7 +158,12 @@ function EmptyLegCard(props) {
           <Flex direction={["column", "column", "row", "row", "row"]}>
             <Flex direction="column" mr={[0, 0, 10, 10, 10]}>
               <Flex direction="row" mb="4">
-                <Image src={CalendarioNegro} width="20px" mb="0" mr="2" />
+                <Image
+                  src={verMas ? CalendarioNegro : CalendarioGris}
+                  width="20px"
+                  mb="0"
+                  mr="2"
+                />
                 <Text>{formatDateDay(props.fecha)}</Text>
               </Flex>
               <Flex
