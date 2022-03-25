@@ -69,31 +69,35 @@ function ReservationModal(props) {
       .join("&")
   }
 
-  const handleSumbit = e => {
-    if (true == true) {
-      alert("a")
-      return
-    }
+  // const handleSumbit = e => {
+  //   if (true == true) {
+  //     alert("a")
+  //     return
+  //   }
 
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": e.target.getAttribute("name"),
-        ...reservationData,
-      }),
-    })
-      .then(() => navigate("/gracias"))
-      .catch(error => alert(error))
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: encode({
+  //       "form-name": e.target.getAttribute("name"),
+  //       ...reservationData,
+  //     }),
+  //   })
+  //     .then(() => navigate("/gracias"))
+  //     .catch(error => alert(error))
 
-    e.preventDefault()
-  }
+  //   e.preventDefault()
+  // }
 
   function validatePhone(value) {
     let error
-    if (!value) {
+    if (value == null) {
       error = "Es necesario introducir un número de teléfono"
     }
+    if (value.length < 5) {
+      error = "Es necesario introducir un número de teléfono"
+    }
+
     return error
   }
 
@@ -161,6 +165,7 @@ function ReservationModal(props) {
               enableReinitialize={true}
               onSubmit={data => {
                 console.log(data)
+                onClose()
               }}
             >
               {props => (
@@ -179,7 +184,7 @@ function ReservationModal(props) {
                   <Field type="hidden" name="Seats" id="Seats" />
 
                   <Field name="Phone" validate={validatePhone}>
-                    {({ form }) => (
+                    {({ field, form }) => (
                       <FormControl
                         isInvalid={form.errors.Phone && form.touched.Phone}
                       >
@@ -201,12 +206,7 @@ function ReservationModal(props) {
                     )}
                   </Field>
 
-                  <Button
-                    type="submit"
-                    onClick={onClose}
-                    variant="accentSolid"
-                    isLoading={props.isSubmitting}
-                  >
+                  <Button type="submit" variant="accentSolid">
                     Enviar
                   </Button>
                 </Form>
