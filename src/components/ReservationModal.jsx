@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 
-import { Formik, Field, Form, ErrorMessage } from "formik"
+import { Formik, Field, Form, ErrorMessage, setValues, values } from "formik"
+
+import startsWith from "lodash.startswith"
 
 // External libraries and helpers
 import { navigate } from "gatsby"
@@ -91,8 +93,6 @@ function ReservationModal(props) {
     let error
     if (!value) {
       error = "Es necesario introducir un número de teléfono"
-    } else if (value.toLowerCase() !== "naruto") {
-      error = "Jeez! You're not a fan 😱"
     }
     return error
   }
@@ -157,8 +157,8 @@ function ReservationModal(props) {
                 Nombre: reservationData.Nombre,
                 Apellido: reservationData.Apellido,
                 Email: reservationData.Email,
-                Phone: reservationData.Phone,
               }}
+              enableReinitialize={true}
               onSubmit={data => {
                 console.log(data)
               }}
@@ -179,18 +179,22 @@ function ReservationModal(props) {
                   <Field type="hidden" name="Seats" id="Seats" />
 
                   <Field name="Phone" validate={validatePhone}>
-                    {({ field, form }) => (
+                    {({ form }) => (
                       <FormControl
                         isInvalid={form.errors.Phone && form.touched.Phone}
                       >
                         <FormLabel htmlFor="Phone">Celular</FormLabel>
                         <PhoneInput
                           inputProps={{
-                            ...field,
+                            name: "Phone",
                             id: "Phone",
                             autoFocus: true,
                           }}
+                          value={null}
                           country={"uy"}
+                          onChange={(phoneNumber, country, e) => {
+                            props.setFieldValue("Phone", e.target.value)
+                          }}
                         />
                         <FormErrorMessage>{form.errors.Phone}</FormErrorMessage>
                       </FormControl>
