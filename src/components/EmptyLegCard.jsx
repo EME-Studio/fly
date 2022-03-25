@@ -19,8 +19,8 @@ import ReservationModal from "./ReservationModal"
 
 import { handleManana, handleSpaces } from "../helpers/stringHandler"
 
-import { ArrowForwardIcon } from "@chakra-ui/icons"
 import CalendarioGris from "../images/icons/calendariogris.png"
+import Reloj from "../images/icons/reloj.png"
 import Precio from "../images/icons/precio.png"
 import Flecha from "../images/icons/flecha.png"
 import AvionBimotor from "../images/iconsAviones/AvionBimotor.png"
@@ -125,6 +125,8 @@ function EmptyLegCard(props) {
       <Flex
         direction={["column", "column", "column", "row", "row"]}
         transition="1s"
+        justifyContent="center"
+        alignItems="center"
       >
         <Flex
           flexDirection="column"
@@ -135,6 +137,7 @@ function EmptyLegCard(props) {
           w={["100%", "100%", "100%", "600px", "600px"]}
           mb={[6, 6, 6, 0, 0]}
           justifyContent="center"
+          alignItems="center"
           h="250px"
         >
           <Image src={selectPicture()} h="100%" objectFit="contain" />
@@ -212,6 +215,7 @@ function EmptyLegCard(props) {
                 direction="row"
                 mb="4"
                 transition="1s"
+                alignItems="center"
                 visibility={[
                   "visible",
                   "visible",
@@ -235,8 +239,9 @@ function EmptyLegCard(props) {
                     verMas ? "block" : "none",
                     verMas ? "block" : "none",
                   ]}
-                  src={CalendarioGris}
+                  src={Reloj}
                   width="20px"
+                  height="20px"
                   mb="0"
                   mr="2"
                 />

@@ -36,8 +36,8 @@ function RadioCard(props) {
         _focus={{
           boxShadow: "outline",
         }}
-        px={3}
-        py={1}
+        px={[4, 4, 3, 2, 2]}
+        py={[4, 4, 3, 2, 2]}
       >
         {props.children}
       </Box>
