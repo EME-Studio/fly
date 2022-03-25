@@ -70,16 +70,16 @@ function RadioButtons({
   const group = getRootProps()
 
   // IPHONE KEYBOARD FIX
-  const pickerRef1 = useRef(null)
-  useEffect(() => {
-    if (
-      isMobile &&
-      pickerRef1.current == undefined &&
-      pickerRef1.current !== null
-    ) {
-      pickerRef1.current.input.readOnly = true
-    }
-  }, [isMobile, pickerRef1])
+  // const pickerRef1 = useRef(null)
+  // useEffect(() => {
+  //   if (
+  //     isMobile &&
+  //     pickerRef1.current == undefined &&
+  //     pickerRef1.current !== null
+  //   ) {
+  //     pickerRef1.current.input.readOnly = true
+  //   }
+  // }, [isMobile, pickerRef1])
 
   return (
     <VStack {...group} align="left" spacing="14px" width="100%">
@@ -95,7 +95,7 @@ function RadioButtons({
             {value.includes("Empty Seat") ? (
               <FormControl isRequired maxW="100px">
                 <NumberInput
-                  ref={pickerRef1}
+                  // ref={pickerRef1}
                   isDisabled={tipo.includes("Empty Seat") ? false : true}
                   min={1}
                   id="pasajeros"
