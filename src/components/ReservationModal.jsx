@@ -134,7 +134,7 @@ function ReservationModal(props) {
           <ModalContent borderRadius="none" bg="light" pb="8" px="4">
             <ModalHeader py="10">
               <Heading size="2xl" fontWeight="100" color="fly.main">
-                {props.title}
+                Empty Leg
               </Heading>
             </ModalHeader>
             <ModalCloseButton />
