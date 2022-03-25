@@ -137,7 +137,7 @@ function EmptyLegCard(props) {
           justifyContent="center"
           h="250px"
         >
-          <Image src={selectPicture()} />
+          <Image src={selectPicture()} h="100%" objectFit="contain" />
         </Flex>
 
         <Flex
