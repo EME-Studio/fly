@@ -32,7 +32,6 @@ import {
   Text,
   FormControl,
   FormLabel,
-  Input,
   Flex,
   Box,
   Image,
@@ -46,6 +45,7 @@ import {
 import { ArrowForwardIcon } from "@chakra-ui/icons"
 import PasajeroGris from "../images/icons/personagris.png"
 import CalendarioGris from "../images/icons/calendariogris.png"
+import FormikEmptyLeg from "./FormikEmptyLeg"
 
 function ReservationModal(props) {
   // MODAL STATE HANDLING
@@ -53,21 +53,13 @@ function ReservationModal(props) {
 
   // FORM DATA HANDLING
   const reservationData = useEmptyLegContext()
-  const updateContext = useUpdateEmptyLegContext()
 
-  const setPhone = input => {
-    updateContext({
-      ...reservationData,
-      Phone: input,
-    })
-  }
-
-  // CONNECTION WITH NETLIFY ENDPOINT
-  const encode = data => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
-  }
+  // // CONNECTION WITH NETLIFY ENDPOINT
+  // const encode = data => {
+  //   return Object.keys(data)
+  //     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+  //     .join("&")
+  // }
 
   // const handleSumbit = e => {
   //   if (true == true) {
@@ -88,18 +80,6 @@ function ReservationModal(props) {
 
   //   e.preventDefault()
   // }
-
-  function validatePhone(value) {
-    let error
-    if (value == null) {
-      error = "Es necesario introducir un número de teléfono"
-    }
-    if (value.length < 5) {
-      error = "Es necesario introducir un número de teléfono"
-    }
-
-    return error
-  }
 
   // COMPONENT
   return (
@@ -153,65 +133,7 @@ function ReservationModal(props) {
             ¡Gracias por elegirnos!
           </ModalBody>
           <ModalFooter>
-            <Formik
-              initialValues={{
-                Origen: reservationData.Origen,
-                Destino: reservationData.Destino,
-                Fecha: reservationData.Fecha,
-                Nombre: reservationData.Nombre,
-                Apellido: reservationData.Apellido,
-                Email: reservationData.Email,
-              }}
-              enableReinitialize={true}
-              onSubmit={data => {
-                console.log(data)
-                onClose()
-              }}
-            >
-              {props => (
-                <Form
-                  name="empty-leg"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
-                >
-                  <Field type="hidden" name="form-name" value="empty-leg" />
-                  <Field type="hidden" name="bot-field" />
-
-                  <Field type="hidden" name="Origen" id="Origen" />
-                  <Field type="hidden" name="Destino" id="Destino" />
-                  <Field type="hidden" name="Fecha" id="Fecha" />
-                  <Field type="hidden" name="Tipo" id="Tipo" />
-                  <Field type="hidden" name="Seats" id="Seats" />
-
-                  <Field name="Phone" validate={validatePhone}>
-                    {({ field, form }) => (
-                      <FormControl
-                        isInvalid={form.errors.Phone && form.touched.Phone}
-                      >
-                        <FormLabel htmlFor="Phone">Celular</FormLabel>
-                        <PhoneInput
-                          inputProps={{
-                            name: "Phone",
-                            id: "Phone",
-                            autoFocus: true,
-                          }}
-                          value={null}
-                          country={"uy"}
-                          onChange={(phoneNumber, country, e) => {
-                            props.setFieldValue("Phone", e.target.value)
-                          }}
-                        />
-                        <FormErrorMessage>{form.errors.Phone}</FormErrorMessage>
-                      </FormControl>
-                    )}
-                  </Field>
-
-                  <Button type="submit" variant="accentSolid">
-                    Enviar
-                  </Button>
-                </Form>
-              )}
-            </Formik>
+            <FormikEmptyLeg />
           </ModalFooter>
         </ModalContent>
       </Modal>

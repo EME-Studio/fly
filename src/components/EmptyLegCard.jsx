@@ -60,7 +60,7 @@ function EmptyLegCard(props) {
       Fecha: props.fecha,
       Tipo: tipo,
       Seats: seats,
-      Phone: "",
+      Phone: null,
     })
   }
 

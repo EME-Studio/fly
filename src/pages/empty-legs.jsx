@@ -83,7 +83,7 @@ function EmptyLegs() {
             })}
           </Box>
         </Box>
-        <ReservationModal />
+        <ReservationModal title="Empty Leg" />
       </EmptyLegContextProvider>
     </Layout>
   )
