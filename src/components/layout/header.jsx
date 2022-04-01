@@ -57,8 +57,6 @@ const Header = ({ siteTitle, conColor }) => {
           ? "static"
           : ["absolute", "absolute", "absolute", "fixed", "fixed"]
       }
-      // left="0"
-      // right="0"
       bgColor={conColor ? "white" : null}
     >
       <Container maxW="container.xl" py="0 !important">
@@ -93,6 +91,14 @@ const Header = ({ siteTitle, conColor }) => {
               fontSize="sm"
             >
               COTIZAR VUELO
+            </Link>
+            <Link
+              as={GatsbyLink}
+              to="/empty-legs"
+              color={conColor ? "fly.main" : "white"}
+              fontSize="sm"
+            >
+              EMPTY LEGS
             </Link>
             <IconButton
               icon={<HamburgerIcon color={conColor ? "fly.main" : "white"} />}
@@ -175,6 +181,15 @@ const Header = ({ siteTitle, conColor }) => {
                   mb="10px"
                 >
                   COTIZAR VUELO
+                </Link>
+                <Link
+                  as={GatsbyLink}
+                  to="/empty-legs"
+                  color="white"
+                  fontSize="xl"
+                  mb="10px"
+                >
+                  EMPTY LEGS
                 </Link>
                 {/* <Link
                   as={GatsbyLink}

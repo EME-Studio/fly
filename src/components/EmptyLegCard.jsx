@@ -4,20 +4,14 @@ import {
   Container,
   Box,
   Flex,
-  Img,
   Text,
   Spacer,
   Image,
   Button,
-  useDisclosure,
-  TagRightIcon,
-  TagLabel,
-  Tag,
 } from "@chakra-ui/react"
 import RadioButtons from "./RadioButtons"
-import ReservationModal from "./ReservationModal"
 
-import { handleManana, handleSpaces } from "../helpers/stringHandler"
+import { handleSpaces } from "../helpers/stringHandler"
 
 import CalendarioGris from "../images/icons/calendariogris.png"
 import CalendarioNegro from "../images/icons/calendarionegro.png"
@@ -34,12 +28,10 @@ import JetPrivadoMediano from "../images/iconsAviones/JetPrivadoMediano.png"
 import JetPrivadoPequeno from "../images/iconsAviones/JetPrivadoPequeño.png"
 import TurboheliceBimotor from "../images/iconsAviones/TurboheliceBimotor.png"
 import TurboheliceMonomotor from "../images/iconsAviones/TurboheliceMonomotor.png"
-import AvionDespega from "../images/icons/aviondespega.png"
 
 import { formatDateDay } from "../helpers/dateHandler"
 
 import {
-  useEmptyLegContext,
   useUpdateEmptyLegContext,
   useModalContext,
 } from "../contexts/EmptyLegContext"
@@ -261,7 +253,7 @@ function EmptyLegCard(props) {
                     verMas ? "block" : "none",
                   ]}
                 >
-                  Por la {handleManana(props.horario)}
+                  Por la {props.horario}
                 </Text>
               </Flex>
 
