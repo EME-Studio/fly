@@ -37,14 +37,14 @@ import AvionDespega from "../images/icons/aviondespega.png"
 import { formatDateDay } from "../helpers/dateHandler"
 
 import {
-  useEmptyLegContext,
-  useUpdateEmptyLegContext,
+  useReservationContext,
+  useUpdateReservationContext,
   useModalContext,
-} from "../contexts/EmptyLegContext"
+} from "../contexts/ReservationContext"
 
 function EmptyLegCard(props) {
   const { onOpen } = useModalContext()
-  const updateContext = useUpdateEmptyLegContext()
+  const updateContext = useUpdateReservationContext()
 
   const [tipo, setTipo] = useState("")
   const [seats, setSeats] = useState("")
@@ -53,14 +53,13 @@ function EmptyLegCard(props) {
 
   function handleClick() {
     onOpen()
-    formatDateDay(props.fecha)
     updateContext({
-      Origen: props.origen,
-      Destino: props.destino,
-      Fecha: props.fecha,
-      Tipo: tipo,
-      Seats: seats,
-      Phone: null,
+      origen: props.origen,
+      destino: props.destino,
+      fechaIda: props.fechaIda,
+      tipo: tipo,
+      seats: seats,
+      phone: null,
     })
   }
 
@@ -155,7 +154,7 @@ function EmptyLegCard(props) {
             <Flex direction="column" mr={[0, 0, 10, 10, 10]}>
               <Flex direction="row" mb="4">
                 <Image src={CalendarioGris} width="20px" mb="0" mr="2" />
-                <Text>{formatDateDay(props.fecha)}</Text>
+                <Text>{formatDateDay(props.fechaIda)}</Text>
               </Flex>
               <Flex
                 direction="row"

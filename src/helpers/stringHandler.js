@@ -1,13 +1,17 @@
 const handleManana = str => {
-  const newStr = (str = "manana" ? "mañana" : str)
+  if (str) {
+    const newStr = (str = "manana" ? "mañana" : str)
 
-  return newStr
+    return newStr
+  }
 }
 
 const handleSpaces = str => {
-  const newStr = str.replace(/([A-Z])/g, " $1").trim()
+  if (str) {
+    const newStr = str.replace(/([A-Z])/g, " $1").trim()
 
-  return newStr
+    return newStr
+  }
 }
 
 export { handleManana, handleSpaces }

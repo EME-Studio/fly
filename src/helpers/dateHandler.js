@@ -1,13 +1,15 @@
 export const formatDate = date => {
-  let d = new Date(date),
-    month = "" + (d.getMonth() + 1),
-    day = "" + d.getDate(),
-    year = d.getFullYear()
+  if (date) {
+    let d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear()
 
-  if (month.length < 2) month = "0" + month
-  if (day.length < 2) day = "0" + day
+    if (month.length < 2) month = "0" + month
+    if (day.length < 2) day = "0" + day
 
-  return [year, month, day].join("-")
+    return [day, month, year].join("/")
+  }
 }
 
 const dates = [
@@ -21,14 +23,22 @@ const dates = [
 ]
 
 export const formatDateDay = date => {
-  let dateString = date
-  let dateParts = dateString.split("/")
+  if (date) {
+    let dateString = date
+    let dateParts = dateString.split("/")
 
-  let formattedDate = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0])
+    let formattedDate = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0])
 
-  return `${dates[formattedDate.getDay() - 1]}  ${dateParts[0]}/${dateParts[1]}`
+    return `${dates[formattedDate.getDay() - 1]}  ${dateParts[0]}/${
+      dateParts[1]
+    }`
+  }
 }
 
 export const formatDateDayFromObject = date => {
-  return `${dates[date.getDay() - 1]}  ${date.getDate()}/${date.getMonth() + 1}`
+  if (date) {
+    return `${dates[date.getDay() - 1]}  ${date.getDate()}/${
+      date.getMonth() + 1
+    }`
+  }
 }

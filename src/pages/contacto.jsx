@@ -3,7 +3,7 @@ import * as React from "react"
 // Internal components
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
-import ContactForm from "../components/form/ContactForm"
+import ContactForm from "../components/ContactForm"
 
 // Chakra-ui components
 import {
@@ -14,10 +14,6 @@ import {
   Grid,
   Text,
   Divider,
-  FormControl,
-  FormLabel,
-  Input,
-  FormHelperText,
   Image,
   Link,
 } from "@chakra-ui/react"
@@ -26,7 +22,6 @@ import {
 import { PhoneIcon, EmailIcon } from "@chakra-ui/icons"
 import InstagramIcon from "../images/icons/instagram.png"
 import FacebookIcon from "../images/icons/facebook.png"
-import LinkedinIcon from "../images/icons/linkedin.png"
 
 const Contacto = () => (
   <Layout displayHeader={true} headerRojo={true}>
@@ -87,9 +82,6 @@ const Contacto = () => (
                   mr="2"
                 />
               </Link>
-              {/* <Link>
-                <Image src={LinkedinIcon} boxSize="25px" objectFit="contain" />
-              </Link> */}
             </Flex>
           </Box>
           <Box>

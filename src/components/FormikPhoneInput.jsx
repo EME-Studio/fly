@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 
-import { Field, ErrorMessage, useField, setFieldValue } from "formik"
+import { Field, ErrorMessage, useField } from "formik"
 
-// Mobile phone input imports
+import { Box } from "@chakra-ui/react"
 import PhoneInput from "react-phone-input-2"
 import "react-phone-input-2/lib/style.css"
 
@@ -10,8 +10,8 @@ const FormikPhoneInput = ({ label, ...props }) => {
   const [field] = useField(props)
 
   useEffect(() => {
-    props.setValue("Phone", "+598 ")
-  }, [])
+    props.setValue("phone", "+598 ")
+  }, [props])
 
   return (
     <Field name={props.name}>
@@ -24,7 +24,7 @@ const FormikPhoneInput = ({ label, ...props }) => {
               ...field,
               ...props,
             }}
-            onChange={phone => props.setValue("Phone", `+${phone} `)}
+            onChange={phone => props.setValue("phone", `+${phone} `)}
             country={"uy"}
             type="tel"
             preferredCountries={[
@@ -39,7 +39,9 @@ const FormikPhoneInput = ({ label, ...props }) => {
               "us",
             ]}
           />
-          <ErrorMessage name={props.name} component="span" />
+          <Box mt={2} mb={4} color="red" fontSize="sm">
+            <ErrorMessage name={props.name} component="span" />
+          </Box>
         </div>
       )}
     </Field>

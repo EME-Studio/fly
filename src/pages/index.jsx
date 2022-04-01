@@ -3,95 +3,101 @@ import * as React from "react"
 import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 
-import { useState } from "react"
-
 import { FormProvider } from "../contexts/FormContext"
-import NewForm from "../components/form/NewForm"
+import Cotizador from "../components/Cotizador"
 
-import { Heading, Flex, Box, Button, Container } from "@chakra-ui/react"
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react"
+import {
+  Heading,
+  Flex,
+  Box,
+  Container,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react"
 
 import Avion from "../images/avion_fly.jpeg"
 
+import { ReservationContextProvider } from "../contexts/ReservationContext"
+import ReservationModal from "../components/ReservationModal"
+
 const IndexPage = () => {
-  // Set basic leg form quantity
-  const [legs, setLegs] = useState([1, 2])
-
-  // Add leg form
-  function agregarVuelo() {
-    setLegs([...legs, `${legs.length + 1}`])
-  }
-
   return (
     <FormProvider>
-      <Layout displayHeader={true} headerRojo={false}>
-        <Seo title="Home" />
+      <ReservationContextProvider>
+        <Layout displayHeader={true} headerRojo={false}>
+          <Seo title="Home" />
 
-        <Box
-          w="full"
-          h="100%"
-          bgImage={Avion}
-          bgSize="cover"
-          bgPosition="center center"
-          bgRepeat="no-repeat"
-          bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
-        >
-          <Flex
+          <ReservationModal title="Cotizar Vuelo" />
+
+          <Box
+            w="full"
             h="100%"
-            w="100%"
-            bg="linear-gradient(180deg, rgba(6,63,106,0.9) 0%, rgba(6,63,106,0.4) 100%)"
-            direction="column"
-            align="center"
-            justifyContent="center"
+            bgImage={Avion}
+            bgSize="cover"
+            bgPosition="center center"
+            bgRepeat="no-repeat"
+            bgAttachment={["scroll", "scroll", "scroll", "fixed", "fixed"]}
           >
-            <Container
-              maxW="container.xl"
-              mt={["80px", "10vh", "10vh", "10vh", "10vh"]}
-              centerContent
+            <Flex
+              h="100%"
+              w="100%"
+              bg="linear-gradient(180deg, rgba(6,63,106,0.9) 0%, rgba(6,63,106,0.4) 100%)"
+              direction="column"
+              align="center"
+              justifyContent="center"
             >
-              <Heading
-                as="h1"
-                size="3xl"
-                display={["none", "none", "flex", "flex", "flex"]}
-                align="center"
-                m="10"
-                color="white"
+              <Container
+                maxW="container.xl"
+                mt={["80px", "10vh", "10vh", "10vh", "10vh"]}
+                centerContent
               >
-                Tu libertad, nuestro servicio
-              </Heading>
-              <Tabs variant="unstyled" color="white">
-                <TabList>
-                  <Tab
-                    _selected={{
-                      borderBottom: "2px",
-                      borderColor: "fly.accent",
-                    }}
-                  >
-                    SOLO IDA
-                  </Tab>
-                  <Tab
-                    _selected={{
-                      borderBottom: "2px",
-                      borderColor: "fly.accent",
-                    }}
-                  >
-                    IDA Y VUELTA
-                  </Tab>
-                </TabList>
+                <Heading
+                  as="h1"
+                  size="3xl"
+                  display={["none", "none", "flex", "flex", "flex"]}
+                  align="center"
+                  m="10"
+                  color="white"
+                >
+                  Tu libertad, nuestro servicio
+                </Heading>
+                <Tabs variant="unstyled" color="white">
+                  <TabList>
+                    <Tab
+                      _selected={{
+                        borderBottom: "2px",
+                        borderColor: "fly.accent",
+                      }}
+                    >
+                      SOLO IDA
+                    </Tab>
+                    <Tab
+                      _selected={{
+                        borderBottom: "2px",
+                        borderColor: "fly.accent",
+                      }}
+                    >
+                      IDA Y VUELTA
+                    </Tab>
+                  </TabList>
 
-                <TabPanels>
-                  <TabPanel align="right" px="0">
-                    <NewForm soloIda={true} />
-                  </TabPanel>
-                  <TabPanel align="right" px="0">
-                    <NewForm soloIda={false} />
-                  </TabPanel>
-                </TabPanels>
-              </Tabs>
-            </Container>
-          </Flex>
-        </Box>
-      </Layout>
+                  <TabPanels>
+                    <TabPanel align="right" px="0">
+                      <Cotizador soloIda={true} />
+                    </TabPanel>
+                    <TabPanel align="right" px="0">
+                      <Cotizador soloIda={false} />
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
+              </Container>
+            </Flex>
+          </Box>
+        </Layout>
+      </ReservationContextProvider>
     </FormProvider>
   )
 }

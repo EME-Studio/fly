@@ -1,21 +1,15 @@
-import React, { useContext } from "react"
+import React from "react"
 import useEmptyLegs from "../hooks/useEmptyLegs"
 
-import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
+import Layout from "../components/layout/layout"
 import EmptyLegCard from "../components/EmptyLegCard"
 
-import {
-  EmptyLegContextProvider,
-  useEmptyLegContext,
-  useUpdateEmptyLegContext,
-  useModalContext,
-} from "../contexts/EmptyLegContext"
-
 import { Box, Flex } from "@chakra-ui/react"
-
-import Avion from "../images/avion_fly.jpeg"
 import ReservationModal from "../components/ReservationModal"
+import Avion from "../images/avion_fly.jpeg"
+
+import { ReservationContextProvider } from "../contexts/ReservationContext"
 
 function EmptyLegs() {
   // Call strapi data
@@ -40,7 +34,7 @@ function EmptyLegs() {
 
   return (
     <Layout displayHeader={true} headerRojo={false}>
-      <EmptyLegContextProvider>
+      <ReservationContextProvider>
         <Seo title="Empty Legs" />
 
         <Box
@@ -71,7 +65,7 @@ function EmptyLegs() {
                   key={emptyLeg.id}
                   origen={emptyLeg.attributes.AeropuertoDeOrigen}
                   destino={emptyLeg.attributes.AeropuertoDeDestino}
-                  fecha={dateFormat(emptyLeg.attributes.FechaDeSalida)}
+                  fechaIda={dateFormat(emptyLeg.attributes.FechaDeSalida)}
                   tipoDeAvion={emptyLeg.attributes.TipoDeAvion}
                   emptyLegPrecio={emptyLeg.attributes.PrecioEmptyLeg}
                   emptySeatCantidad={emptyLeg.attributes.CantidadEmptySeats}
@@ -84,7 +78,7 @@ function EmptyLegs() {
           </Box>
         </Box>
         <ReservationModal title="Empty Leg" />
-      </EmptyLegContextProvider>
+      </ReservationContextProvider>
     </Layout>
   )
 }
