@@ -253,7 +253,7 @@ function EmptyLegCard(props) {
                     verMas ? "block" : "none",
                   ]}
                 >
-                  Por la {props.horario}
+                  {props.horario}
                 </Text>
               </Flex>
 
