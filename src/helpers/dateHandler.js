@@ -11,13 +11,13 @@ export const formatDate = date => {
 }
 
 const dates = [
+  "Domingo",
   "Lunes",
   "Martes",
   "Miércoles",
   "Jueves",
   "Viernes",
-  "Sabado",
-  "Domingo",
+  "Sábado",
 ]
 
 export const formatDateDay = date => {
@@ -25,10 +25,13 @@ export const formatDateDay = date => {
   let dateParts = dateString.split("/")
 
   let formattedDate = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0])
+  console.log(date)
+  console.log(formattedDate)
+  console.log(formattedDate.getDay())
 
-  return `${dates[formattedDate.getDay() - 1]}  ${dateParts[0]}/${dateParts[1]}`
+  return `${dates[formattedDate.getDay()]}  ${dateParts[0]}/${dateParts[1]}`
 }
 
 export const formatDateDayFromObject = date => {
-  return `${dates[date.getDay() - 1]}  ${date.getDate()}/${date.getMonth() + 1}`
+  return `${dates[date.getDay()]}  ${date.getDate()}/${date.getMonth() + 1}`
 }
