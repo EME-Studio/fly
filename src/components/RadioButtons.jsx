@@ -101,7 +101,7 @@ function RadioButtons({
                   {value.text}
                 </RadioCard>
               </Box>
-              {value.type == "Empty Seat" ? (
+              {value.type === "Empty Seat" ? (
                 <FormControl isRequired maxW="100px">
                   <NumberInput
                     // ref={pickerRef1}
