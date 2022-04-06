@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React from "react"
 import {
   Box,
   VStack,
@@ -11,9 +11,7 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
   FormControl,
-  Input,
 } from "@chakra-ui/react"
-import { isMobile } from "react-device-detect"
 
 // 1. Create a component that consumes the `useRadio` hook
 function RadioCard(props) {
@@ -58,8 +56,16 @@ function RadioButtons({
 }) {
   // Radio buttons options
   const options = [
-    `Empty Leg $${emptyLegPrecio} USD`,
-    `Empty Seat $${emptySeatPrecio} USD`,
+    {
+      type: "Empty Leg",
+      price: emptyLegPrecio,
+      text: `Empty Leg $${emptyLegPrecio} USD`,
+    },
+    {
+      type: "Empty Seat",
+      price: emptySeatPrecio,
+      text: `Empty Seat $${emptySeatPrecio} USD`,
+    },
   ]
 
   const { getRootProps, getRadioProps } = useRadioGroup({
@@ -81,45 +87,53 @@ function RadioButtons({
   //   }
   // }, [isMobile, pickerRef1])
 
+  // if (tipo.includes("Empty Leg") && emptyLegPrecio > 0 || (emptyLegPrecio))
+
   return (
     <VStack {...group} align="left" spacing="14px" width="100%">
       {options.map(value => {
-        const radio = getRadioProps({ value })
-        return (
-          <Flex direction="row" w="100%">
-            <Box minW="140px" w="100%">
-              <RadioCard key={value} {...radio}>
-                {value}
-              </RadioCard>
-            </Box>
-            {value.includes("Empty Seat") ? (
-              <FormControl isRequired maxW="100px">
-                <NumberInput
-                  // ref={pickerRef1}
-                  isDisabled={tipo.includes("Empty Seat") ? false : true}
-                  min={1}
-                  id="pasajeros"
-                  name="pasajeros"
-                  value={seats}
-                  onChange={valueString => updateSeats(valueString)}
-                  w="80px"
-                  h="100%"
-                  ml="14px"
-                  sx={{
-                    input: { h: "100%" },
-                    "chakra-numberinput": { h: "100%" },
-                  }}
-                >
-                  <NumberInputField bg="white" color="gray.800" fontSize="xs" />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper bg="white" color="gray.400" />
-                    <NumberDecrementStepper bg="white" color="gray.400" />
-                  </NumberInputStepper>
-                </NumberInput>
-              </FormControl>
-            ) : null}
-          </Flex>
-        )
+        const radio = getRadioProps({ value: value.text })
+        {
+          return value.price > 0 ? (
+            <Flex direction="row" w="100%">
+              <Box minW="140px" w="100%">
+                <RadioCard key={value.text} {...radio}>
+                  {value.text}
+                </RadioCard>
+              </Box>
+              {value.type == "Empty Seat" ? (
+                <FormControl isRequired maxW="100px">
+                  <NumberInput
+                    // ref={pickerRef1}
+                    isDisabled={tipo.includes("Empty Seat") ? false : true}
+                    min={1}
+                    id="pasajeros"
+                    name="pasajeros"
+                    value={seats}
+                    onChange={valueString => updateSeats(valueString)}
+                    w="80px"
+                    h="100%"
+                    ml="14px"
+                    sx={{
+                      input: { h: "100%" },
+                      "chakra-numberinput": { h: "100%" },
+                    }}
+                  >
+                    <NumberInputField
+                      bg="white"
+                      color="gray.800"
+                      fontSize="xs"
+                    />
+                    <NumberInputStepper>
+                      <NumberIncrementStepper bg="white" color="gray.400" />
+                      <NumberDecrementStepper bg="white" color="gray.400" />
+                    </NumberInputStepper>
+                  </NumberInput>
+                </FormControl>
+              ) : null}
+            </Flex>
+          ) : null
+        }
       })}
     </VStack>
   )
