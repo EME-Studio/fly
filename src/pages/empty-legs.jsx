@@ -65,7 +65,7 @@ function EmptyLegs() {
           <Box py="50px !important">
             {/* Return a empty leg flight if the date is bigger than current date */}
             {emptyLegs.map(emptyLeg => {
-              return new Date(emptyLeg.attributes.FechaDeSalida) >
+              return new Date(emptyLeg.attributes.FechaDeSalida) >=
                 new Date() ? (
                 <EmptyLegCard
                   key={emptyLeg.id}
