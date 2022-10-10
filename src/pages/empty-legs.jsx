@@ -5,12 +5,7 @@ import Layout from "../components/layout/layout"
 import Seo from "../components/seo"
 import EmptyLegCard from "../components/EmptyLegCard"
 
-import {
-  EmptyLegContextProvider,
-  useEmptyLegContext,
-  useUpdateEmptyLegContext,
-  useModalContext,
-} from "../contexts/EmptyLegContext"
+import { EmptyLegContextProvider } from "../contexts/EmptyLegContext"
 
 import { Box, Flex } from "@chakra-ui/react"
 
