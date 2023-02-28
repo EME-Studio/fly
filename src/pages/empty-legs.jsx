@@ -74,11 +74,7 @@ function EmptyLegs() {
                   horario={emptyLeg.attributes.HorarioDeSalida}
                   capacidad={emptyLeg.attributes.Capacidad}
                 />
-              ) : (
-                <Flex align="center" justify="center" h="40vh">
-                  No hay Empty Legs disponibles en este momento.
-                </Flex>
-              )
+              ) : null
             })}
           </Box>
         </Box>
